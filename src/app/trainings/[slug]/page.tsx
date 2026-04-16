@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-const courseData: Record<string, { title: string; description: string; modules: { name: string; topics: string[] }[]; duration: string; price: string; level: string }> = {
+const courseData: Record<string, { title: string; description: string; modules: { name: string; topics: string[] }[]; duration: string; level: string }> = {
   cybersecurity: {
     title: "Cybersecurity",
     description: "Master the art of defending systems and networks. From threat detection to ethical hacking and compliance frameworks.",
     duration: "12 weeks",
-    price: "$2,499",
     level: "Beginner to Advanced",
     modules: [
       { name: "Foundations of Cybersecurity", topics: ["CIA Triad", "Threat Landscape", "Security Frameworks"] },
@@ -20,7 +19,6 @@ const courseData: Record<string, { title: string; description: string; modules: 
     title: "AI & Machine Learning",
     description: "Build intelligent systems from the ground up. Covers ML algorithms, deep learning, NLP, computer vision, and AI ethics.",
     duration: "14 weeks",
-    price: "$2,799",
     level: "Intermediate",
     modules: [
       { name: "Python for Data Science", topics: ["NumPy", "Pandas", "Matplotlib", "Scikit-learn"] },
@@ -34,7 +32,6 @@ const courseData: Record<string, { title: string; description: string; modules: 
     title: "Networking & Data Centers",
     description: "Design, deploy, and manage enterprise networks and data center infrastructure.",
     duration: "10 weeks",
-    price: "$1,999",
     level: "Beginner to Intermediate",
     modules: [
       { name: "Network Fundamentals", topics: ["OSI Model", "TCP/IP", "Subnetting", "DNS/DHCP"] },
@@ -47,7 +44,6 @@ const courseData: Record<string, { title: string; description: string; modules: 
     title: "Full-Stack Development",
     description: "Become a complete developer. Master frontend, backend, databases, and modern DevOps practices.",
     duration: "16 weeks",
-    price: "$3,199",
     level: "Beginner to Advanced",
     modules: [
       { name: "Frontend Development", topics: ["HTML/CSS", "JavaScript/TypeScript", "React", "Next.js"] },
@@ -77,7 +73,6 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
           <p className="text-blue-100 text-lg max-w-2xl">{course.description}</p>
           <div className="flex flex-wrap gap-6 mt-6 text-sm">
             <span className="bg-white/10 px-4 py-2 rounded-lg">Duration: {course.duration}</span>
-            <span className="bg-white/10 px-4 py-2 rounded-lg">Price: {course.price}</span>
             <span className="bg-white/10 px-4 py-2 rounded-lg">Level: {course.level}</span>
           </div>
         </div>
@@ -109,7 +104,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Enroll?</h2>
           <p className="text-gray-600 mb-6">Secure your spot today. Classes have limited seats.</p>
           <Link href="/contact" className="px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition">
-            Enroll Now — {course.price}
+            Enroll Now
           </Link>
         </div>
       </section>

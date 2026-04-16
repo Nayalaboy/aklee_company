@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/about)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/trainings)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/hardware)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/rnd)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/services)"
+    ]
+  }
+}

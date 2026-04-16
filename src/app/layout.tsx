@@ -15,9 +15,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aklee Company | Training, Hardware & Innovation",
+  title: {
+    default: "Mirigraphix | Training, Hardware & Innovation",
+    template: "%s | Mirigraphix",
+  },
   description:
-    "Aklee Company provides world-class training in cybersecurity, AI, networking, and full-stack development. We offer Mac hardware solutions and build innovative R&D applications for the U.S. and Africa.",
+    "Mirigraphix provides world-class training in cybersecurity, AI, networking, and full-stack development. Enterprise Mac hardware solutions and innovative R&D applications for the U.S. and Africa.",
+  keywords: [
+    "technology training",
+    "cybersecurity",
+    "AI training",
+    "Mac hardware",
+    "enterprise solutions",
+    "Africa technology",
+  ],
 };
 
 export default function RootLayout({
@@ -30,7 +41,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-[var(--background)]">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

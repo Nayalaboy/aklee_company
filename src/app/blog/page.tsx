@@ -1,126 +1,39 @@
-import Link from "next/link";
-
-export const metadata = { title: "Blog & Resources | Aklee Company" };
-
-const posts = [
-  {
-    slug: "cybersecurity-trends-2026",
-    title: "Top Cybersecurity Trends to Watch in 2026",
-    excerpt: "From AI-powered attacks to zero-trust architecture, here are the security trends shaping the industry this year.",
-    category: "Cybersecurity",
-    date: "March 28, 2026",
-    readTime: "5 min",
-  },
-  {
-    slug: "ai-ethics-business",
-    title: "AI Ethics in Business: What You Need to Know",
-    excerpt: "As AI becomes mainstream, organizations must address bias, transparency, and accountability in their AI systems.",
-    category: "AI & ML",
-    date: "March 20, 2026",
-    readTime: "7 min",
-  },
-  {
-    slug: "mac-fleet-management",
-    title: "Managing a Mac Fleet: Enterprise Best Practices",
-    excerpt: "Tips for deploying, securing, and maintaining Mac devices at scale in your organization.",
-    category: "Hardware",
-    date: "March 15, 2026",
-    readTime: "6 min",
-  },
-  {
-    slug: "cross-border-fintech",
-    title: "Building Cross-Border Fintech for Africa",
-    excerpt: "Lessons learned developing our money-transfer app: regulatory challenges, mobile-money integration, and user research.",
-    category: "R&D",
-    date: "March 10, 2026",
-    readTime: "8 min",
-  },
-  {
-    slug: "fullstack-career-guide",
-    title: "Full-Stack Developer Career Guide 2026",
-    excerpt: "The skills, certifications, and portfolio projects you need to land your first (or next) full-stack role.",
-    category: "Development",
-    date: "March 5, 2026",
-    readTime: "6 min",
-  },
-  {
-    slug: "networking-cloud-migration",
-    title: "Migrating Enterprise Networks to the Cloud",
-    excerpt: "A step-by-step guide to planning and executing a cloud network migration with minimal downtime.",
-    category: "Networking",
-    date: "February 28, 2026",
-    readTime: "7 min",
-  },
-];
-
-const categories = ["All", "Cybersecurity", "AI & ML", "Hardware", "R&D", "Development", "Networking"];
+export const metadata = { title: "Blog & Resources" };
 
 export default function BlogPage() {
   return (
     <>
-      <section className="bg-gradient-to-r from-primary-dark to-primary text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-4">Blog & Resources</h1>
-          <p className="text-blue-100 text-lg max-w-2xl">
+      <section className="hero-gradient text-white py-20 lg:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <p className="text-xs font-semibold uppercase tracking-wider text-blue-300 mb-3">Insights</p>
+          <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-4">Blog & Resources</h1>
+          <p className="text-blue-200/90 text-lg max-w-2xl leading-relaxed">
             Insights, tutorials, and industry news from our team of experts.
           </p>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Categories */}
-          <div className="flex flex-wrap gap-2 mb-10">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition ${cat === "All" ? "bg-primary text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          {/* Posts */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
-              <article key={post.slug} className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition">
-                <div className="bg-gray-100 h-48 flex items-center justify-center">
-                  <span className="text-gray-400 text-sm">Featured Image</span>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="px-2 py-1 bg-blue-50 text-primary text-xs font-medium rounded-full">{post.category}</span>
-                    <span className="text-xs text-gray-500">{post.date}</span>
-                    <span className="text-xs text-gray-500">{post.readTime}</span>
-                  </div>
-                  <h2 className="text-lg font-semibold text-gray-900 mb-2">{post.title}</h2>
-                  <p className="text-gray-600 text-sm mb-4">{post.excerpt}</p>
-                  <Link href={`/blog/${post.slug}`} className="text-primary text-sm font-medium hover:underline">
-                    Read more &rarr;
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-32 bg-white">
         <div className="max-w-2xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Subscribe to Our Newsletter</h2>
-          <p className="text-gray-600 mb-6">Get the latest articles, tutorials, and company news delivered to your inbox.</p>
-          <form className="flex gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="you@example.com"
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-            <button type="submit" className="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-dark transition">
-              Subscribe
-            </button>
-          </form>
+          <div className="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">Coming Soon</h2>
+          <p className="text-gray-500 leading-relaxed mb-8">
+            We&apos;re preparing insightful articles on cybersecurity, AI, networking, full-stack development, and more. Stay tuned for expert tutorials, industry analysis, and company updates.
+          </p>
+          <div className="max-w-md mx-auto">
+            <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Get notified when we launch</p>
+            <form className="flex gap-2">
+              <input type="email" placeholder="you@example.com" className="flex-1 px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all" />
+              <button type="submit" className="px-5 py-2.5 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-sm">
+                Notify Me
+              </button>
+            </form>
+          </div>
         </div>
       </section>
     </>

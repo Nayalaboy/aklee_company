@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
         excerpt: excerpt || "",
         content,
         category,
-        author: author || "Aklee Team",
+        author: author || "Mirigraphix Team",
         published: true,
       },
     });
