@@ -1,42 +1,71 @@
 export const metadata = { title: "Terms of Service" };
 
+const GRID_BG = "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23fff' stroke-width='0.5'%3E%3Cpath d='M40 0 L0 0 0 40'/%3E%3C/g%3E%3C/svg%3E\")";
+
+const sections = [
+  {
+    title: "1. Acceptance of Terms",
+    body: "By accessing or using Mirigraphix Company's website and services, you agree to be bound by these Terms of Service. If you do not agree, please do not use our services.",
+  },
+  {
+    title: "2. Services",
+    body: "Mirigraphix Company provides technology training, hardware sales, consulting services, and software applications. Service availability may vary by region.",
+  },
+  {
+    title: "3. User Accounts",
+    body: "You are responsible for maintaining the confidentiality of your account credentials and for all activities under your account. Notify us immediately of any unauthorized use.",
+  },
+  {
+    title: "4. Payment Terms",
+    body: "Payment is due at the time of purchase or enrollment. We accept major credit cards and bank transfers. Contact us for current pricing information.",
+  },
+  {
+    title: "5. Intellectual Property",
+    body: "All course materials, software, and content on this site are the intellectual property of Mirigraphix Company. You may not reproduce, distribute, or modify our content without written permission.",
+  },
+  {
+    title: "6. Limitation of Liability",
+    body: "Mirigraphix Company is not liable for indirect, incidental, or consequential damages arising from the use of our services, to the maximum extent permitted by law.",
+  },
+  {
+    title: "7. Governing Law",
+    body: "These terms are governed by the laws of the State of Pennsylvania, United States. Any disputes will be resolved in the courts of Philadelphia County, Pennsylvania.",
+  },
+  {
+    title: "8. Changes to Terms",
+    body: "We may update these terms from time to time. Continued use of our services after changes constitutes acceptance of the updated terms.",
+  },
+];
+
 export default function TermsPage() {
   return (
     <>
-      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-16 lg:py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
+      <section className="relative overflow-hidden text-white py-20 lg:py-24">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#060412] via-[#1a0e40] to-[#0c1635]" />
+        <div className="glow-orb absolute -top-24 left-0 w-[400px] h-[300px] bg-violet-700 opacity-20 animate-glow-pulse" />
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: GRID_BG }} />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Legal</p>
-          <h1 className="text-3xl font-bold tracking-tight">Terms of Service</h1>
-          <p className="text-gray-400 mt-2 text-sm">Last updated: April 1, 2026</p>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-400/30 bg-violet-500/10 text-violet-300 text-xs font-semibold tracking-wide mb-6">
+            Legal
+          </div>
+          <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-3">Terms of Service</h1>
+          <p className="text-indigo-300/60 text-sm">Last updated: April 1, 2026</p>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[var(--background)] to-transparent" />
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 prose-professional">
-          <h2 className="text-lg font-bold text-gray-900 mt-0 pb-2 border-b border-gray-100">1. Acceptance of Terms</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">By accessing or using Mirigraphix Company&apos;s website and services, you agree to be bound by these Terms of Service. If you do not agree, please do not use our services.</p>
-
-          <h2 className="text-lg font-bold text-gray-900 mt-8 pb-2 border-b border-gray-100">2. Services</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">Mirigraphix Company provides technology training, hardware sales, consulting services, and software applications. Service availability may vary by region.</p>
-
-          <h2 className="text-lg font-bold text-gray-900 mt-8 pb-2 border-b border-gray-100">3. User Accounts</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">You are responsible for maintaining the confidentiality of your account credentials and for all activities under your account. Notify us immediately of any unauthorized use.</p>
-
-          <h2 className="text-lg font-bold text-gray-900 mt-8 pb-2 border-b border-gray-100">4. Payment Terms</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">Payment is due at the time of purchase or enrollment. We accept major credit cards and bank transfers. Contact us for current pricing information.</p>
-
-          <h2 className="text-lg font-bold text-gray-900 mt-8 pb-2 border-b border-gray-100">5. Intellectual Property</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">All course materials, software, and content on this site are the intellectual property of Mirigraphix Company. You may not reproduce, distribute, or modify our content without written permission.</p>
-
-          <h2 className="text-lg font-bold text-gray-900 mt-8 pb-2 border-b border-gray-100">6. Limitation of Liability</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">Mirigraphix Company is not liable for indirect, incidental, or consequential damages arising from the use of our services, to the maximum extent permitted by law.</p>
-
-          <h2 className="text-lg font-bold text-gray-900 mt-8 pb-2 border-b border-gray-100">7. Governing Law</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">These terms are governed by the laws of the State of Texas, United States. Any disputes will be resolved in the courts of Travis County, Texas.</p>
-
-          <h2 className="text-lg font-bold text-gray-900 mt-8 pb-2 border-b border-gray-100">8. Changes to Terms</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">We may update these terms from time to time. Continued use of our services after changes constitutes acceptance of the updated terms.</p>
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl border border-indigo-100/60 overflow-hidden shadow-sm">
+            <div className="divide-y divide-indigo-100/60">
+              {sections.map((s) => (
+                <div key={s.title} className="px-8 py-7">
+                  <h2 className="text-base font-extrabold text-gray-900 mb-3">{s.title}</h2>
+                  <p className="text-gray-500 text-sm leading-relaxed">{s.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </>
