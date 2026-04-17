@@ -12,31 +12,31 @@ export default function TermsPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 prose-professional">
-          <h2 className="text-lg font-bold text-gray-900 mt-0 pb-2 border-b border-gray-100">1. Acceptance of Terms</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">By accessing or using Mirigraphix Company&apos;s website and services, you agree to be bound by these Terms of Service. If you do not agree, please do not use our services.</p>
+          <h2 className="text-lg font-bold text-dark mt-0 pb-2 border-b border-dark/6">1. Acceptance of Terms</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">By accessing or using Mirigraphix Company&apos;s website and services, you agree to be bound by these Terms of Service. If you do not agree, please do not use our services.</p>
 
-          <h2 className="text-lg font-bold text-gray-900 mt-8 pb-2 border-b border-gray-100">2. Services</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">Mirigraphix Company provides technology training, hardware sales, consulting services, and software applications. Service availability may vary by region.</p>
+          <h2 className="text-lg font-bold text-dark mt-8 pb-2 border-b border-dark/6">2. Services</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">Mirigraphix Company provides technology training, hardware sales, consulting services, and software applications. Service availability may vary by region.</p>
 
-          <h2 className="text-lg font-bold text-gray-900 mt-8 pb-2 border-b border-gray-100">3. User Accounts</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">You are responsible for maintaining the confidentiality of your account credentials and for all activities under your account. Notify us immediately of any unauthorized use.</p>
+          <h2 className="text-lg font-bold text-dark mt-8 pb-2 border-b border-dark/6">3. User Accounts</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">You are responsible for maintaining the confidentiality of your account credentials and for all activities under your account. Notify us immediately of any unauthorized use.</p>
 
-          <h2 className="text-lg font-bold text-gray-900 mt-8 pb-2 border-b border-gray-100">4. Payment Terms</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">Payment is due at the time of purchase or enrollment. We accept major credit cards and bank transfers. Contact us for current pricing information.</p>
+          <h2 className="text-lg font-bold text-dark mt-8 pb-2 border-b border-dark/6">4. Payment Terms</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">Payment is due at the time of purchase or enrollment. We accept major credit cards and bank transfers. Contact us for current pricing information.</p>
 
-          <h2 className="text-lg font-bold text-gray-900 mt-8 pb-2 border-b border-gray-100">5. Intellectual Property</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">All course materials, software, and content on this site are the intellectual property of Mirigraphix Company. You may not reproduce, distribute, or modify our content without written permission.</p>
+          <h2 className="text-lg font-bold text-dark mt-8 pb-2 border-b border-dark/6">5. Intellectual Property</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">All course materials, software, and content on this site are the intellectual property of Mirigraphix Company. You may not reproduce, distribute, or modify our content without written permission.</p>
 
-          <h2 className="text-lg font-bold text-gray-900 mt-8 pb-2 border-b border-gray-100">6. Limitation of Liability</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">Mirigraphix Company is not liable for indirect, incidental, or consequential damages arising from the use of our services, to the maximum extent permitted by law.</p>
+          <h2 className="text-lg font-bold text-dark mt-8 pb-2 border-b border-dark/6">6. Limitation of Liability</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">Mirigraphix Company is not liable for indirect, incidental, or consequential damages arising from the use of our services, to the maximum extent permitted by law.</p>
 
-          <h2 className="text-lg font-bold text-gray-900 mt-8 pb-2 border-b border-gray-100">7. Governing Law</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">These terms are governed by the laws of the State of Texas, United States. Any disputes will be resolved in the courts of Travis County, Texas.</p>
+          <h2 className="text-lg font-bold text-dark mt-8 pb-2 border-b border-dark/6">7. Governing Law</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">These terms are governed by the laws of the State of Texas, United States. Any disputes will be resolved in the courts of Travis County, Texas.</p>
 
-          <h2 className="text-lg font-bold text-gray-900 mt-8 pb-2 border-b border-gray-100">8. Changes to Terms</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mt-3">We may update these terms from time to time. Continued use of our services after changes constitutes acceptance of the updated terms.</p>
+          <h2 className="text-lg font-bold text-dark mt-8 pb-2 border-b border-dark/6">8. Changes to Terms</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">We may update these terms from time to time. Continued use of our services after changes constitutes acceptance of the updated terms.</p>
         </div>
       </section>
     </>

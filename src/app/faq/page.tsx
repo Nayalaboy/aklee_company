@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 const faqs = [
   {
@@ -39,21 +40,30 @@ const faqs = [
   },
 ];
 
+const categoryColors: Record<string, string> = {
+  Trainings: "!text-primary !bg-primary/6 !border-primary/10",
+  Hardware: "!text-accent !bg-accent/6 !border-accent/10",
+  "R&D & Apps": "!text-violet !bg-violet/6 !border-violet/10",
+  General: "!text-emerald !bg-emerald/6 !border-emerald/10",
+};
+
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-gray-100 last:border-0">
+    <div className="border-b border-dark/6 last:border-0">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex justify-between items-center py-4 text-left group"
       >
-        <span className="text-gray-900 font-medium text-sm group-hover:text-primary transition-colors duration-200 pr-4">{q}</span>
-        <svg className={`w-4 h-4 text-gray-400 transition-transform duration-200 flex-shrink-0 ${open ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
+        <span className="text-dark font-medium text-sm group-hover:text-primary transition-colors duration-200 pr-4">{q}</span>
+        <div className={`w-6 h-6 rounded-lg bg-primary/5 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-all duration-300 ${open ? "bg-primary/10" : ""}`}>
+          <svg className={`w-3.5 h-3.5 text-warm-gray-500 transition-transform duration-300 ${open ? "rotate-180 text-primary" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
       </button>
-      <div className={`overflow-hidden transition-all duration-200 ${open ? "max-h-40 pb-4" : "max-h-0"}`}>
-        <p className="text-gray-500 text-sm leading-relaxed">{a}</p>
+      <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-40 pb-4" : "max-h-0"}`}>
+        <p className="text-warm-gray-500 text-sm leading-relaxed">{a}</p>
       </div>
     </div>
   );
@@ -62,23 +72,33 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 export default function FAQPage() {
   return (
     <>
-      <section className="hero-gradient text-white py-20 lg:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <p className="text-xs font-semibold uppercase tracking-wider text-blue-300 mb-3">Support</p>
-          <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-4">Frequently Asked Questions</h1>
-          <p className="text-blue-200/90 text-lg max-w-2xl leading-relaxed">
+      {/* Hero */}
+      <section className="relative py-24 lg:py-32 overflow-hidden bg-gray-950">
+        <Image src="/images/hero-faq.jpg" alt="" fill className="object-cover opacity-10 mix-blend-overlay" priority sizes="100vw" />
+        <div className="absolute inset-0">
+          <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-primary/12 rounded-full blur-[120px] animate-blob" />
+          <div className="absolute bottom-1/3 left-1/4 w-72 h-72 bg-cyan/8 rounded-full blur-[100px] animate-blob-delay" />
+        </div>
+        <div className="absolute inset-0 grain" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span className="section-label mb-6 inline-flex">Support</span>
+          <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-white mb-5 mt-4">
+            Frequently Asked{" "}
+            <span className="gradient-text">Questions</span>
+          </h1>
+          <p className="text-gray-400 text-lg max-w-2xl leading-relaxed">
             Find answers to common questions about our trainings, hardware, apps, and more.
           </p>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      {/* FAQ */}
+      <section className="py-24">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {faqs.map((section) => (
             <div key={section.category}>
-              <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-4">{section.category}</p>
-              <div className="bg-gray-50 rounded-2xl border border-gray-100 px-6">
+              <span className={`section-label mb-4 inline-flex ${categoryColors[section.category] || ""}`}>{section.category}</span>
+              <div className="bento-card mt-3 px-6">
                 {section.questions.map((item) => (
                   <FAQItem key={item.q} q={item.q} a={item.a} />
                 ))}
@@ -88,11 +108,12 @@ export default function FAQPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
+      {/* CTA */}
+      <section className="py-24">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">Still Have Questions?</h2>
-          <p className="text-gray-500 mb-8 leading-relaxed">Our team is here to help. Reach out and we will get back to you within 24 hours.</p>
-          <a href="/contact" className="px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-sm text-sm">
+          <h2 className="text-3xl font-bold text-dark mb-4">Still Have Questions?</h2>
+          <p className="text-warm-gray-500 mb-8 text-lg leading-relaxed">Our team is here to help. Reach out and we will get back to you within 24 hours.</p>
+          <a href="/contact" className="btn-primary inline-flex">
             Contact Us
           </a>
         </div>

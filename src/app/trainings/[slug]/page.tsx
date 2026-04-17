@@ -78,19 +78,19 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Course Modules</h2>
+          <h2 className="text-2xl font-bold text-dark mb-8">Course Modules</h2>
           <div className="space-y-6">
             {course.modules.map((mod, i) => (
-              <div key={mod.name} className="border border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+              <div key={mod.name} className="border border-dark/8 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-dark mb-3">
                   <span className="text-primary mr-2">Module {i + 1}:</span>
                   {mod.name}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {mod.topics.map((t) => (
-                    <span key={t} className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">{t}</span>
+                    <span key={t} className="px-3 py-1 bg-primary/5 text-warm-gray-500 text-sm rounded-full">{t}</span>
                   ))}
                 </div>
               </div>
@@ -99,10 +99,10 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
         </div>
       </section>
 
-      <section className="py-12 bg-gray-50">
+      <section className="py-12">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Enroll?</h2>
-          <p className="text-gray-600 mb-6">Secure your spot today. Classes have limited seats.</p>
+          <h2 className="text-2xl font-bold text-dark mb-4">Ready to Enroll?</h2>
+          <p className="text-warm-gray-500 mb-6">Secure your spot today. Classes have limited seats.</p>
           <Link href="/contact" className="px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition">
             Enroll Now
           </Link>
