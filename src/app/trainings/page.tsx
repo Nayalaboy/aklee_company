@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = { title: "Training Programs" };
 
@@ -11,9 +12,16 @@ const categories = [
     description: "Threat detection, ethical hacking, regulatory compliance, and incident response for modern enterprises.",
     courses: ["Intro to Cybersecurity", "Ethical Hacking & Pen Testing", "Compliance & Risk Management", "Incident Response"],
     certifications: ["CompTIA Security+", "CEH", "CISSP Prep"],
+<<<<<<< HEAD
     gradient: "from-red-500 to-orange-500",
     accent: "text-red-600 bg-red-50 border-red-200",
     icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z",
+=======
+    gradient: "from-red-500/10 to-orange-500/5",
+    iconBg: "from-red-500/10 to-orange-500/10",
+    iconColor: "text-red-500",
+    accentColor: "text-red-500",
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
   },
   {
     slug: "ai-ml",
@@ -21,9 +29,16 @@ const categories = [
     description: "Machine learning fundamentals, deep learning, AI ethics, and practical applications for the real world.",
     courses: ["ML Fundamentals with Python", "Deep Learning & Neural Networks", "NLP & Computer Vision", "AI Ethics & Governance"],
     certifications: ["Google ML Certificate", "AWS ML Specialty"],
+<<<<<<< HEAD
     gradient: "from-violet-600 to-indigo-600",
     accent: "text-violet-600 bg-violet-50 border-violet-200",
     icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+=======
+    gradient: "from-violet-500/10 to-purple-500/5",
+    iconBg: "from-violet-500/10 to-purple-500/10",
+    iconColor: "text-violet-500",
+    accentColor: "text-violet-500",
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
   },
   {
     slug: "networking",
@@ -31,9 +46,16 @@ const categories = [
     description: "Network design, virtualization, cloud infrastructure, and data center management from fundamentals to expert.",
     courses: ["Network Fundamentals", "Cisco Routing & Switching", "Cloud Infrastructure (AWS/Azure)", "Data Center Design & Ops"],
     certifications: ["CompTIA Network+", "CCNA", "AWS Solutions Architect"],
+<<<<<<< HEAD
     gradient: "from-cyan-500 to-sky-600",
     accent: "text-cyan-600 bg-cyan-50 border-cyan-200",
     icon: "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01",
+=======
+    gradient: "from-cyan-500/10 to-blue-500/5",
+    iconBg: "from-cyan-500/10 to-blue-500/10",
+    iconColor: "text-cyan-500",
+    accentColor: "text-cyan-500",
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
   },
   {
     slug: "fullstack",
@@ -41,9 +63,16 @@ const categories = [
     description: "Frontend, backend, databases, DevOps, and modern deployment. From zero to job-ready in one track.",
     courses: ["HTML/CSS/JavaScript", "React & Next.js", "Python/Node.js Backend", "DevOps & CI/CD Pipelines"],
     certifications: ["Meta Frontend Certificate", "AWS Developer Associate"],
+<<<<<<< HEAD
     gradient: "from-emerald-500 to-teal-500",
     accent: "text-emerald-600 bg-emerald-50 border-emerald-200",
     icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
+=======
+    gradient: "from-emerald-500/10 to-teal-500/5",
+    iconBg: "from-emerald-500/10 to-teal-500/10",
+    iconColor: "text-emerald-500",
+    accentColor: "text-emerald-500",
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
   },
 ];
 
@@ -58,6 +87,7 @@ export default function TrainingsPage() {
   return (
     <>
       {/* Hero */}
+<<<<<<< HEAD
       <section className="relative overflow-hidden text-white py-24 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-br from-[#060412] via-[#1a0e40] to-[#0c1635]" />
         <div className="glow-orb absolute -top-24 left-0 w-[500px] h-[400px] bg-violet-700 opacity-20 animate-glow-pulse" />
@@ -73,6 +103,23 @@ export default function TrainingsPage() {
           </h1>
           <p className="text-indigo-200/80 text-xl max-w-xl leading-relaxed mb-10">
             Industry-leading courses designed to launch and accelerate your tech career. Hands-on projects, live instruction, and certification prep.
+=======
+      <section className="relative py-24 lg:py-32 overflow-hidden bg-gray-950">
+        <Image src="/images/hero-trainings.jpg" alt="" fill className="object-cover opacity-10 mix-blend-overlay" priority sizes="100vw" />
+        <div className="absolute inset-0">
+          <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-primary/15 rounded-full blur-[120px] animate-blob" />
+          <div className="absolute bottom-1/3 right-1/3 w-72 h-72 bg-violet/10 rounded-full blur-[100px] animate-blob-delay" />
+        </div>
+        <div className="absolute inset-0 grain" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span className="section-label mb-6 inline-flex">Education</span>
+          <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-white mb-5 mt-4">
+            Training{" "}
+            <span className="gradient-text-warm">Programs</span>
+          </h1>
+          <p className="text-gray-400 text-lg max-w-2xl leading-relaxed">
+            Industry-leading courses designed to launch and accelerate your tech career. Learn from experts with hands-on projects and certification prep.
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
           </p>
           {/* Stats bar */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
@@ -87,8 +134,13 @@ export default function TrainingsPage() {
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[var(--background)] to-transparent" />
       </section>
 
+<<<<<<< HEAD
       {/* Course tracks */}
       <section className="py-20">
+=======
+      {/* Categories */}
+      <section className="py-24">
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="inline-block px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-widest mb-4">Tracks</span>
@@ -96,6 +148,7 @@ export default function TrainingsPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-7">
             {categories.map((cat) => (
+<<<<<<< HEAD
               <div key={cat.slug} className="group bg-white rounded-3xl border border-indigo-100/60 overflow-hidden card-hover">
                 <div className={`h-1.5 bg-gradient-to-r ${cat.gradient}`} />
                 <div className="p-8">
@@ -103,6 +156,24 @@ export default function TrainingsPage() {
                     <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${cat.gradient} flex items-center justify-center flex-shrink-0 shadow-md`}>
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={cat.icon} />
+=======
+              <div key={cat.slug} className={`bento-card bg-gradient-to-br ${cat.gradient} group`}>
+                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${cat.iconBg} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                  <svg className={`w-6 h-6 ${cat.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+
+                <h2 className="text-xl font-bold text-dark mb-2">{cat.title}</h2>
+                <p className="text-warm-gray-500 text-sm leading-relaxed mb-6">{cat.description}</p>
+
+                <p className="text-[11px] font-semibold text-warm-gray-500 uppercase tracking-wider mb-3">Courses</p>
+                <ul className="space-y-2 mb-6">
+                  {cat.courses.map((c) => (
+                    <li key={c} className="text-warm-gray-500 text-sm flex items-center gap-2.5">
+                      <svg className={`w-3.5 h-3.5 ${cat.accentColor} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
                       </svg>
                     </div>
                     <div>
@@ -111,6 +182,7 @@ export default function TrainingsPage() {
                     </div>
                   </div>
 
+<<<<<<< HEAD
                   <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Courses</p>
                   <ul className="space-y-2 mb-5">
                     {cat.courses.map((c) => (
@@ -137,6 +209,26 @@ export default function TrainingsPage() {
                     View Courses →
                   </Link>
                 </div>
+=======
+                <p className="text-[11px] font-semibold text-warm-gray-500 uppercase tracking-wider mb-3">Certification Prep</p>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {cat.certifications.map((cert) => (
+                    <span key={cert} className="px-2.5 py-1 bg-primary/5 text-warm-gray-500 text-xs font-medium rounded-lg border border-dark/6">
+                      {cert}
+                    </span>
+                  ))}
+                </div>
+
+                <Link
+                  href={`/trainings/${cat.slug}`}
+                  className="btn-primary inline-flex"
+                >
+                  View Courses
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
               </div>
             ))}
           </div>
@@ -144,6 +236,7 @@ export default function TrainingsPage() {
       </section>
 
       {/* CTA */}
+<<<<<<< HEAD
       <section className="py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a0818] via-[#1a0e40] to-[#0f1a30]" />
         <div className="glow-orb absolute top-0 left-1/4 w-[500px] h-[300px] bg-violet-700 opacity-25" />
@@ -158,6 +251,14 @@ export default function TrainingsPage() {
           <Link href="/contact"
             className="btn-shimmer inline-block px-8 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-extrabold rounded-xl shadow-xl shadow-indigo-900/50 text-sm hover:from-violet-500 hover:to-indigo-500 transition-all">
             Talk to an Advisor →
+=======
+      <section className="py-24">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-dark mb-4">Not Sure Where to Start?</h2>
+          <p className="text-warm-gray-500 mb-8 text-lg leading-relaxed">Our advisors can help you choose the right learning path based on your goals and experience level.</p>
+          <Link href="/contact" className="btn-primary inline-flex">
+            Talk to an Advisor
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
           </Link>
         </div>
       </section>

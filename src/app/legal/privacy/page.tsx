@@ -55,6 +55,7 @@ export default function PrivacyPage() {
       </section>
 
       <section className="py-16">
+<<<<<<< HEAD
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-3xl border border-indigo-100/60 overflow-hidden shadow-sm">
             <div className="divide-y divide-indigo-100/60">
@@ -66,6 +67,32 @@ export default function PrivacyPage() {
               ))}
             </div>
           </div>
+=======
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 prose-professional">
+          <h2 className="text-lg font-bold text-dark mt-0 pb-2 border-b border-dark/6">1. Information We Collect</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">We collect information you provide directly, such as your name, email address, phone number, and payment information when you register for courses, purchase hardware, or contact us. We also collect usage data through cookies and analytics tools.</p>
+
+          <h2 className="text-lg font-bold text-dark mt-8 pb-2 border-b border-dark/6">2. How We Use Your Information</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">We use your information to provide and improve our services, process transactions, send communications about courses and products, and comply with legal obligations. We do not sell your personal data to third parties.</p>
+
+          <h2 className="text-lg font-bold text-dark mt-8 pb-2 border-b border-dark/6">3. Data Security</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">We implement industry-standard security measures to protect your data, including encryption in transit and at rest, access controls, and regular security audits.</p>
+
+          <h2 className="text-lg font-bold text-dark mt-8 pb-2 border-b border-dark/6">4. Cookies</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">We use cookies to improve your browsing experience, analyze site traffic, and personalize content. You can manage cookie preferences through your browser settings.</p>
+
+          <h2 className="text-lg font-bold text-dark mt-8 pb-2 border-b border-dark/6">5. Third-Party Services</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">We use trusted third-party services for payment processing, analytics, and email delivery. These providers have their own privacy policies and are contractually obligated to protect your data.</p>
+
+          <h2 className="text-lg font-bold text-dark mt-8 pb-2 border-b border-dark/6">6. Your Rights</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">You have the right to access, correct, or delete your personal data. You may also opt out of marketing communications at any time. To exercise your rights, contact us at mirigraphixx@gmail.com.</p>
+
+          <h2 className="text-lg font-bold text-dark mt-8 pb-2 border-b border-dark/6">7. International Data Transfers</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">As we operate in both the U.S. and Africa, your data may be transferred and processed in different jurisdictions. We ensure appropriate safeguards are in place for all cross-border data transfers.</p>
+
+          <h2 className="text-lg font-bold text-dark mt-8 pb-2 border-b border-dark/6">8. Contact</h2>
+          <p className="text-warm-gray-500 text-sm leading-relaxed mt-3">For privacy-related questions, contact us at mirigraphixx@gmail.com or write to: Mirigraphix Company, North Carolina.</p>
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
         </div>
       </section>
     </>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = { title: "Testimonials & Case Studies" };
 
@@ -16,16 +17,22 @@ const caseStudies = [
     title: "Pan-African School Network Deployment",
     client: "EduAfrica Foundation",
     summary: "Deployed 200+ Macs and configured secure networks across 15 schools in Kenya, Nigeria, and Ghana. Trained 50 local IT staff.",
+<<<<<<< HEAD
     results: ["200+ devices deployed", "15 schools connected", "50 staff trained", "99.5% uptime"],
     gradient: "from-indigo-50 to-violet-50",
     border: "border-indigo-100",
     accent: "text-indigo-600 bg-indigo-50 border-indigo-100",
+=======
+    results: ["200+ devices deployed", "15 schools connected", "50 staff trained", "99.5% uptime achieved"],
+    gradient: "from-primary/5 to-violet/5",
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
   },
   {
     title: "Enterprise Cybersecurity Upskill Program",
     client: "FinTech Corp",
     summary: "Designed and delivered a 3-month cybersecurity training program for 30 employees, resulting in 28 industry certifications.",
     results: ["30 employees trained", "28 certifications earned", "60% fewer incidents", "ROI in 4 months"],
+<<<<<<< HEAD
     gradient: "from-emerald-50 to-cyan-50",
     border: "border-emerald-100",
     accent: "text-emerald-600 bg-emerald-50 border-emerald-100",
@@ -40,11 +47,19 @@ const cardGradients = [
   "from-indigo-600 to-violet-700",
   "from-orange-500 to-amber-400",
 ];
+=======
+    gradient: "from-emerald/5 to-cyan/5",
+  },
+];
+
+const colors = ["from-primary/10 to-violet/10", "from-accent/10 to-coral/10", "from-emerald/10 to-cyan/10", "from-violet/10 to-primary/10", "from-cyan/10 to-primary/10", "from-coral/10 to-accent/10"];
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
 
 export default function TestimonialsPage() {
   return (
     <>
       {/* Hero */}
+<<<<<<< HEAD
       <section className="relative overflow-hidden text-white py-24 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-br from-[#060412] via-[#1a0e40] to-[#0c1635]" />
         <div className="glow-orb absolute -top-24 left-0 w-[500px] h-[400px] bg-violet-700 opacity-20 animate-glow-pulse" />
@@ -62,6 +77,22 @@ export default function TestimonialsPage() {
             <span className="gradient-text-gold">Case Studies</span>
           </h1>
           <p className="text-indigo-200/80 text-xl max-w-xl leading-relaxed">
+=======
+      <section className="relative py-24 lg:py-32 overflow-hidden bg-gray-950">
+        <Image src="/images/hero-testimonials.jpg" alt="" fill className="object-cover opacity-10 mix-blend-overlay" priority sizes="100vw" />
+        <div className="absolute inset-0">
+          <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-[120px] animate-blob" />
+          <div className="absolute bottom-1/3 left-1/3 w-72 h-72 bg-primary/8 rounded-full blur-[100px] animate-blob-delay" />
+        </div>
+        <div className="absolute inset-0 grain" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span className="section-label mb-6 inline-flex">Social Proof</span>
+          <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-white mb-5 mt-4">
+            Testimonials &{" "}
+            <span className="gradient-text-warm">Case Studies</span>
+          </h1>
+          <p className="text-gray-400 text-lg max-w-2xl leading-relaxed">
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
             See what our clients and students say about their experience with Mirigraphix.
           </p>
         </div>
@@ -69,6 +100,7 @@ export default function TestimonialsPage() {
       </section>
 
       {/* Testimonials */}
+<<<<<<< HEAD
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -83,12 +115,25 @@ export default function TestimonialsPage() {
             {testimonials.map((t, i) => (
               <div key={t.name} className="bg-white rounded-3xl p-7 border border-indigo-100/60 card-hover">
                 <div className="flex gap-1 mb-4">
+=======
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12">
+            <span className="section-label mb-4 inline-flex">Testimonials</span>
+            <h2 className="text-3xl font-bold text-dark mt-4">What Our Clients Say</h2>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {testimonials.map((t, i) => (
+              <div key={t.name} className="bento-card group">
+                <div className="flex gap-0.5 mb-4">
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
                   {Array.from({ length: 5 }).map((_, j) => (
                     <svg key={j} className={`w-4 h-4 ${j < t.rating ? "text-amber-400" : "text-gray-200"}`} fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
+<<<<<<< HEAD
                 <p className="text-gray-500 text-sm leading-relaxed italic mb-6">&ldquo;{t.text}&rdquo;</p>
                 <div className="flex items-center gap-3">
                   <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${cardGradients[i % cardGradients.length]} flex items-center justify-center text-white text-xs font-bold flex-shrink-0`}>
@@ -97,6 +142,16 @@ export default function TestimonialsPage() {
                   <div>
                     <p className="font-bold text-gray-900 text-sm">{t.name}</p>
                     <p className="text-gray-400 text-xs">{t.role}, {t.company}</p>
+=======
+                <p className="text-warm-gray-500 text-sm mb-6 leading-relaxed italic">&ldquo;{t.text}&rdquo;</p>
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${colors[i]} flex items-center justify-center`}>
+                    <span className="text-xs font-bold gradient-text">{t.name.split(" ").map(n => n[0]).join("")}</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-dark text-sm">{t.name}</p>
+                    <p className="text-warm-gray-500 text-xs">{t.role}, {t.company}</p>
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
                   </div>
                 </div>
               </div>
@@ -106,6 +161,7 @@ export default function TestimonialsPage() {
       </section>
 
       {/* Case Studies */}
+<<<<<<< HEAD
       <section className="py-20 bg-gradient-to-b from-[#f0f0ff]/60 to-[var(--background)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -132,6 +188,27 @@ export default function TestimonialsPage() {
                       </div>
                     ))}
                   </div>
+=======
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 gradient-mesh opacity-30" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12">
+            <span className="section-label mb-4 inline-flex">Results</span>
+            <h2 className="text-3xl font-bold text-dark mt-4">Case Studies</h2>
+          </div>
+          <div className="space-y-6">
+            {caseStudies.map((cs) => (
+              <div key={cs.title} className={`bento-card bg-gradient-to-br ${cs.gradient}`}>
+                <h3 className="text-lg font-bold text-dark mb-1">{cs.title}</h3>
+                <p className="text-primary text-xs font-semibold mb-4 uppercase tracking-wider">{cs.client}</p>
+                <p className="text-warm-gray-500 text-sm mb-6 leading-relaxed">{cs.summary}</p>
+                <div className="grid sm:grid-cols-4 gap-3">
+                  {cs.results.map((r) => (
+                    <div key={r} className="bg-white rounded-xl p-4 text-center border border-dark/6">
+                      <p className="text-xs font-bold text-primary">{r}</p>
+                    </div>
+                  ))}
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
                 </div>
               </div>
             ))}
@@ -140,6 +217,7 @@ export default function TestimonialsPage() {
       </section>
 
       {/* CTA */}
+<<<<<<< HEAD
       <section className="py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a0818] via-[#1a0e40] to-[#0f1a30]" />
         <div className="glow-orb absolute top-0 left-1/4 w-[500px] h-[300px] bg-violet-700 opacity-25" />
@@ -154,6 +232,12 @@ export default function TestimonialsPage() {
           </p>
           <Link href="/contact"
             className="btn-shimmer inline-block px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-gray-900 font-extrabold rounded-xl shadow-xl shadow-amber-700/30 text-sm hover:from-amber-300 hover:to-orange-400 transition-all">
+=======
+      <section className="py-24">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-dark mb-4">Become Our Next Success Story</h2>
+          <Link href="/contact" className="btn-primary inline-flex">
+>>>>>>> 3bf86ffb181c59c8dfcdf84f7aa9ad0ad2950597
             Get Started
           </Link>
         </div>
