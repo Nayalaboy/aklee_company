@@ -5,73 +5,52 @@ export const metadata = { title: "Research & Development" };
 
 const projects = [
   {
-    id: "transfer",
-    name: "TransferNow",
-    tagline: "Money Transfer App",
+    name: "Cross-Border Payments",
     status: "Beta",
     statusColor: "text-amber-400 bg-amber-400/10 border-amber-400/30",
-    description: "A secure, low-fee money transfer platform enabling seamless transactions between the U.S. and Africa — built for speed, compliance, and mobile-money accessibility.",
-    tech: ["React Native", "Node.js", "PostgreSQL", "Stripe API", "Blockchain"],
-    problem: "Traditional remittance services charge 5–10% fees with multi-day delays, creating a heavy financial burden for diaspora communities.",
-    solution: "Fees under 2% with near-instant transfers via blockchain settlement and local mobile-money integrations (M-Pesa, Flutterwave).",
-    impact: [
-      { label: "Fee reduction", value: "< 2%" },
-      { label: "Transfer time", value: "< 60s" },
-      { label: "Target users", value: "10M+" },
-    ],
+    description: "A faster, more affordable way to move money between the U.S. and Africa.",
     image: "/images/rnd-money-transfer.png",
-    gradient: "from-amber-500 to-orange-600",
-    gradientBg: "from-amber-500/10 to-orange-500/5",
-    borderColor: "border-amber-200/60",
-    accentLight: "bg-amber-50",
+    gradient: "from-amber-400 to-orange-500",
     icon: "💸",
-    flip: false,
   },
   {
-    id: "hire",
-    name: "HireLink",
-    tagline: "AI Job Application App",
+    name: "AI-Powered Job Matching",
     status: "In Development",
     statusColor: "text-cyan-400 bg-cyan-400/10 border-cyan-400/30",
-    description: "An AI-powered job platform that matches candidates with opportunities across the U.S. and Africa — streamlining hiring with smart resume tools, scheduling, and verified credentials.",
-    tech: ["Next.js", "Python", "TensorFlow", "MongoDB", "AWS"],
-    problem: "Cross-border job seekers face incompatible application formats, timezone barriers, and no trusted way to share verified credentials.",
-    solution: "AI-driven resume optimization, automated interview scheduling, and blockchain credential verification create a seamless cross-border hiring pipeline.",
-    impact: [
-      { label: "Match accuracy", value: "94%" },
-      { label: "Time to hire", value: "−60%" },
-      { label: "Markets", value: "US + 8 🌍" },
-    ],
+    description: "Connecting talent with opportunities across borders using intelligent matching.",
     image: "/images/rnd-job-app.png",
     gradient: "from-cyan-500 to-sky-600",
-    gradientBg: "from-cyan-500/10 to-sky-500/5",
-    borderColor: "border-cyan-200/60",
-    accentLight: "bg-cyan-50",
     icon: "🤝",
-    flip: true,
   },
   {
-    id: "immig",
-    name: "ImmigPath",
-    tagline: "Immigration Assistant App",
-    status: "Research Phase",
+    name: "Immigration Assistance",
+    status: "Coming Soon",
     statusColor: "text-violet-400 bg-violet-400/10 border-violet-400/30",
-    description: "A comprehensive immigration tool providing AI-guided form completion, real-time document tracking, and case status updates — cutting costs and errors dramatically.",
-    tech: ["React", "Python/Django", "NLP", "PostgreSQL", "Docker"],
-    problem: "Immigration processes involve hundreds of form types, months of waiting, and expensive legal consultations that price out most applicants.",
-    solution: "NLP-powered form assistance, automated document checklists, and real-time case status tracking reduce errors and legal costs by up to 70%.",
-    impact: [
-      { label: "Error reduction", value: "70%" },
-      { label: "Cost savings", value: "~$2k" },
-      { label: "Form types covered", value: "200+" },
-    ],
+    description: "Simplifying complex immigration processes with AI-guided tools.",
     image: "/images/rnd-immigration.png",
     gradient: "from-violet-500 to-purple-600",
-    gradientBg: "from-violet-500/10 to-purple-500/5",
-    borderColor: "border-violet-200/60",
-    accentLight: "bg-violet-50",
     icon: "🛂",
-    flip: false,
+  },
+];
+
+const approach = [
+  {
+    title: "AI-First",
+    desc: "Every product we build is powered by artificial intelligence at its core.",
+    icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+    gradient: "from-violet-600 to-indigo-600",
+  },
+  {
+    title: "Cross-Border",
+    desc: "Designed from day one for both U.S. and African markets.",
+    icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    gradient: "from-cyan-500 to-sky-600",
+  },
+  {
+    title: "User-Centered",
+    desc: "Built with real user feedback from both continents at every stage.",
+    icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+    gradient: "from-amber-400 to-orange-500",
   },
 ];
 
@@ -92,14 +71,14 @@ export default function RnDPage() {
             <div className="animate-slide-up">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-400/30 bg-amber-500/10 text-amber-300 text-xs font-semibold tracking-wide mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-                Our Core Focus
+                Innovation
               </div>
               <h1 className="text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] mb-6">
-                Apps That{" "}
-                <span className="gradient-text-gold">Change Lives.</span>
+                Research &{" "}
+                <span className="gradient-text-gold">Development</span>
               </h1>
               <p className="text-indigo-200/80 text-xl max-w-xl leading-relaxed mb-8">
-                We're building three transformative products for diaspora communities and cross-border professionals — solving real problems at massive scale.
+                We build AI-driven applications that solve real problems for communities across the U.S. and Africa.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/contact"
@@ -108,23 +87,23 @@ export default function RnDPage() {
                 </Link>
                 <a href="#projects"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all text-sm backdrop-blur-sm">
-                  See the Apps ↓
+                  See Projects ↓
                 </a>
               </div>
             </div>
 
-            {/* Floating app preview cards */}
+            {/* App preview thumbnails */}
             <div className="hidden lg:grid grid-cols-3 gap-3 animate-slide-up" style={{ animationDelay: "0.2s" }}>
               {projects.map((p) => (
-                <div key={p.id} className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm">
+                <div key={p.name} className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm">
                   <div className="relative h-40">
                     <Image src={p.image} alt={p.name} fill sizes="33vw" className="object-cover object-top opacity-80" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   </div>
                   <div className="p-3">
                     <span className="text-lg">{p.icon}</span>
-                    <p className="text-white font-bold text-sm mt-1">{p.name}</p>
-                    <span className={`inline-flex items-center gap-1 text-[10px] font-bold border px-2 py-0.5 rounded-full mt-1 ${p.statusColor}`}>
+                    <p className="text-white font-bold text-xs mt-1 leading-tight">{p.name}</p>
+                    <span className={`inline-flex items-center gap-1 text-[10px] font-bold border px-2 py-0.5 rounded-full mt-1.5 ${p.statusColor}`}>
                       <span className="w-1 h-1 rounded-full bg-current animate-pulse" />{p.status}
                     </span>
                   </div>
@@ -137,96 +116,87 @@ export default function RnDPage() {
       </section>
 
       {/* ──────────────── PROJECTS ──────────────── */}
-      <section id="projects" className="py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              className={`group relative bg-white rounded-3xl border ${project.borderColor} overflow-hidden shadow-sm hover:shadow-xl hover:shadow-indigo-100/40 transition-all duration-500`}
-            >
-              {/* Top accent */}
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient}`} />
+      <section id="projects" className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-widest mb-4">
+              Projects
+            </span>
+            <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
+              What We&apos;re <span className="gradient-text">Building</span>
+            </h2>
+            <p className="mt-4 text-gray-500 max-w-xl mx-auto leading-relaxed">
+              Our product pipeline focuses on high-impact applications that bridge the gap between the U.S. and African markets.
+            </p>
+          </div>
 
-              <div className={`grid lg:grid-cols-2 gap-0 ${project.flip ? "lg:grid-flow-col-dense" : ""}`}>
-                {/* Image column */}
-                <div className={`relative h-72 lg:h-auto min-h-[340px] overflow-hidden ${project.flip ? "lg:col-start-2" : ""}`}>
+          <div className="grid md:grid-cols-3 gap-7">
+            {projects.map((project) => (
+              <div
+                key={project.name}
+                className="group relative bg-white rounded-3xl overflow-hidden border border-gray-100 card-hover"
+              >
+                {/* Image */}
+                <div className="relative h-56 overflow-hidden bg-gray-900">
                   <Image
                     src={project.image}
                     alt={project.name}
                     fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700 opacity-90"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20 lg:bg-gradient-to-l" />
-                  {/* Status over image */}
-                  <div className="absolute top-5 left-5">
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4">
                     <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold border backdrop-blur-sm ${project.statusColor}`}>
                       <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
                       {project.status}
                     </span>
                   </div>
+                  <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                    <span className="text-xl">{project.icon}</span>
+                  </div>
                 </div>
 
-                {/* Content column */}
-                <div className={`p-8 lg:p-12 flex flex-col justify-center ${project.flip ? "lg:col-start-1 lg:row-start-1" : ""}`}>
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${project.gradient} flex items-center justify-center text-white text-xl shadow-lg`}>
-                      {project.icon}
-                    </div>
-                    <div>
-                      <h2 className="text-2xl font-extrabold text-gray-900 tracking-tight">{project.name}</h2>
-                      <p className="text-xs font-bold uppercase tracking-widest text-gray-400">{project.tagline}</p>
-                    </div>
-                  </div>
-
-                  <p className="text-gray-600 leading-relaxed mb-7">{project.description}</p>
-
-                  {/* Problem / Solution */}
-                  <div className="grid sm:grid-cols-2 gap-3 mb-7">
-                    <div className="bg-red-50/80 rounded-2xl p-4 border border-red-100/80">
-                      <p className="text-xs font-bold uppercase tracking-wider text-red-400 mb-1.5 flex items-center gap-1.5">
-                        <span>⚠️</span> The Problem
-                      </p>
-                      <p className="text-red-800/80 text-sm leading-relaxed">{project.problem}</p>
-                    </div>
-                    <div className="bg-emerald-50/80 rounded-2xl p-4 border border-emerald-100/80">
-                      <p className="text-xs font-bold uppercase tracking-wider text-emerald-500 mb-1.5 flex items-center gap-1.5">
-                        <span>✅</span> Our Solution
-                      </p>
-                      <p className="text-emerald-800/80 text-sm leading-relaxed">{project.solution}</p>
-                    </div>
-                  </div>
-
-                  {/* Impact metrics */}
-                  <div className="grid grid-cols-3 gap-3 mb-7">
-                    {project.impact.map((m) => (
-                      <div key={m.label} className={`rounded-2xl p-3 text-center border ${project.borderColor} ${project.accentLight}`}>
-                        <p className="text-lg font-extrabold text-gray-900">{m.value}</p>
-                        <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-400 mt-0.5">{m.label}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Tech stack */}
-                  <div>
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Tech Stack</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((t) => (
-                        <span key={t} className="px-3 py-1 bg-gray-50 text-gray-600 text-xs font-semibold rounded-full border border-gray-100 hover:border-indigo-200 hover:text-indigo-600 transition-colors">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                <div className="p-6">
+                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient}`} />
+                  <h3 className="text-lg font-extrabold text-gray-900 mb-2">{project.name}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{project.description}</p>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────────── APPROACH ──────────────── */}
+      <section className="py-20 bg-gradient-to-b from-[#f0f0ff]/60 to-[var(--background)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-widest mb-4">
+              Our Approach
+            </span>
+            <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
+              How We <span className="gradient-text">Build</span>
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {approach.map((item) => (
+              <div key={item.title} className="bg-white rounded-3xl p-8 border border-indigo-100/60 card-hover">
+                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-5 shadow-lg`}>
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-extrabold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ──────────────── BLOG + PARTNERS ──────────────── */}
-      <section className="py-20 mt-10">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-3xl p-10 border border-indigo-100/60 card-hover">
@@ -234,10 +204,9 @@ export default function RnDPage() {
               <p className="text-xs font-bold uppercase tracking-widest text-indigo-500 mb-2">Insights</p>
               <h3 className="text-2xl font-extrabold text-gray-900 mb-3">Research Blog</h3>
               <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                We publish articles about our technical challenges, architecture decisions, and user research findings as we build.
+                We share insights on AI, cross-border technology, and the problems we are working to solve.
               </p>
-              <Link href="/blog"
-                className="inline-flex items-center gap-2 text-sm font-bold text-indigo-600 hover:gap-4 transition-all duration-200">
+              <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-bold text-indigo-600 hover:gap-4 transition-all duration-200">
                 Read our blog →
               </Link>
             </div>
@@ -246,10 +215,9 @@ export default function RnDPage() {
               <p className="text-xs font-bold uppercase tracking-widest text-indigo-500 mb-2">Partnerships</p>
               <h3 className="text-2xl font-extrabold text-gray-900 mb-3">Collaborations</h3>
               <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                We partner with universities, NGOs, and tech companies across the U.S. and Africa to accelerate our R&D impact.
+                We work with partners across the U.S. and Africa to bring our products to market.
               </p>
-              <Link href="/partners"
-                className="inline-flex items-center gap-2 text-sm font-bold text-indigo-600 hover:gap-4 transition-all duration-200">
+              <Link href="/partners" className="inline-flex items-center gap-2 text-sm font-bold text-indigo-600 hover:gap-4 transition-all duration-200">
                 View our partners →
               </Link>
             </div>
@@ -263,27 +231,17 @@ export default function RnDPage() {
         <div className="glow-orb absolute top-0 left-1/3 w-[500px] h-[300px] bg-violet-700 opacity-25" />
         <div className="glow-orb absolute bottom-0 right-1/3 w-[400px] h-[250px] bg-amber-500 opacity-15" />
 
-        <div className="max-w-3xl mx-auto px-4 text-center relative">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-400/30 bg-amber-500/10 text-amber-300 text-xs font-semibold tracking-wide mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-            Beta access now open
-          </div>
+        <div className="max-w-2xl mx-auto px-4 text-center relative">
           <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-5">
-            Shape the Product.
+            Join Our Beta Program
           </h2>
-          <p className="text-indigo-200/80 mb-10 text-lg leading-relaxed max-w-xl mx-auto">
-            Be among the first to test our apps. Your feedback directly influences what we build. Sign up and get early access.
+          <p className="text-indigo-200/80 mb-10 text-lg leading-relaxed">
+            Be among the first to try our apps and help shape the final product.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact"
-              className="btn-shimmer px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-gray-900 font-extrabold rounded-xl shadow-xl shadow-amber-700/30 text-sm hover:from-amber-300 hover:to-orange-400 transition-all">
-              Sign Up for Beta
-            </Link>
-            <Link href="/contact"
-              className="px-8 py-4 bg-white/10 border border-white/20 text-white font-bold rounded-xl hover:bg-white/20 transition-all text-sm backdrop-blur-sm">
-              Partner With Us
-            </Link>
-          </div>
+          <Link href="/contact"
+            className="btn-shimmer inline-block px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-gray-900 font-extrabold rounded-xl shadow-xl shadow-amber-700/30 text-sm hover:from-amber-300 hover:to-orange-400 transition-all">
+            Sign Up for Beta
+          </Link>
         </div>
       </section>
     </>

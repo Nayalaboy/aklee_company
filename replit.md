@@ -22,7 +22,24 @@ Full-stack Next.js 16 company website for **Mirigraphix** — a technology compa
 - **Secondary:** Cyan (#06b6d4)
 - **Accent:** Amber/Gold (#f59e0b)
 - **Background:** Soft lavender-white (#f7f7ff)
-- **Hero:** Deep cosmic dark purple gradient
+- **Hero:** Deep cosmic dark purple gradient (`from-[#060412] via-[#1a0e40] to-[#0c1635]`)
+- **Cards:** White with rounded-3xl, indigo/amber border, card-hover shadow
+- **Content source:** Adapted from github.com/Nayalaboy/aklee_company (simpler R&D descriptions, same colors)
+
+## Pages (all updated)
+- **/** — Homepage: "Innovation. Technology. Impact." hero, R&D featured, stats, 2 testimonials, CTA
+- **/rnd** — R&D: Cross-Border Payments (Beta), AI Job Matching (In Dev), Immigration Assistance (Coming Soon) — simple descriptions only
+- **/about** — Mission/Vision, Values, Milestones timeline 2023–2026, Global Presence (US + Africa)
+- **/testimonials** — 6 testimonials + 2 case studies with premium cards
+- **/trainings** — 4 training categories with courses and certs
+- **/hardware** — Enterprise hardware catalog
+- **/services** — Consulting services
+
+## AI-Generated Images (`public/images/`)
+- `hero-bridge.png` — Hero/general
+- `rnd-money-transfer.png` — Cross-Border Payments project
+- `rnd-job-app.png` — AI Job Matching project
+- `rnd-immigration.png` — Immigration Assistance project
 
 ## Environment Variables
 - `DATABASE_URL` — PostgreSQL connection string (Replit Helium)
