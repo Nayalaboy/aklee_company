@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "Os94W8TWK1chEUjMs8pnF"
+uri = "file://public/images/rnd-money-transfer.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "bXFBO7w0XNsgQ8uW4zOMJ"
+uri = "file://public/images/rnd-job-app.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "OPLFu1H3lW2aZHcqu-C7j"
+uri = "file://public/images/rnd-immigration.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "G7Ug4YXmnTnWNhoJQLNPi"
+uri = "file://public/images/hero-bridge.png"
+type = "image"
+title = "generated_image"
