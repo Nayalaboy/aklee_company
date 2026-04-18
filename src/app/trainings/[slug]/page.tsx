@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -59,6 +60,12 @@ export function generateStaticParams() {
   return Object.keys(courseData).map((slug) => ({ slug }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const course = courseData[slug];
+  return { title: course ? `${course.title} Training` : "Training" };
+}
+
 export default async function CourseDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const course = courseData[slug];
@@ -66,46 +73,68 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
 
   return (
     <>
-      <section className="bg-gradient-to-r from-primary-dark to-primary text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/trainings" className="text-blue-200 hover:text-white text-sm mb-4 inline-block">&larr; All Trainings</Link>
-          <h1 className="text-4xl font-bold mb-4">{course.title}</h1>
-          <p className="text-blue-100 text-lg max-w-2xl">{course.description}</p>
-          <div className="flex flex-wrap gap-6 mt-6 text-sm">
-            <span className="bg-white/10 px-4 py-2 rounded-lg">Duration: {course.duration}</span>
-            <span className="bg-white/10 px-4 py-2 rounded-lg">Level: {course.level}</span>
+      <section className="page-hero">
+        <div className="container">
+          <Link
+            href="/trainings"
+            className="mono"
+            style={{ color: "var(--ink-3)", marginBottom: 16, display: "inline-block" }}
+          >
+            &larr; All Training
+          </Link>
+          <div className="hero-meta">
+            <span>MGX / TRAINING</span>
+            <span className="dot" />
+            <span>{course.duration.toUpperCase()}</span>
+            <span className="dot" />
+            <span>{course.level.toUpperCase()}</span>
           </div>
+          <h1>{course.title}</h1>
+          <p>{course.description}</p>
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-dark mb-8">Course Modules</h2>
-          <div className="space-y-6">
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">Curriculum</span>
+            <div>
+              <h2 className="h2">Course modules</h2>
+            </div>
+          </div>
+
+          <div className="svc-list">
             {course.modules.map((mod, i) => (
-              <div key={mod.name} className="border border-dark/8 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-dark mb-3">
-                  <span className="text-primary mr-2">Module {i + 1}:</span>
-                  {mod.name}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {mod.topics.map((t) => (
-                    <span key={t} className="px-3 py-1 bg-primary/5 text-warm-gray-500 text-sm rounded-full">{t}</span>
-                  ))}
+              <div key={mod.name} className="svc-row" style={{ cursor: "default" }}>
+                <div className="num" style={{ whiteSpace: "nowrap" }}>
+                  {String(i + 1).padStart(2, "0")} / MODULE
                 </div>
+                <div>
+                  <h3 style={{ fontSize: 20 }}>{mod.name}</h3>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 12 }}>
+                    {mod.topics.map((t) => (
+                      <span key={t} className="pillar-tag">{t}</span>
+                    ))}
+                  </div>
+                </div>
+                <div />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-12">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold text-dark mb-4">Ready to Enroll?</h2>
-          <p className="text-warm-gray-500 mb-6">Secure your spot today. Classes have limited seats.</p>
-          <Link href="/contact" className="px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition">
-            Enroll Now
-          </Link>
+      <section className="section">
+        <div className="container">
+          <div className="cta-block">
+            <h2>Ready to enroll?</h2>
+            <div>
+              <p>Classes have limited seats. Secure your spot today.</p>
+              <Link href="/contact" className="btn btn-primary">
+                Enroll now &rarr;
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>

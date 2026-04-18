@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/react";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -20,43 +25,42 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mirigraphix.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Mirigraphix | Innovation, R&D & Technology",
+    default: "Mirigraphix | Research, Systems & Hardware",
     template: "%s | Mirigraphix",
   },
   description:
-    "Mirigraphix builds innovative applications solving real-world problems across the U.S. and Africa. R&D-driven company backed by world-class tech training and enterprise hardware solutions.",
+    "Mirigraphix is a technology company. We build and ship modern software products, and run the consulting, enterprise hardware, and technical training that let us deliver end-to-end.",
   keywords: [
     "AI applications",
     "R&D",
     "technology training",
     "cybersecurity",
-    "Mac hardware",
-    "enterprise solutions",
-    "Africa technology",
+    "enterprise hardware",
     "fintech",
-    "cross-border",
+    "cross-border payments",
+    "consulting",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: "Mirigraphix",
-    title: "Mirigraphix | Innovation, R&D & Technology",
+    title: "Mirigraphix | Research, Systems & Hardware",
     description:
-      "AI-driven R&D company building innovative applications across the U.S. and Africa. World-class training and enterprise hardware solutions.",
+      "A technology company shipping modern software, consulting, enterprise hardware, and technical training.",
     images: [
       {
         url: "/images/hero-tech.jpg",
         width: 1600,
         height: 900,
-        alt: "Mirigraphix — Innovation, Technology, Impact",
+        alt: "Mirigraphix — Research, Systems & Hardware",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mirigraphix | Innovation, R&D & Technology",
+    title: "Mirigraphix | Research, Systems & Hardware",
     description:
-      "AI-driven R&D company building innovative applications across the U.S. and Africa.",
+      "A technology company shipping modern software, consulting, enterprise hardware, and technical training.",
     images: ["/images/hero-tech.jpg"],
   },
   robots: {
@@ -73,11 +77,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="min-h-full flex flex-col bg-[var(--background)]">
+      <body>
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main>{children}</main>
         <Footer />
         <Analytics />
       </body>
