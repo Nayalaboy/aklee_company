@@ -1,87 +1,66 @@
 import Link from "next/link";
+import { getLocale } from "@/lib/i18n";
 
 export const metadata = { title: "Events" };
 
-const upcomingEvents = [
-  { date: "Apr 28", title: '"AI in Production" Webinar', location: "Online", price: "Free" },
-  { date: "May 12", title: "Security+ Bootcamp Kickoff", location: "Philadelphia", price: "By invite" },
-  { date: "Jun 02", title: "Cross-Border Payments Deep Dive", location: "Online", price: "Free" },
-  { date: "Jun 15", title: "Hardware Deployment Workshop", location: "Philadelphia", price: "$199" },
-];
+const copy = {
+  en: {
+    heroMeta: ["MGX / EVENTS", "UPCOMING"],
+    heroTitle: "Webinars, workshops, and meetups.",
+    emptyTitle: "No events scheduled yet.",
+    emptyLede:
+      "We don’t have any sessions on the calendar right now. Check back soon, or get in touch to be notified when we announce our first events.",
+    emptyCta: "Notify me",
+    ctaTitle: "Host an event with us.",
+    ctaBody:
+      "We work with companies, universities, and communities to deliver workshops and talks. Let us plan something together.",
+    ctaPrimary: "Get in touch",
+    ctaGhost: "Our services",
+  },
+  fr: {
+    heroMeta: ["MGX / ÉVÉNEMENTS", "À VENIR"],
+    heroTitle: "Webinaires, ateliers et rencontres.",
+    emptyTitle: "Aucun événement programmé pour le moment.",
+    emptyLede:
+      "Aucune session n’est inscrite à notre calendrier pour l’instant. Revenez bientôt, ou contactez-nous pour être informé dès l’annonce de nos premiers événements.",
+    emptyCta: "Être informé",
+    ctaTitle: "Organisez un événement avec nous.",
+    ctaBody:
+      "Nous collaborons avec des entreprises, des universités et des communautés pour animer des ateliers et des conférences. Construisons quelque chose ensemble.",
+    ctaPrimary: "Nous contacter",
+    ctaGhost: "Nos services",
+  },
+} as const;
 
-const pastEvents = [
-  { date: "2026-03-18", title: "Intro to Ethical Hacking", attendees: 120, format: "Workshop" },
-  { date: "2026-03-01", title: "Cross-Border Fintech Panel", attendees: 85, format: "Panel" },
-  { date: "2026-02-20", title: "Networking Fundamentals Bootcamp", attendees: 65, format: "Bootcamp" },
-  { date: "2026-01-15", title: "AI Strategy for Executives", attendees: 110, format: "Webinar" },
-  { date: "2025-12-08", title: "Mac Fleet Management", attendees: 42, format: "Workshop" },
-];
+export default async function EventsPage() {
+  const locale = await getLocale();
+  const t = copy[locale];
 
-export default function EventsPage() {
   return (
     <>
       {/* Page hero */}
       <section className="page-hero">
         <div className="container">
           <div className="hero-meta">
-            <span>MGX / EVENTS</span>
+            <span>{t.heroMeta[0]}</span>
             <span className="dot" />
-            <span>UPCOMING</span>
+            <span>{t.heroMeta[1]}</span>
           </div>
-          <h1>Webinars, workshops, and meetups.</h1>
+          <h1>{t.heroTitle}</h1>
         </div>
       </section>
 
-      {/* Upcoming events */}
+      {/* Empty state */}
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <h2 className="h2">Upcoming</h2>
-            <p className="lede">
-              Register for a session — most are free and all are
-              practitioner-led.
-            </p>
+            <h2 className="h2">{t.emptyTitle}</h2>
+            <p className="lede">{t.emptyLede}</p>
           </div>
-
-          <div className="case-grid">
-            {upcomingEvents.map((ev) => (
-              <div key={ev.title} className="case">
-                <div className="case-meta">
-                  <span>{ev.date}</span>
-                  <span>{ev.location}</span>
-                  <span>{ev.price}</span>
-                </div>
-                <h4>{ev.title}</h4>
-                <div style={{ marginTop: "auto", paddingTop: "16px" }}>
-                  <Link href="/contact" className="btn btn-ghost">
-                    Register
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Past events */}
-      <section className="section">
-        <div className="container">
-          <div className="section-head">
-            <h2 className="h2">Past events</h2>
-            <p className="lede">
-              A log of previous sessions and their reach.
-            </p>
-          </div>
-
-          <div className="log-list">
-            {pastEvents.map((ev) => (
-              <div key={ev.title} className="log-row">
-                <span className="mono">{ev.date}</span>
-                <span>{ev.title}</span>
-                <span className="mono">{ev.format}</span>
-                <span className="mono">{ev.attendees} attendees</span>
-              </div>
-            ))}
+          <div style={{ marginTop: "24px" }}>
+            <Link href="/contact" className="btn btn-primary">
+              {t.emptyCta} &rarr;
+            </Link>
           </div>
         </div>
       </section>
@@ -90,18 +69,15 @@ export default function EventsPage() {
       <section className="section">
         <div className="container">
           <div className="cta-block">
-            <h2>Host an event with us.</h2>
+            <h2>{t.ctaTitle}</h2>
             <div>
-              <p>
-                We partner with companies, universities, and communities to
-                deliver workshops and talks. Let us plan something together.
-              </p>
+              <p>{t.ctaBody}</p>
               <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
                 <Link href="/contact" className="btn btn-primary">
-                  Get in touch
+                  {t.ctaPrimary}
                 </Link>
                 <Link href="/services" className="btn btn-ghost">
-                  Our services
+                  {t.ctaGhost}
                 </Link>
               </div>
             </div>

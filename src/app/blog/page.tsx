@@ -1,8 +1,64 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const copy = {
+  en: {
+    metaJournal: "MGX / JOURNAL",
+    metaSoon: "COMING SOON",
+    heroTitlePre: "Fintech & AI, written for ",
+    heroTitleStrong: "West Africa.",
+    heroBody: {
+      pre: "Two tracks: a daily read on ",
+      s1: "fintech in West Africa",
+      mid: ": mobile money, cross-border rails, regulation, and what builders are shipping; and ",
+      s2: "AI news, filtered for people living and building here",
+      post: ": access, cost, language, and policy. Grounded, local, no hype.",
+    },
+    launchEyebrow: "LAUNCHING SOON",
+    launchTitle: "The Journal is coming.",
+    launchBody:
+      "Daily posts on fintech and AI in West Africa. Subscribe below to get the first edition when we launch.",
+    emailPlaceholder: "you@company.com",
+    subscribing: "Subscribing…",
+    notify: "Notify me →",
+    done: "You're on the list. We'll be in touch.",
+    error: "Something went wrong. Try again.",
+    tags: ["Fintech · West Africa", "AI · Access · Policy", "Daily"],
+  },
+  fr: {
+    metaJournal: "MGX / JOURNAL",
+    metaSoon: "BIENTÔT DISPONIBLE",
+    heroTitlePre: "Fintech & IA, pensés pour ",
+    heroTitleStrong: "l’Afrique de l’Ouest.",
+    heroBody: {
+      pre: "Deux rubriques : une lecture quotidienne sur la ",
+      s1: "fintech en Afrique de l’Ouest",
+      mid: " : mobile money, rails transfrontaliers, réglementation et ce que construisent les acteurs du secteur ; et ",
+      s2: "l’actualité de l’IA, filtrée pour celles et ceux qui vivent et bâtissent ici",
+      post: " : accès, coût, langue et politiques publiques. Ancré, local, sans esbroufe.",
+    },
+    launchEyebrow: "BIENTÔT EN LIGNE",
+    launchTitle: "Le Journal arrive.",
+    launchBody:
+      "Des publications quotidiennes sur la fintech et l’IA en Afrique de l’Ouest. Abonnez-vous ci-dessous pour recevoir la première édition dès le lancement.",
+    emailPlaceholder: "vous@entreprise.com",
+    subscribing: "Abonnement en cours…",
+    notify: "Me prévenir →",
+    done: "Vous êtes inscrit. Nous reviendrons vers vous.",
+    error: "Une erreur est survenue. Veuillez réessayer.",
+    tags: ["Fintech · Afrique de l’Ouest", "IA · Accès · Politiques", "Quotidien"],
+  },
+} as const;
 
 export default function JournalPage() {
+  const [locale, setLocale] = useState<"en" | "fr">("en");
+  useEffect(() => {
+    const m = document.cookie.match(/(?:^|; )lang=(fr|en)/);
+    setLocale(m?.[1] === "fr" ? "fr" : "en");
+  }, []);
+  const t = copy[locale];
+
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
 
@@ -31,17 +87,20 @@ export default function JournalPage() {
       <section className="page-hero">
         <div className="container">
           <div className="hero-meta">
-            <span>MGX / JOURNAL</span>
+            <span>{t.metaJournal}</span>
             <span className="dot" />
-            <span>COMING SOON</span>
+            <span>{t.metaSoon}</span>
           </div>
-          <h1>Fintech &amp; AI, written for West Africa.</h1>
+          <h1>
+            {t.heroTitlePre}
+            <strong>{t.heroTitleStrong}</strong>
+          </h1>
           <p>
-            Two tracks: a daily read on <strong>fintech in West Africa</strong>{" "}
-            &mdash; mobile money, cross-border rails, regulation, and what
-            builders are shipping; and{" "}
-            <strong>AI news, filtered for people living and building here</strong>{" "}
-            &mdash; access, cost, language, and policy. Grounded, local, no hype.
+            {t.heroBody.pre}
+            <strong>{t.heroBody.s1}</strong>
+            {t.heroBody.mid}
+            <strong>{t.heroBody.s2}</strong>
+            {t.heroBody.post}
           </p>
         </div>
       </section>
@@ -81,10 +140,10 @@ export default function JournalPage() {
                   marginBottom: 12,
                 }}
               >
-                LAUNCHING SOON
+                {t.launchEyebrow}
               </div>
               <h2 className="h2" style={{ margin: "0 0 14px" }}>
-                The Journal is coming.
+                {t.launchTitle}
               </h2>
               <p
                 style={{
@@ -94,8 +153,7 @@ export default function JournalPage() {
                   fontSize: "15.5px",
                 }}
               >
-                Daily posts on fintech and AI in West Africa. Subscribe below to
-                get the first edition when we launch.
+                {t.launchBody}
               </p>
               <form
                 onSubmit={handleSubscribe}
@@ -110,7 +168,7 @@ export default function JournalPage() {
               >
                 <input
                   type="email"
-                  placeholder="you@company.com"
+                  placeholder={t.emailPlaceholder}
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -130,7 +188,7 @@ export default function JournalPage() {
                   className="btn btn-primary"
                   disabled={status === "sending"}
                 >
-                  {status === "sending" ? "Subscribing\u2026" : "Notify me \u2192"}
+                  {status === "sending" ? t.subscribing : t.notify}
                 </button>
                 {status === "done" && (
                   <span
@@ -142,7 +200,7 @@ export default function JournalPage() {
                       fontFamily: "var(--font-mono)",
                     }}
                   >
-                    You&apos;re on the list. We&apos;ll be in touch.
+                    {t.done}
                   </span>
                 )}
                 {status === "error" && (
@@ -155,7 +213,7 @@ export default function JournalPage() {
                       fontFamily: "var(--font-mono)",
                     }}
                   >
-                    Something went wrong. Try again.
+                    {t.error}
                   </span>
                 )}
               </form>
@@ -173,9 +231,9 @@ export default function JournalPage() {
                   color: "var(--ink-3)",
                 }}
               >
-                <span>Fintech &middot; West Africa</span>
-                <span>AI &middot; Access &middot; Policy</span>
-                <span>Daily</span>
+                {t.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
               </div>
             </div>
           </div>

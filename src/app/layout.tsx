@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/react";
+import { getLocale } from "@/lib/i18n";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
         url: "/images/hero-tech.jpg",
         width: 1600,
         height: 900,
-        alt: "Mirigraphix — Research, Systems & Hardware",
+        alt: "Mirigraphix · Research, Systems & Hardware",
       },
     ],
   },
@@ -69,20 +70,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
     >
       <body>
-        <Navbar />
+        <Navbar locale={locale} />
         <main>{children}</main>
-        <Footer />
+        <Footer locale={locale} />
         <Analytics />
       </body>
     </html>

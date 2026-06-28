@@ -4,8 +4,48 @@ import { useChat } from "@ai-sdk/react";
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 
+const copy = {
+  en: {
+    welcome:
+      "Hi! I'm the Mirigraphix advisor. I can help you with our training programs, enterprise hardware, R&D beta access, or consulting services. What are you looking for today?",
+    sectionLabel: "AI Advisor",
+    titlePre: "Talk to Our ",
+    titleHighlight: "Advisor",
+    heroBody: "Get instant guidance on trainings, hardware, R&D, and more.",
+    advisor: "Advisor",
+    errorPre: "Something went wrong. Please try again or email us at ",
+    inputPlaceholder: "Ask about trainings, hardware, R&D...",
+    preferEmail: "Prefer email?",
+    or: " or ",
+    useForm: "use our contact form",
+  },
+  fr: {
+    welcome:
+      "Bonjour ! Je suis le conseiller Mirigraphix. Je peux vous renseigner sur nos formations, notre matériel professionnel, l’accès bêta à la R&D ou nos services de conseil. Que recherchez-vous aujourd’hui ?",
+    sectionLabel: "Conseiller IA",
+    titlePre: "Parlez à notre ",
+    titleHighlight: "conseiller",
+    heroBody:
+      "Obtenez des conseils instantanés sur les formations, le matériel, la R&D et plus encore.",
+    advisor: "Conseiller",
+    errorPre:
+      "Une erreur est survenue. Veuillez réessayer ou nous écrire à ",
+    inputPlaceholder: "Posez vos questions sur les formations, le matériel, la R&D...",
+    preferEmail: "Vous préférez l’e-mail ?",
+    or: " ou ",
+    useForm: "utilisez notre formulaire de contact",
+  },
+} as const;
+
 export default function ChatPage() {
-  const welcomeText = "Hi! I'm the Mirigraphix advisor. I can help you with our training programs, enterprise hardware, R&D beta access, or consulting services. What are you looking for today?";
+  const [locale, setLocale] = useState<"en" | "fr">("en");
+  useEffect(() => {
+    const m = document.cookie.match(/(?:^|; )lang=(fr|en)/);
+    setLocale(m?.[1] === "fr" ? "fr" : "en");
+  }, []);
+  const t = copy[locale];
+
+  const welcomeText: string = t.welcome;
 
   const { messages, sendMessage, status, error } = useChat({
     messages: [
@@ -46,13 +86,13 @@ export default function ChatPage() {
         </div>
         <div className="absolute inset-0 grain" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="section-label mb-4 inline-flex">AI Advisor</span>
+          <span className="section-label mb-4 inline-flex">{t.sectionLabel}</span>
           <h1 className="text-3xl lg:text-4xl font-bold tracking-tight text-white mb-3 mt-4">
-            Talk to Our{" "}
-            <span className="gradient-text">Advisor</span>
+            {t.titlePre}
+            <span className="gradient-text">{t.titleHighlight}</span>
           </h1>
           <p className="text-gray-400 max-w-lg mx-auto leading-relaxed">
-            Get instant guidance on trainings, hardware, R&D, and more.
+            {t.heroBody}
           </p>
         </div>
       </section>
@@ -80,7 +120,7 @@ export default function ChatPage() {
                         <div className="w-5 h-5 rounded-md bg-gradient-to-br from-primary via-primary-light to-violet flex items-center justify-center">
                           <span className="text-white text-[8px] font-bold">MG</span>
                         </div>
-                        <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Advisor</span>
+                        <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">{t.advisor}</span>
                       </div>
                     )}
                     <p className="whitespace-pre-wrap">
@@ -99,7 +139,7 @@ export default function ChatPage() {
                       <div className="w-5 h-5 rounded-md bg-gradient-to-br from-primary via-primary-light to-violet flex items-center justify-center">
                         <span className="text-white text-[8px] font-bold">MG</span>
                       </div>
-                      <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Advisor</span>
+                      <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">{t.advisor}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-pulse" />
@@ -112,7 +152,7 @@ export default function ChatPage() {
               {error && (
                 <div className="flex justify-start">
                   <div className="bg-red-50 border border-red-100 rounded-2xl rounded-bl-md px-4 py-3 text-sm text-red-600">
-                    Something went wrong. Please try again or email us at{" "}
+                    {t.errorPre}
                     <a href="mailto:mirigraphixx@gmail.com" className="underline font-medium">
                       mirigraphixx@gmail.com
                     </a>
@@ -127,7 +167,7 @@ export default function ChatPage() {
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask about trainings, hardware, R&D..."
+                  placeholder={t.inputPlaceholder}
                   className="flex-1 px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all placeholder-gray-400"
                   disabled={isLoading}
                 />
@@ -147,13 +187,13 @@ export default function ChatPage() {
           {/* Fallback */}
           <div className="mt-6 text-center">
             <p className="text-xs text-warm-gray-500">
-              Prefer email?{" "}
+              {t.preferEmail}{" "}
               <a href="mailto:mirigraphixx@gmail.com" className="text-primary hover:underline font-medium">
                 mirigraphixx@gmail.com
               </a>
-              {" "}or{" "}
+              {t.or}
               <Link href="/contact" className="text-primary hover:underline font-medium">
-                use our contact form
+                {t.useForm}
               </Link>
             </p>
           </div>

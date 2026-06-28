@@ -1,66 +1,77 @@
 import Link from "next/link";
+import { getLocale } from "@/lib/i18n";
 
 export const metadata = { title: "Testimonials" };
 
-const testimonials = [
-  {
-    company: "GlobalPay Solutions",
-    quote: "Settlement time dropped from hours to seconds.",
-    who: "David R., CTO",
-    context: "Cross-border payments R&D partnership",
+const copy = {
+  en: {
+    heroMeta: ["MGX / TESTIMONIALS", "REFERENCES"],
+    heroTitle: "Our first references.",
+    sectionTitle: "Building our track record",
+    lede:
+      "Mirigraphix is a young company, and we are building our first client references.",
+    bodyTitle: "Become an early partner",
+    body:
+      "We don’t publish testimonials we haven’t earned. As a new company, we are looking for early clients and partners willing to work closely with us across training, hardware, and R&D, and to share their experience as our first references.",
+    bodyNote:
+      "If you’d like to be one of them, we’d be glad to talk about how we can help and what a first engagement could look like.",
+    ctaTitle: "Be one of our first.",
+    ctaBody:
+      "Whether you’re interested in training, hardware, or a custom R&D engagement, let’s start with an honest conversation about your needs.",
+    ctaPrimary: "Get in touch",
+    ctaGhost: "Our services",
   },
-  {
-    company: "EduForward",
-    quote: "140 endpoints deployed across 3 campuses with zero downtime.",
-    who: "Michael B., Founder",
-    context: "Hardware rollout and MDM enrolment",
+  fr: {
+    heroMeta: ["MGX / TÉMOIGNAGES", "RÉFÉRENCES"],
+    heroTitle: "Nos premières références.",
+    sectionTitle: "Construire notre expérience",
+    lede:
+      "Mirigraphix est une entreprise jeune, et nous construisons nos premières références clients.",
+    bodyTitle: "Devenez un partenaire de la première heure",
+    body:
+      "Nous ne publions pas de témoignages que nous n’avons pas mérités. En tant que jeune entreprise, nous recherchons des premiers clients et partenaires prêts à collaborer étroitement avec nous, que ce soit en formation, en matériel ou en R&D, et à partager leur expérience comme premières références.",
+    bodyNote:
+      "Si vous souhaitez en faire partie, nous serions ravis d’échanger sur la façon dont nous pouvons vous aider et sur ce à quoi pourrait ressembler une première collaboration.",
+    ctaTitle: "Soyez parmi nos premiers.",
+    ctaBody:
+      "Que vous soyez intéressé par la formation, le matériel ou une mission de R&D sur mesure, commençons par une conversation honnête sur vos besoins.",
+    ctaPrimary: "Nous contacter",
+    ctaGhost: "Nos services",
   },
-  {
-    company: "TechStart Academy",
-    quote: "78% of our graduates placed within 6 months.",
-    who: "Amina O., Programme Director",
-    context: "Full-stack development bootcamp",
-  },
-];
+} as const;
 
-export default function TestimonialsPage() {
+export default async function TestimonialsPage() {
+  const locale = await getLocale();
+  const t = copy[locale];
+
   return (
     <>
       {/* Page hero */}
       <section className="page-hero">
         <div className="container">
           <div className="hero-meta">
-            <span>MGX / TESTIMONIALS</span>
+            <span>{t.heroMeta[0]}</span>
             <span className="dot" />
-            <span>SOCIAL PROOF</span>
+            <span>{t.heroMeta[1]}</span>
           </div>
-          <h1>What our clients say.</h1>
+          <h1>{t.heroTitle}</h1>
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Honest early-stage statement */}
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <h2 className="h2">Client voices</h2>
-            <p className="lede">
-              Real outcomes from real engagements — training, hardware, and R&D.
-            </p>
+            <h2 className="h2">{t.sectionTitle}</h2>
+            <p className="lede">{t.lede}</p>
           </div>
 
-          <div className="case-grid">
-            {testimonials.map((t) => (
-              <div key={t.company} className="case">
-                <div className="case-meta">
-                  <span>{t.company}</span>
-                  <span>{t.context}</span>
-                </div>
-                <h4>&ldquo;{t.quote}&rdquo;</h4>
-                <p className="mono" style={{ marginTop: "auto", paddingTop: "12px" }}>
-                  {t.who}
-                </p>
-              </div>
-            ))}
+          <div className="cta-block">
+            <h2>{t.bodyTitle}</h2>
+            <div>
+              <p>{t.body}</p>
+              <p style={{ marginTop: "12px" }}>{t.bodyNote}</p>
+            </div>
           </div>
         </div>
       </section>
@@ -69,18 +80,15 @@ export default function TestimonialsPage() {
       <section className="section">
         <div className="container">
           <div className="cta-block">
-            <h2>Become our next success story.</h2>
+            <h2>{t.ctaTitle}</h2>
             <div>
-              <p>
-                Whether you need training, hardware, or a custom R&D
-                engagement — we deliver measurable results.
-              </p>
+              <p>{t.ctaBody}</p>
               <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
                 <Link href="/contact" className="btn btn-primary">
-                  Get in touch
+                  {t.ctaPrimary}
                 </Link>
                 <Link href="/services" className="btn btn-ghost">
-                  Our services
+                  {t.ctaGhost}
                 </Link>
               </div>
             </div>

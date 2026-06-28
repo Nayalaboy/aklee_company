@@ -1,20 +1,31 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import type { Locale } from "@/lib/i18n";
 
 const navLinks = [
-  { href: "/rnd", label: "Research" },
-  { href: "/services", label: "Consulting" },
-  { href: "/hardware", label: "Hardware" },
-  { href: "/trainings", label: "Training" },
-  { href: "/blog", label: "Journal" },
-  { href: "/about", label: "Company" },
+  { href: "/rnd", label: { en: "Research", fr: "Recherche" } },
+  { href: "/services", label: { en: "Consulting", fr: "Conseil" } },
+  { href: "/hardware", label: { en: "Hardware", fr: "Matériel" } },
+  { href: "/trainings", label: { en: "Training", fr: "Formations" } },
+  { href: "/blog", label: { en: "Journal", fr: "Journal" } },
+  { href: "/about", label: { en: "Company", fr: "Entreprise" } },
 ];
 
-export default function Navbar() {
+const CTA = { en: "Get in touch", fr: "Nous contacter" };
+
+export default function Navbar({ locale }: { locale: Locale }) {
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const setLang = (lang: Locale) => {
+    if (lang === locale) return;
+    document.cookie = `lang=${lang}; path=/; max-age=31536000; samesite=lax`;
+    router.refresh();
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -112,8 +123,23 @@ export default function Navbar() {
                 e.currentTarget.style.background = "transparent";
               }}
             >
-              {link.label}
+              {link.label[locale]}
             </Link>
+          ))}
+        </div>
+
+        {/* Language toggle */}
+        <div className="lang-toggle" role="group" aria-label="Language">
+          {(["en", "fr"] as Locale[]).map((lang) => (
+            <button
+              key={lang}
+              type="button"
+              onClick={() => setLang(lang)}
+              aria-pressed={locale === lang}
+              className={locale === lang ? "lang-opt active" : "lang-opt"}
+            >
+              {lang.toUpperCase()}
+            </button>
           ))}
         </div>
 
@@ -138,7 +164,7 @@ export default function Navbar() {
             e.currentTarget.style.transform = "translateY(0)";
           }}
         >
-          Get in touch &rarr;
+          {CTA[locale]} &rarr;
         </Link>
 
         {/* Mobile toggle */}
@@ -203,7 +229,7 @@ export default function Navbar() {
                 textDecoration: "none",
               }}
             >
-              {link.label}
+              {link.label[locale]}
             </Link>
           ))}
           <Link
@@ -212,15 +238,42 @@ export default function Navbar() {
             className="btn btn-primary"
             style={{ marginTop: 16, justifyContent: "center" }}
           >
-            Get in touch &rarr;
+            {CTA[locale]} &rarr;
           </Link>
         </div>
       )}
 
       <style jsx global>{`
+        .lang-toggle {
+          display: inline-flex;
+          align-items: center;
+          padding: 2px;
+          gap: 2px;
+          border: 1px solid var(--line);
+          border-radius: var(--radius-sm);
+          background: var(--bg-elev);
+        }
+        .lang-opt {
+          font-family: var(--font-mono);
+          font-size: 11px;
+          letter-spacing: 0.04em;
+          padding: 4px 8px;
+          border: none;
+          border-radius: 4px;
+          background: transparent;
+          color: var(--ink-3);
+          cursor: pointer;
+          transition: color 0.15s, background 0.15s;
+        }
+        .lang-opt:hover { color: var(--ink); }
+        .lang-opt.active {
+          background: var(--ink);
+          color: var(--bg);
+        }
         @media (max-width: 880px) {
           .nav-links { display: none !important; }
           .mobile-toggle { display: flex !important; }
+          .lang-toggle { margin-left: auto; }
         }
       `}</style>
     </nav>

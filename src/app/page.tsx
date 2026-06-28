@@ -1,123 +1,312 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { getLocale } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Mirigraphix | Research, Systems & Hardware",
 };
 
-export default function Home() {
+const copy = {
+  en: {
+    heroMeta: ["MGX-LLC / 2026", "New York, NY", "Technology company"],
+    heroTitle: "We build what’s next",
+    heroBody:
+      "Mirigraphix is a research-driven technology company. We build cross-border fintech, AI workforce tools, and immigration software, backed by consulting, enterprise hardware, and professional training programs.",
+    seeRnd: "See R&D",
+    contact: "Contact us",
+    offerEyebrow: "What we do",
+    offerTitle: "One lab, three ways in",
+    offerLede:
+      "Everything we build ties back to research. Consulting and training fund the lab; the lab feeds better products back to our clients.",
+    offers: {
+      lead: {
+        idx: "01 · Core",
+        badge: "The lab",
+        title: "Product engineering",
+        body:
+          "We design, build, and operate software products that tackle hard cross-border problems: payments, hiring, and immigration. This is the work everything else exists to fund.",
+        chips: ["Fintech", "AI / ML", "LegalTech"],
+        go: "Explore R&D",
+      },
+      consulting: {
+        idx: "02 · Support",
+        title: "Consulting & hardware",
+        body:
+          "Enterprise Mac sales, IT infrastructure, and technology consulting for organizations in the U.S. and Africa.",
+        chips: ["Mac wholesale", "IT infra", "Advisory"],
+        go: "See services",
+      },
+      training: {
+        idx: "03 · Support",
+        title: "Professional training",
+        body:
+          "Instructor-led and self-paced courses in cybersecurity, AI, networking, and full-stack development.",
+        chips: ["Cybersecurity", "AI / ML", "Networking", "Dev"],
+        go: "Browse courses",
+      },
+    },
+    rndEyebrow: "R&D",
+    rndTitle: "What we’re building",
+    rndLede:
+      "Three products in various stages of development. Each one addresses a friction point in cross-border life.",
+    stages: ["Design", "Pilot", "Beta", "Scale"],
+    products: [
+      {
+        id: "MGX/R-01",
+        status: "Beta",
+        statusKind: "status-beta",
+        name: "Cross-Border Payments",
+        body:
+          "Real-time settlement rails connecting U.S. and African corridors. Lower fees, faster delivery, full compliance.",
+        meta: [
+          ["Focus", "U.S. ↔ Africa corridors"],
+          ["Stage", "Private beta"],
+          ["Compliance", "KYC / AML by design"],
+        ],
+        activeStage: 2,
+      },
+      {
+        id: "MGX/R-02",
+        status: "In Development",
+        statusKind: "status-dev",
+        name: "AI Job Matching",
+        body:
+          "An ML-powered engine that matches diaspora talent to verified roles across borders.",
+        note: "In active development.",
+      },
+      {
+        id: "MGX/R-03",
+        status: "Planned",
+        statusKind: "status-soon",
+        name: "Immigration Assist",
+        body:
+          "Guided immigration workflows with document prep, status tracking, and attorney coordination.",
+        note: "On our roadmap.",
+      },
+    ],
+    ctaTitle: "Work with us, or come build with us.",
+    ctaBody:
+      "Three ways in: join a beta, scope a consulting engagement, or apply to the training cohort. Every thread leads back to the research.",
+    ctaPrimary: "Start a conversation",
+    ctaGhost: "See the products",
+  },
+  fr: {
+    heroMeta: ["MGX-LLC / 2026", "New York, NY", "Entreprise technologique"],
+    heroTitle: "Nous construisons l’avenir",
+    heroBody:
+      "Mirigraphix est une entreprise technologique axée sur la recherche. Nous développons des solutions fintech transfrontalières, des outils RH basés sur l’IA et des logiciels d’immigration, soutenus par du conseil, du matériel professionnel et des programmes de formation.",
+    seeRnd: "Voir la R&D",
+    contact: "Nous contacter",
+    offerEyebrow: "Ce que nous faisons",
+    offerTitle: "Un seul laboratoire, trois portes d’entrée",
+    offerLede:
+      "Tout ce que nous construisons découle de la recherche. Le conseil et la formation financent le laboratoire ; le laboratoire améliore en retour les produits livrés à nos clients.",
+    offers: {
+      lead: {
+        idx: "01 · Cœur",
+        badge: "Le laboratoire",
+        title: "Ingénierie produit",
+        body:
+          "Nous concevons, développons et exploitons des produits logiciels qui s’attaquent à des problèmes transfrontaliers complexes : paiements, recrutement et immigration. C’est le travail que tout le reste sert à financer.",
+        chips: ["Fintech", "IA / ML", "LegalTech"],
+        go: "Explorer la R&D",
+      },
+      consulting: {
+        idx: "02 · Soutien",
+        title: "Conseil & matériel",
+        body:
+          "Vente de Mac pour entreprises, infrastructure informatique et conseil technologique pour les organisations aux États-Unis et en Afrique.",
+        chips: ["Mac en gros", "Infra IT", "Conseil"],
+        go: "Voir les services",
+      },
+      training: {
+        idx: "03 · Soutien",
+        title: "Formation professionnelle",
+        body:
+          "Cours encadrés et en autonomie en cybersécurité, IA, réseaux et développement full-stack.",
+        chips: ["Cybersécurité", "IA / ML", "Réseaux", "Dév"],
+        go: "Voir les cours",
+      },
+    },
+    rndEyebrow: "R&D",
+    rndTitle: "Ce que nous développons",
+    rndLede:
+      "Trois produits à différents stades de développement. Chacun s’attaque à un point de friction de la vie transfrontalière.",
+    stages: ["Conception", "Pilote", "Bêta", "Déploiement"],
+    products: [
+      {
+        id: "MGX/R-01",
+        status: "Bêta",
+        statusKind: "status-beta",
+        name: "Paiements transfrontaliers",
+        body:
+          "Des rails de règlement en temps réel reliant les corridors entre les États-Unis et l’Afrique. Moins de frais, livraison plus rapide, conformité totale.",
+        meta: [
+          ["Couverture", "Corridors É.-U. ↔ Afrique"],
+          ["Stade", "Bêta privée"],
+          ["Conformité", "KYC / AML intégrés"],
+        ],
+        activeStage: 2,
+      },
+      {
+        id: "MGX/R-02",
+        status: "En développement",
+        statusKind: "status-dev",
+        name: "Mise en relation par IA",
+        body:
+          "Un moteur basé sur l’apprentissage automatique qui met en relation les talents de la diaspora avec des postes vérifiés au-delà des frontières.",
+        note: "En développement actif.",
+      },
+      {
+        id: "MGX/R-03",
+        status: "Prévu",
+        statusKind: "status-soon",
+        name: "Assistance à l’immigration",
+        body:
+          "Des parcours d’immigration guidés avec préparation des documents, suivi des dossiers et coordination avec les avocats.",
+        note: "Sur notre feuille de route.",
+      },
+    ],
+    ctaTitle: "Travaillez avec nous, ou venez construire avec nous.",
+    ctaBody:
+      "Trois portes d’entrée : rejoindre une bêta, cadrer une mission de conseil, ou postuler à une promotion de formation. Chaque chemin ramène à la recherche.",
+    ctaPrimary: "Démarrer la conversation",
+    ctaGhost: "Voir les produits",
+  },
+} as const;
+
+export default async function Home() {
+  const locale = await getLocale();
+  const t = copy[locale];
+  const lead = t.offers.lead;
+  const consulting = t.offers.consulting;
+  const training = t.offers.training;
+  const [p1, p2, p3] = t.products;
+
   return (
     <>
       {/* ── Hero ── */}
       <section className="page-hero">
         <div className="container">
           <div className="hero-meta">
-            <span>MGX-LLC / 2026</span>
+            <span>{t.heroMeta[0]}</span>
             <span className="dot" />
-            <span>Philadelphia, PA</span>
+            <span>{t.heroMeta[1]}</span>
             <span className="dot" />
-            <span>Technology company</span>
+            <span>{t.heroMeta[2]}</span>
           </div>
 
           <h1>
-            We build what&rsquo;s next<span className="caret" />
+            {t.heroTitle}
+            <span className="caret" />
           </h1>
 
-          <p>
-            Mirigraphix is a research-driven technology company. We ship
-            cross-border fintech, AI workforce tools, and immigration
-            software&mdash;backed by consulting, enterprise hardware, and
-            professional training programs.
-          </p>
+          <p>{t.heroBody}</p>
 
           <div style={{ display: "flex", gap: "10px", marginTop: "28px" }}>
             <Link href="/rnd" className="btn btn-primary">
-              See R&amp;D
+              {t.seeRnd}
             </Link>
             <Link href="/contact" className="btn btn-ghost">
-              Contact us
+              {t.contact}
             </Link>
           </div>
         </div>
       </section>
-
-      {/* ── Trust strip ── */}
-      <div className="container section" style={{ paddingBlock: "0" }}>
-        <div className="trust-strip">
-          <span className="trust-strip-label">Trusted by</span>
-          <div className="trust-logos">
-            {["CompTIA", "Cisco", "AWS", "Temple Univ.", "EduForward", "OpenAI", "Drexel Univ."].map(
-              (name) => (
-                <span key={name} className="trust-logo">
-                  {name}
-                </span>
-              )
-            )}
-          </div>
-        </div>
-      </div>
 
       {/* ── What we do ── */}
       <section className="section">
         <div className="container">
           <div className="section-head">
             <div>
-              <span className="eyebrow">What we do</span>
-              <h2 className="h2">Three pillars</h2>
+              <span className="eyebrow">{t.offerEyebrow}</span>
+              <h2 className="h2">{t.offerTitle}</h2>
             </div>
-            <p className="lede">
-              Everything we ship ties back to research. Consulting and training
-              fund the lab; the lab feeds better products back to our clients.
-            </p>
+            <p className="lede">{t.offerLede}</p>
           </div>
 
-          <div className="pillars">
-            {/* Pillar 1 */}
-            <div className="pillar">
-              <span className="pillar-num">01</span>
-              <h3>Product engineering</h3>
-              <p>
-                We design, build, and operate software products that solve
-                hard cross-border problems&mdash;payments, hiring, and
-                immigration.
-              </p>
-              <div className="pillar-tags">
-                <span className="pillar-tag">Fintech</span>
-                <span className="pillar-tag">AI / ML</span>
-                <span className="pillar-tag">LegalTech</span>
+          <div className="offer-grid">
+            {/* Lead offering: the R&D core */}
+            <Link href="/rnd" className="offer offer-lead">
+              <span className="offer-rail" />
+              <div className="offer-ic">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 3v6.5L4.5 18a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L15 9.5V3" />
+                  <path d="M7.5 3h9M8 14h8" />
+                </svg>
               </div>
-            </div>
+              <div className="offer-main">
+                <div className="offer-top">
+                  <span className="offer-idx">{lead.idx}</span>
+                  <span className="status status-dev">
+                    <span className="status-dot" />
+                    {lead.badge}
+                  </span>
+                </div>
+                <h3>{lead.title}</h3>
+                <p>{lead.body}</p>
+                <div className="offer-chips">
+                  {lead.chips.map((c) => (
+                    <span key={c} className="offer-chip">{c}</span>
+                  ))}
+                </div>
+                <span className="offer-go">
+                  {lead.go} <span aria-hidden="true">&rarr;</span>
+                </span>
+              </div>
+            </Link>
 
-            {/* Pillar 2 */}
-            <div className="pillar">
-              <span className="pillar-num">02</span>
-              <h3>Consulting &amp; hardware</h3>
-              <p>
-                Enterprise Mac sales, IT infrastructure, and technology
-                consulting for organizations in the U.S. and Africa.
-              </p>
-              <div className="pillar-tags">
-                <span className="pillar-tag">Mac wholesale</span>
-                <span className="pillar-tag">IT infra</span>
-                <span className="pillar-tag">Advisory</span>
+            {/* Supporting offering: consulting & hardware */}
+            <Link href="/services" className="offer offer-sub">
+              <span className="offer-rail" />
+              <div className="offer-ic">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="12" rx="1.5" />
+                  <path d="M2 20h20M9.5 16l-.5 4M14.5 16l.5 4" />
+                </svg>
               </div>
-            </div>
+              <div className="offer-main">
+                <div className="offer-top">
+                  <span className="offer-idx">{consulting.idx}</span>
+                </div>
+                <h3>{consulting.title}</h3>
+                <p>{consulting.body}</p>
+                <div className="offer-chips">
+                  {consulting.chips.map((c) => (
+                    <span key={c} className="offer-chip">{c}</span>
+                  ))}
+                </div>
+                <span className="offer-go">
+                  {consulting.go} <span aria-hidden="true">&rarr;</span>
+                </span>
+              </div>
+            </Link>
 
-            {/* Pillar 3 */}
-            <div className="pillar">
-              <span className="pillar-num">03</span>
-              <h3>Professional training</h3>
-              <p>
-                Instructor-led and self-paced courses in cybersecurity, AI,
-                networking, and full-stack development.
-              </p>
-              <div className="pillar-tags">
-                <span className="pillar-tag">Cybersecurity</span>
-                <span className="pillar-tag">AI/ML</span>
-                <span className="pillar-tag">Networking</span>
-                <span className="pillar-tag">Dev</span>
+            {/* Supporting offering: training */}
+            <Link href="/trainings" className="offer offer-sub">
+              <span className="offer-rail" />
+              <div className="offer-ic">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 4 2 9l10 5 10-5-10-5Z" />
+                  <path d="M6 11v5c0 1.1 2.7 2.5 6 2.5s6-1.4 6-2.5v-5M22 9v5" />
+                </svg>
               </div>
-            </div>
+              <div className="offer-main">
+                <div className="offer-top">
+                  <span className="offer-idx">{training.idx}</span>
+                </div>
+                <h3>{training.title}</h3>
+                <p>{training.body}</p>
+                <div className="offer-chips">
+                  {training.chips.map((c) => (
+                    <span key={c} className="offer-chip">{c}</span>
+                  ))}
+                </div>
+                <span className="offer-go">
+                  {training.go} <span aria-hidden="true">&rarr;</span>
+                </span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -127,153 +316,83 @@ export default function Home() {
         <div className="container">
           <div className="section-head">
             <div>
-              <span className="eyebrow">R&amp;D</span>
-              <h2 className="h2">Active products</h2>
+              <span className="eyebrow">{t.rndEyebrow}</span>
+              <h2 className="h2">{t.rndTitle}</h2>
             </div>
-            <p className="lede">
-              Three products in various stages of development. Each one
-              addresses a friction point in cross-border life.
-            </p>
+            <p className="lede">{t.rndLede}</p>
           </div>
 
           <div className="projects">
-            {/* ── Feature card: Cross-Border Payments ── */}
+            {/* Feature card: Cross-Border Payments */}
             <div className="project feature">
               <div className="project-body">
                 <div className="project-head">
-                  <span className="project-id">MGX/R-01</span>
-                  <span className="status status-beta">
+                  <span className="project-id">{p1.id}</span>
+                  <span className={`status ${p1.statusKind}`}>
                     <span className="status-dot" />
-                    Beta
+                    {p1.status}
                   </span>
                 </div>
-                <h3 className="project-name">Cross-Border Payments</h3>
-                <p className="project-desc">
-                  Real-time settlement rails connecting U.S. and African
-                  corridors. Lower fees, faster delivery, full compliance.
-                </p>
+                <h3 className="project-name">{p1.name}</h3>
+                <p className="project-desc">{p1.body}</p>
                 <div className="project-meta">
-                  <span>Active corridors: <b>3</b></span>
-                  <span>Avg settlement: <b>142s</b></span>
-                  <span>Txn volume/mo: <b>2.3k</b></span>
-                  <span>Cost vs legacy: <b>-71%</b></span>
+                  {p1.meta?.map(([k, v]) => (
+                    <span key={k}>
+                      {k}: <b>{v}</b>
+                    </span>
+                  ))}
                 </div>
               </div>
               <div className="project-visual">
                 <span className="mono" style={{ color: "var(--ink-3)" }}>
-                  Txn throughput — 30 d
+                  {locale === "fr" ? "Feuille de route" : "Roadmap"}
                 </span>
-                <svg
-                  className="spark"
-                  viewBox="0 0 200 60"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <polyline
-                    points="0,52 15,48 30,44 45,40 60,38 75,32 90,35 105,28 120,24 135,20 150,18 165,14 180,10 200,6"
-                    stroke="var(--accent)"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                  <polyline
-                    points="0,52 15,48 30,44 45,40 60,38 75,32 90,35 105,28 120,24 135,20 150,18 165,14 180,10 200,6 200,60 0,60"
-                    fill="var(--accent)"
-                    opacity="0.08"
-                  />
-                </svg>
+                <div className="stage-track">
+                  {t.stages.map((s, i) => (
+                    <div
+                      key={s}
+                      className={`stage ${i <= (p1.activeStage ?? 0) ? "done" : ""} ${
+                        i === p1.activeStage ? "current" : ""
+                      }`}
+                    >
+                      <span className="stage-dot" />
+                      <span className="stage-label">{s}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* ── AI Job Matching ── */}
+            {/* AI Job Matching */}
             <div className="project">
               <div className="project-head">
-                <span className="project-id">MGX/R-02</span>
-                <span className="status status-dev">
+                <span className="project-id">{p2.id}</span>
+                <span className={`status ${p2.statusKind}`}>
                   <span className="status-dot" />
-                  In Development
+                  {p2.status}
                 </span>
               </div>
-              <h3 className="project-name">AI Job Matching</h3>
-              <p className="project-desc">
-                ML-powered engine that matches diaspora talent to verified
-                roles across borders, cutting placement time by 60%.
-              </p>
+              <h3 className="project-name">{p2.name}</h3>
+              <p className="project-desc">{p2.body}</p>
               <div className="project-meta">
-                <span>Corpus: <b>48k roles</b></span>
-                <span>Precision@10: <b>0.81</b></span>
-                <span>Partners: <b>6</b></span>
-                <span>Launch: <b>Q3</b></span>
+                <span>{p2.note}</span>
               </div>
             </div>
 
-            {/* ── Immigration Assist ── */}
+            {/* Immigration Assist */}
             <div className="project">
               <div className="project-head">
-                <span className="project-id">MGX/R-03</span>
-                <span className="status status-soon">
+                <span className="project-id">{p3.id}</span>
+                <span className={`status ${p3.statusKind}`}>
                   <span className="status-dot" />
-                  Coming Q4
+                  {p3.status}
                 </span>
               </div>
-              <h3 className="project-name">Immigration Assist</h3>
-              <p className="project-desc">
-                Guided immigration workflows with document prep, status
-                tracking, and attorney coordination.
-              </p>
+              <h3 className="project-name">{p3.name}</h3>
+              <p className="project-desc">{p3.body}</p>
               <div className="project-meta">
-                <span>Flows modeled: <b>12</b></span>
-                <span>Pilot users: <b>Waitlist</b></span>
-                <span>Attorney partners: <b>4</b></span>
-                <span>Launch: <b>Q4</b></span>
+                <span>{p3.note}</span>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Stats strip ── */}
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="container">
-          <div className="stats-strip">
-            <div className="stat-cell">
-              <div className="stat-label">R&amp;D Products</div>
-              <div className="stat-val">3</div>
-            </div>
-            <div className="stat-cell">
-              <div className="stat-label">Enterprise clients</div>
-              <div className="stat-val">50+</div>
-            </div>
-            <div className="stat-cell">
-              <div className="stat-label">Ship cadence</div>
-              <div className="stat-val">8 wk</div>
-              <div className="stat-trend" style={{ color: "var(--ink-3)" }}>per milestone</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Build log ── */}
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <span className="eyebrow">Build log</span>
-              <h2 className="h2">Recent activity</h2>
-            </div>
-          </div>
-
-          <div className="log-list">
-            <div className="log-row">
-              <span className="date">2026-04-08</span>
-              <span className="tag blue">dev</span>
-              <span>AI Job Matching: precision@10 improved from 0.74 to 0.81</span>
-            </div>
-            <div className="log-row">
-              <span className="date">2026-03-29</span>
-              <span className="tag amber">ops</span>
-              <span>Opened waitlist for Immigration Assist pilot program</span>
             </div>
           </div>
         </div>
@@ -283,19 +402,15 @@ export default function Home() {
       <section className="section">
         <div className="container">
           <div className="cta-block">
-            <h2>Work with us, or come build with us.</h2>
+            <h2>{t.ctaTitle}</h2>
             <div>
-              <p>
-                Three ways in: join a beta, scope a consulting engagement, or
-                apply to the training cohort. Every thread leads back to the
-                research.
-              </p>
+              <p>{t.ctaBody}</p>
               <div style={{ display: "flex", gap: "10px" }}>
                 <Link href="/contact" className="btn btn-primary">
-                  Start a conversation &rarr;
+                  {t.ctaPrimary} &rarr;
                 </Link>
                 <Link href="/rnd" className="btn btn-ghost">
-                  See the products
+                  {t.ctaGhost}
                 </Link>
               </div>
             </div>

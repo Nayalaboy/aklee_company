@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 type Category = "All" | "Laptops" | "Desktops & servers" | "Networking";
@@ -14,25 +14,110 @@ interface Product {
 
 const products: Product[] = [
   // Laptops
-  { sku: "MGX-LP-001", name: 'MacBook Pro 16" M3 Max', specs: "36GB \u00b7 1TB SSD \u00b7 14-core GPU", category: "Laptops" },
-  { sku: "MGX-LP-002", name: 'MacBook Air 13" M3', specs: "8GB \u00b7 256GB SSD", category: "Laptops" },
-  { sku: "MGX-LP-003", name: "Dell Latitude 5540", specs: "16GB \u00b7 512GB SSD \u00b7 i7", category: "Laptops" },
-  { sku: "MGX-LP-004", name: "ThinkPad X1 Carbon", specs: "16GB \u00b7 512GB SSD", category: "Laptops" },
-  { sku: "MGX-LP-005", name: "HP EliteBook 860 G10", specs: "32GB \u00b7 1TB SSD", category: "Laptops" },
+  { sku: "MGX-LP-001", name: 'MacBook Pro 16" M3 Max', specs: "36GB · 1TB SSD · 14-core GPU", category: "Laptops" },
+  { sku: "MGX-LP-002", name: 'MacBook Air 13" M3', specs: "8GB · 256GB SSD", category: "Laptops" },
+  { sku: "MGX-LP-003", name: "Dell Latitude 5540", specs: "16GB · 512GB SSD · i7", category: "Laptops" },
+  { sku: "MGX-LP-004", name: "ThinkPad X1 Carbon", specs: "16GB · 512GB SSD", category: "Laptops" },
+  { sku: "MGX-LP-005", name: "HP EliteBook 860 G10", specs: "32GB · 1TB SSD", category: "Laptops" },
   // Desktops & servers
-  { sku: "MGX-SV-001", name: "Dell PowerEdge R750", specs: "Rack server \u00b7 Xeon \u00b7 64GB", category: "Desktops & servers" },
-  { sku: "MGX-SV-002", name: "HP ProLiant DL380 Gen11", specs: "Rack server \u00b7 Xeon \u00b7 128GB", category: "Desktops & servers" },
-  { sku: "MGX-DT-001", name: 'iMac 24" M3', specs: "8-core \u00b7 16GB \u00b7 512GB", category: "Desktops & servers" },
+  { sku: "MGX-SV-001", name: "Dell PowerEdge R750", specs: "Rack server · Xeon · 64GB", category: "Desktops & servers" },
+  { sku: "MGX-SV-002", name: "HP ProLiant DL380 Gen11", specs: "Rack server · Xeon · 128GB", category: "Desktops & servers" },
+  { sku: "MGX-DT-001", name: 'iMac 24" M3', specs: "8-core · 16GB · 512GB", category: "Desktops & servers" },
   // Networking
-  { sku: "MGX-NW-001", name: "Cisco Catalyst 9200", specs: "24-port \u00b7 PoE+ \u00b7 Managed", category: "Networking" },
-  { sku: "MGX-NW-002", name: "UniFi U6-Pro AP", specs: "WiFi 6 \u00b7 Enterprise", category: "Networking" },
-  { sku: "MGX-NW-003", name: "FortiGate 60F", specs: "Firewall \u00b7 SD-WAN \u00b7 VPN", category: "Networking" },
+  { sku: "MGX-NW-001", name: "Cisco Catalyst 9200", specs: "24-port · PoE+ · Managed", category: "Networking" },
+  { sku: "MGX-NW-002", name: "UniFi U6-Pro AP", specs: "WiFi 6 · Enterprise", category: "Networking" },
+  { sku: "MGX-NW-003", name: "FortiGate 60F", specs: "Firewall · SD-WAN · VPN", category: "Networking" },
 ];
 
 const tabs: Category[] = ["All", "Laptops", "Desktops & servers", "Networking"];
 
+const copy = {
+  en: {
+    heroMeta: ["MGX / HARDWARE", "ENTERPRISE PROCUREMENT"],
+    heroTitle: "Enterprise hardware, delivered.",
+    catalogEyebrow: "Catalog",
+    catalogTitle: "Product lineup",
+    catalogLede:
+      "Enterprise-grade laptops, servers, and networking gear sourced from leading manufacturers -- ready for deployment.",
+    tabLabels: {
+      All: "All",
+      Laptops: "Laptops",
+      "Desktops & servers": "Desktops & servers",
+      Networking: "Networking",
+    } as Record<Category, string>,
+    quote: "Quote",
+    request: "Request",
+    customEyebrow: "Customization",
+    customTitle: "Custom configurations",
+    customBody:
+      "Need exact specs for your team? We build hardware configurations matched to your requirements.",
+    customItems: [
+      "Spec upgrades on any laptop, desktop, or server",
+      "Pre-configured OS, security, and MDM enrollment",
+      "Custom branding and asset tagging",
+      "Bundle deals with networking and peripherals",
+    ],
+    volumeEyebrow: "Enterprise",
+    volumeTitle: "Volume pricing & logistics",
+    volumeBody:
+      "Outfitting an office, school, or government agency? We handle procurement, logistics, and deployment.",
+    volumeItems: [
+      "Discounts available on larger orders",
+      "Leasing and financing options available",
+      "A dedicated account manager for each client",
+      "Customs clearance and in-country delivery for Africa",
+    ],
+    volumeCta: "Request bulk pricing",
+  },
+  fr: {
+    heroMeta: ["MGX / MATÉRIEL", "APPROVISIONNEMENT ENTREPRISE"],
+    heroTitle: "Du matériel professionnel, livré.",
+    catalogEyebrow: "Catalogue",
+    catalogTitle: "Gamme de produits",
+    catalogLede:
+      "Ordinateurs portables, serveurs et équipements réseau de niveau professionnel, issus des principaux fabricants, prêts à être déployés.",
+    tabLabels: {
+      All: "Tous",
+      Laptops: "Ordinateurs portables",
+      "Desktops & servers": "Postes fixes & serveurs",
+      Networking: "Réseau",
+    } as Record<Category, string>,
+    quote: "Sur devis",
+    request: "Demander",
+    customEyebrow: "Personnalisation",
+    customTitle: "Configurations sur mesure",
+    customBody:
+      "Vous avez besoin de spécifications précises pour votre équipe ? Nous assemblons des configurations matérielles adaptées à vos exigences.",
+    customItems: [
+      "Améliorations de spécifications sur tout portable, poste fixe ou serveur",
+      "Système, sécurité et enrôlement MDM préconfigurés",
+      "Marquage personnalisé et étiquetage des actifs",
+      "Offres groupées avec réseau et périphériques",
+    ],
+    volumeEyebrow: "Entreprise",
+    volumeTitle: "Tarifs de gros & logistique",
+    volumeBody:
+      "Vous équipez un bureau, une école ou une administration ? Nous prenons en charge l’approvisionnement, la logistique et le déploiement.",
+    volumeItems: [
+      "Remises disponibles sur les commandes importantes",
+      "Options de location et de financement disponibles",
+      "Un gestionnaire de compte dédié pour chaque client",
+      "Dédouanement et livraison locale pour l’Afrique",
+    ],
+    volumeCta: "Demander un tarif de gros",
+  },
+} as const;
+
 export default function HardwarePage() {
+  const [locale, setLocale] = useState<"en" | "fr">("en");
   const [filter, setFilter] = useState<Category>("All");
+
+  useEffect(() => {
+    const m = document.cookie.match(/(?:^|; )lang=(fr|en)/);
+    setLocale(m?.[1] === "fr" ? "fr" : "en");
+  }, []);
+
+  const t = copy[locale];
 
   const visible = filter === "All" ? products : products.filter((p) => p.category === filter);
 
@@ -42,11 +127,11 @@ export default function HardwarePage() {
       <section className="page-hero">
         <div className="container">
           <div className="hero-meta">
-            <span>MGX / HARDWARE</span>
+            <span>{t.heroMeta[0]}</span>
             <span className="dot" />
-            <span>ENTERPRISE PROCUREMENT</span>
+            <span>{t.heroMeta[1]}</span>
           </div>
-          <h1>Enterprise hardware, delivered.</h1>
+          <h1>{t.heroTitle}</h1>
         </div>
       </section>
 
@@ -55,24 +140,21 @@ export default function HardwarePage() {
         <div className="container">
           <div className="section-head">
             <div>
-              <p className="eyebrow">Catalog</p>
-              <h2 className="h2">Product lineup</h2>
+              <p className="eyebrow">{t.catalogEyebrow}</p>
+              <h2 className="h2">{t.catalogTitle}</h2>
             </div>
-            <p className="lede">
-              Enterprise-grade laptops, servers, and networking gear sourced from
-              leading manufacturers -- ready for deployment.
-            </p>
+            <p className="lede">{t.catalogLede}</p>
           </div>
 
           {/* Filter toolbar */}
           <div className="hw-toolbar">
-            {tabs.map((t) => (
+            {tabs.map((tab) => (
               <button
-                key={t}
-                className={`hw-tab${filter === t ? " active" : ""}`}
-                onClick={() => setFilter(t)}
+                key={tab}
+                className={`hw-tab${filter === tab ? " active" : ""}`}
+                onClick={() => setFilter(tab)}
               >
-                {t}
+                {t.tabLabels[tab]}
               </button>
             ))}
           </div>
@@ -85,9 +167,9 @@ export default function HardwarePage() {
                 <h4>{p.name}</h4>
                 <p className="hw-specs">{p.specs}</p>
                 <div className="hw-foot">
-                  <span className="hw-price">Quote</span>
+                  <span className="hw-price">{t.quote}</span>
                   <Link href="/contact" className="btn-link">
-                    Request&nbsp;&rarr;
+                    {t.request}&nbsp;&rarr;
                   </Link>
                 </div>
               </div>
@@ -102,21 +184,15 @@ export default function HardwarePage() {
           <div className="two-col">
             {/* Custom configurations */}
             <div className="card">
-              <p className="eyebrow">Customization</p>
+              <p className="eyebrow">{t.customEyebrow}</p>
               <h2 className="h2" style={{ fontSize: "clamp(22px,2.5vw,32px)" }}>
-                Custom configurations
+                {t.customTitle}
               </h2>
               <p style={{ color: "var(--ink-2)", fontSize: 14, marginBottom: 16 }}>
-                Need exact specs for your team? We build hardware configurations
-                matched to your requirements.
+                {t.customBody}
               </p>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 8 }}>
-                {[
-                  "Spec upgrades on any laptop, desktop, or server",
-                  "Pre-configured OS, security, and MDM enrollment",
-                  "Custom branding and asset tagging",
-                  "Bundle deals with networking and peripherals",
-                ].map((item) => (
+                {t.customItems.map((item) => (
                   <li key={item} style={{ fontSize: 13, color: "var(--ink-2)", display: "flex", gap: 8 }}>
                     <span style={{ color: "var(--accent)", fontFamily: "var(--font-mono)" }}>&rarr;</span>
                     {item}
@@ -127,21 +203,15 @@ export default function HardwarePage() {
 
             {/* Volume pricing */}
             <div className="card">
-              <p className="eyebrow">Enterprise</p>
+              <p className="eyebrow">{t.volumeEyebrow}</p>
               <h2 className="h2" style={{ fontSize: "clamp(22px,2.5vw,32px)" }}>
-                Volume pricing &amp; logistics
+                {t.volumeTitle}
               </h2>
               <p style={{ color: "var(--ink-2)", fontSize: 14, marginBottom: 16 }}>
-                Outfitting an office, school, or government agency? We handle
-                procurement, logistics, and deployment.
+                {t.volumeBody}
               </p>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 8 }}>
-                {[
-                  "Discounts starting at 10+ units",
-                  "Leasing and financing options available",
-                  "Dedicated account manager for each client",
-                  "Customs clearance and in-country delivery for Africa",
-                ].map((item) => (
+                {t.volumeItems.map((item) => (
                   <li key={item} style={{ fontSize: 13, color: "var(--ink-2)", display: "flex", gap: 8 }}>
                     <span style={{ color: "var(--accent)", fontFamily: "var(--font-mono)" }}>&rarr;</span>
                     {item}
@@ -150,7 +220,7 @@ export default function HardwarePage() {
               </ul>
               <div style={{ marginTop: 20 }}>
                 <Link href="/contact" className="btn btn-primary">
-                  Request bulk pricing&nbsp;&rarr;
+                  {t.volumeCta}&nbsp;&rarr;
                 </Link>
               </div>
             </div>
