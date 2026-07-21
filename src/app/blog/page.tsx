@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Image from "next/image";
+import { useClientLocale } from "@/lib/client-locale";
 
 const copy = {
   en: {
@@ -52,11 +54,7 @@ const copy = {
 } as const;
 
 export default function JournalPage() {
-  const [locale, setLocale] = useState<"en" | "fr">("en");
-  useEffect(() => {
-    const m = document.cookie.match(/(?:^|; )lang=(fr|en)/);
-    setLocale(m?.[1] === "fr" ? "fr" : "en");
-  }, []);
+  const locale = useClientLocale();
   const t = copy[locale];
 
   const [email, setEmail] = useState("");
@@ -84,24 +82,26 @@ export default function JournalPage() {
 
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <div className="hero-meta">
-            <span>{t.metaJournal}</span>
-            <span className="dot" />
-            <span>{t.metaSoon}</span>
+      <section className="hero-page">
+        <div className="hero-page-media">
+          <Image src="/images/hero-blog.jpg" alt="" fill priority sizes="100vw" style={{ objectFit: "cover" }} />
+        </div>
+        <div className="hero-page-scrim" aria-hidden="true" />
+        <div className="hero-page-inner">
+          <div className="container">
+            <span className="eyebrow">{t.metaJournal}</span>
+            <h1>
+              {t.heroTitlePre}
+              <strong>{t.heroTitleStrong}</strong>
+            </h1>
+            <p>
+              {t.heroBody.pre}
+              <strong>{t.heroBody.s1}</strong>
+              {t.heroBody.mid}
+              <strong>{t.heroBody.s2}</strong>
+              {t.heroBody.post}
+            </p>
           </div>
-          <h1>
-            {t.heroTitlePre}
-            <strong>{t.heroTitleStrong}</strong>
-          </h1>
-          <p>
-            {t.heroBody.pre}
-            <strong>{t.heroBody.s1}</strong>
-            {t.heroBody.mid}
-            <strong>{t.heroBody.s2}</strong>
-            {t.heroBody.post}
-          </p>
         </div>
       </section>
 

@@ -4,16 +4,12 @@ import type { Locale } from "@/lib/i18n";
 const copy = {
   en: {
     tagline:
-      "A technology company shipping modern software, consulting, enterprise hardware, and technical training.",
-    research: "Research",
-    services: "Services",
+      "Research-driven software, consulting, enterprise hardware, and technical training — spanning the U.S. and Africa.",
+    explore: "Explore",
     company: "Company",
-    resources: "Resources",
+    help: "Help",
     links: {
-      projects: "Projects",
-      payments: "Cross-Border Payments",
-      jobs: "AI Job Matching",
-      immigration: "Immigration",
+      research: "Research",
       consulting: "Consulting",
       hardware: "Hardware",
       training: "Training",
@@ -22,28 +18,23 @@ const copy = {
       team: "Team",
       careers: "Careers",
       partners: "Partners",
-      events: "Events",
       faq: "FAQ",
       contact: "Contact",
+      chat: "AI Advisor",
     },
-    privacy: "Privacy Policy",
-    terms: "Terms of Service",
-    refund: "Refund Policy",
+    privacy: "Privacy",
+    terms: "Terms",
+    refund: "Refunds",
     rights: "All rights reserved.",
-    status: "System operational",
   },
   fr: {
     tagline:
-      "Une entreprise technologique qui développe des logiciels modernes, du conseil, du matériel professionnel et des formations techniques.",
-    research: "Recherche",
-    services: "Services",
+      "Logiciels axés sur la recherche, conseil, matériel professionnel et formation technique — entre les États-Unis et l’Afrique.",
+    explore: "Explorer",
     company: "Entreprise",
-    resources: "Ressources",
+    help: "Aide",
     links: {
-      projects: "Projets",
-      payments: "Paiements transfrontaliers",
-      jobs: "Mise en relation par IA",
-      immigration: "Immigration",
+      research: "Recherche",
       consulting: "Conseil",
       hardware: "Matériel",
       training: "Formations",
@@ -52,15 +43,14 @@ const copy = {
       team: "Équipe",
       careers: "Carrières",
       partners: "Partenaires",
-      events: "Événements",
       faq: "FAQ",
       contact: "Contact",
+      chat: "Conseiller IA",
     },
-    privacy: "Politique de confidentialité",
-    terms: "Conditions d'utilisation",
-    refund: "Politique de remboursement",
+    privacy: "Confidentialité",
+    terms: "Conditions",
+    refund: "Remboursements",
     rights: "Tous droits réservés.",
-    status: "Système opérationnel",
   },
 } as const;
 
@@ -71,90 +61,97 @@ export default function Footer({ locale }: { locale: Locale }) {
       <div className="container">
         <div className="footer-grid">
           <div>
-            <Link
-              href="/"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-                fontFamily: "var(--font-display)",
-                fontWeight: 600,
-                letterSpacing: "-0.02em",
-                fontSize: 16,
-                marginBottom: 14,
-                color: "var(--ink)",
-              }}
-            >
-              <svg style={{ width: 22, height: 22 }} viewBox="0 0 22 22" aria-hidden="true">
+            <Link href="/" className="site-logo" style={{ marginBottom: 14 }}>
+              <svg viewBox="0 0 22 22" aria-hidden="true">
                 <rect x="1" y="1" width="9" height="9" rx="2" fill="currentColor" />
-                <rect x="12" y="1" width="9" height="9" rx="2" fill="none" stroke="currentColor" strokeWidth="1.5" />
-                <rect x="1" y="12" width="9" height="9" rx="2" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                <rect
+                  x="12"
+                  y="1"
+                  width="9"
+                  height="9"
+                  rx="2"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                />
+                <rect
+                  x="1"
+                  y="12"
+                  width="9"
+                  height="9"
+                  rx="2"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                />
                 <rect x="12" y="12" width="9" height="9" rx="2" fill="var(--accent)" />
               </svg>
               Mirigraphix
             </Link>
-            <p style={{ color: "var(--ink-3)", maxWidth: 320, fontSize: "13.5px" }}>
+            <p style={{ color: "var(--ink-3)", maxWidth: 340, fontSize: "13.5px", margin: 0 }}>
               {t.tagline}
             </p>
           </div>
           <div>
-            <h4>{t.research}</h4>
+            <h4>{t.explore}</h4>
             <ul>
-              <li><Link href="/rnd">{t.links.projects}</Link></li>
-              <li><Link href="/rnd">{t.links.payments}</Link></li>
-              <li><Link href="/rnd">{t.links.jobs}</Link></li>
-              <li><Link href="/rnd">{t.links.immigration}</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4>{t.services}</h4>
-            <ul>
-              <li><Link href="/services">{t.links.consulting}</Link></li>
-              <li><Link href="/hardware">{t.links.hardware}</Link></li>
-              <li><Link href="/trainings">{t.links.training}</Link></li>
-              <li><Link href="/blog">{t.links.journal}</Link></li>
+              <li>
+                <Link href="/rnd">{t.links.research}</Link>
+              </li>
+              <li>
+                <Link href="/services">{t.links.consulting}</Link>
+              </li>
+              <li>
+                <Link href="/hardware">{t.links.hardware}</Link>
+              </li>
+              <li>
+                <Link href="/trainings">{t.links.training}</Link>
+              </li>
+              <li>
+                <Link href="/blog">{t.links.journal}</Link>
+              </li>
             </ul>
           </div>
           <div>
             <h4>{t.company}</h4>
             <ul>
-              <li><Link href="/about">{t.links.about}</Link></li>
-              <li><Link href="/team">{t.links.team}</Link></li>
-              <li><Link href="/careers">{t.links.careers}</Link></li>
-              <li><Link href="/partners">{t.links.partners}</Link></li>
+              <li>
+                <Link href="/about">{t.links.about}</Link>
+              </li>
+              <li>
+                <Link href="/team">{t.links.team}</Link>
+              </li>
+              <li>
+                <Link href="/careers">{t.links.careers}</Link>
+              </li>
+              <li>
+                <Link href="/partners">{t.links.partners}</Link>
+              </li>
             </ul>
           </div>
           <div>
-            <h4>{t.resources}</h4>
+            <h4>{t.help}</h4>
             <ul>
-              <li><Link href="/events">{t.links.events}</Link></li>
-              <li><Link href="/faq">{t.links.faq}</Link></li>
-              <li><Link href="/contact">{t.links.contact}</Link></li>
+              <li>
+                <Link href="/faq">{t.links.faq}</Link>
+              </li>
+              <li>
+                <Link href="/chat">{t.links.chat}</Link>
+              </li>
+              <li>
+                <Link href="/contact">{t.links.contact}</Link>
+              </li>
             </ul>
           </div>
         </div>
-        <div
-          style={{
-            marginTop: 48,
-            paddingTop: 24,
-            borderTop: "1px solid var(--line)",
-            display: "flex",
-            gap: 24,
-            flexWrap: "wrap",
-            fontFamily: "var(--font-mono)",
-            fontSize: 11,
-            color: "var(--ink-3)",
-          }}
-        >
-          <Link href="/legal/privacy" style={{ color: "var(--ink-3)" }}>{t.privacy}</Link>
-          <Link href="/legal/terms" style={{ color: "var(--ink-3)" }}>{t.terms}</Link>
-          <Link href="/legal/refund" style={{ color: "var(--ink-3)" }}>{t.refund}</Link>
-          <span style={{ marginLeft: "auto" }}>mirigraphixx@gmail.com</span>
-          <span>New York, NY</span>
-        </div>
         <div className="footer-meta">
-          <span>&copy; 2026 Mirigraphix LLC. {t.rights}</span>
-          <span>v2026.04 &middot; {t.status}</span>
+          <span>© 2026 Mirigraphix LLC. {t.rights}</span>
+          <span style={{ display: "inline-flex", gap: 16, flexWrap: "wrap" }}>
+            <Link href="/legal/privacy">{t.privacy}</Link>
+            <Link href="/legal/terms">{t.terms}</Link>
+            <Link href="/legal/refund">{t.refund}</Link>
+            <a href="mailto:mirigraphixx@gmail.com">mirigraphixx@gmail.com</a>
+          </span>
         </div>
       </div>
     </footer>

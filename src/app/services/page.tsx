@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getLocale } from "@/lib/i18n";
 
@@ -193,26 +194,34 @@ export default async function ServicesPage() {
 
   return (
     <>
-      {/* Page hero */}
-      <section className="page-hero">
-        <div className="container">
-          <div className="hero-meta">
-            <span>{t.heroMeta[0]}</span>
-            <span className="dot" />
-            <span>{t.heroMeta[1]}</span>
+      <section className="hero-page">
+        <div className="hero-page-media">
+          <Image
+            src="/images/hero-services.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="hero-page-scrim" aria-hidden="true" />
+        <div className="hero-page-inner">
+          <div className="container">
+            <span className="eyebrow">{t.heroMeta[0]}</span>
+            <h1>{t.heroTitle}</h1>
+            <p>{t.servicesLede}</p>
           </div>
-          <h1>{t.heroTitle}</h1>
         </div>
       </section>
 
-      {/* Services list */}
       <section className="section">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head" data-reveal>
             <h2 className="h2">{t.servicesTitle}</h2>
             <p className="lede">{t.servicesLede}</p>
           </div>
-          <div className="svc-list">
+          <div className="svc-list" data-reveal>
             {t.services.map((s) => (
               <div key={s.num} className="svc-row">
                 <div className="num">{s.num}</div>
@@ -236,14 +245,28 @@ export default async function ServicesPage() {
         </div>
       </section>
 
-      {/* Engagement model */}
-      <section className="section">
+      <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
-          <div className="section-head">
-            <h2 className="h2">{t.engagementTitle}</h2>
-            <p className="lede">{t.engagementLede}</p>
+          <div className="split-band" data-reveal style={{ marginBottom: 64 }}>
+            <div className="split-band-copy">
+              <span className="eyebrow">{t.engagementTitle}</span>
+              <h2 className="h2" style={{ margin: 0 }}>
+                {t.engagementTitle}
+              </h2>
+              <p className="lede">{t.engagementLede}</p>
+            </div>
+            <div className="split-band-media">
+              <Image
+                src="/images/consulting-meeting.jpg"
+                alt=""
+                fill
+                sizes="(max-width: 880px) 100vw, 50vw"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
           </div>
-          <div className="approach-grid">
+
+          <div className="approach-grid" data-reveal>
             {t.steps.map((step) => (
               <div key={step.num} className="approach-cell">
                 <span className="num">{step.num}</span>
@@ -255,14 +278,13 @@ export default async function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="section">
         <div className="container">
-          <div className="cta-block">
+          <div className="cta-block" data-reveal>
             <h2>{t.ctaTitle}</h2>
             <div>
               <p>{t.ctaBody}</p>
-              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <Link href="/contact" className="btn btn-primary">
                   {t.ctaPrimary}
                 </Link>

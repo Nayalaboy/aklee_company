@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import type { Locale } from "@/lib/i18n";
+import { setLangCookie } from "@/lib/client-locale";
 
 const navLinks = [
   { href: "/rnd", label: { en: "Research", fr: "Recherche" } },
@@ -18,17 +19,19 @@ const CTA = { en: "Get in touch", fr: "Nous contacter" };
 
 export default function Navbar({ locale }: { locale: Locale }) {
   const router = useRouter();
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const setLang = (lang: Locale) => {
     if (lang === locale) return;
-    document.cookie = `lang=${lang}; path=/; max-age=31536000; samesite=lax`;
+    setLangCookie(lang);
     router.refresh();
   };
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -36,99 +39,57 @@ export default function Navbar({ locale }: { locale: Locale }) {
   useEffect(() => {
     if (mobileOpen) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`);
+
   return (
-    <nav
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 20,
-        background: scrolled
-          ? "color-mix(in oklch, var(--bg) 80%, transparent)"
-          : "transparent",
-        backdropFilter: scrolled ? "saturate(140%) blur(12px)" : "none",
-        WebkitBackdropFilter: scrolled ? "saturate(140%) blur(12px)" : "none",
-        borderBottom: `1px solid ${scrolled ? "var(--line)" : "transparent"}`,
-        transition: "all 0.3s ease",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 1240,
-          margin: "0 auto",
-          padding: "14px var(--gutter)",
-          display: "flex",
-          alignItems: "center",
-          gap: 32,
-        }}
-      >
-        {/* Logo */}
-        <Link
-          href="/"
-          onClick={() => setMobileOpen(false)}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 10,
-            fontFamily: "var(--font-display)",
-            fontWeight: 600,
-            letterSpacing: "-0.02em",
-            fontSize: 16,
-            color: "var(--ink)",
-            textDecoration: "none",
-          }}
-        >
-          <svg
-            style={{ width: 22, height: 22 }}
-            viewBox="0 0 22 22"
-            aria-hidden="true"
-          >
+    <nav className={`site-nav${scrolled ? " is-scrolled" : ""}`}>
+      <div className="site-nav-inner">
+        <Link href="/" className="site-logo" onClick={() => setMobileOpen(false)}>
+          <svg viewBox="0 0 22 22" aria-hidden="true">
             <rect x="1" y="1" width="9" height="9" rx="2" fill="currentColor" />
-            <rect x="12" y="1" width="9" height="9" rx="2" fill="none" stroke="currentColor" strokeWidth="1.5" />
-            <rect x="1" y="12" width="9" height="9" rx="2" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            <rect
+              x="12"
+              y="1"
+              width="9"
+              height="9"
+              rx="2"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+            <rect
+              x="1"
+              y="12"
+              width="9"
+              height="9"
+              rx="2"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
             <rect x="12" y="12" width="9" height="9" rx="2" fill="var(--accent)" />
           </svg>
           Mirigraphix
         </Link>
 
-        {/* Desktop nav links */}
-        <div
-          className="nav-links"
-          style={{
-            display: "flex",
-            gap: 4,
-            marginLeft: "auto",
-          }}
-        >
+        <div className="nav-links">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              style={{
-                fontSize: "13.5px",
-                padding: "7px 12px",
-                borderRadius: "var(--radius-sm)",
-                color: "var(--ink-2)",
-                transition: "color 0.15s, background 0.15s",
-                textDecoration: "none",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = "var(--ink)";
-                e.currentTarget.style.background = "var(--bg-sunk)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = "var(--ink-2)";
-                e.currentTarget.style.background = "transparent";
-              }}
+              className={`nav-link${isActive(link.href) ? " is-active" : ""}`}
             >
               {link.label[locale]}
             </Link>
           ))}
         </div>
 
-        {/* Language toggle */}
         <div className="lang-toggle" role="group" aria-label="Language">
           {(["en", "fr"] as Locale[]).map((lang) => (
             <button
@@ -143,46 +104,15 @@ export default function Navbar({ locale }: { locale: Locale }) {
           ))}
         </div>
 
-        {/* CTA */}
-        <Link
-          href="/contact"
-          className="nav-links"
-          style={{
-            fontSize: "13.5px",
-            padding: "8px 14px",
-            background: "var(--ink)",
-            color: "var(--bg)",
-            borderRadius: "var(--radius-sm)",
-            transition: "transform 0.2s",
-            textDecoration: "none",
-            whiteSpace: "nowrap",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "translateY(-1px)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "translateY(0)";
-          }}
-        >
-          {CTA[locale]} &rarr;
+        <Link href="/contact" className="nav-cta">
+          {CTA[locale]} →
         </Link>
 
-        {/* Mobile toggle */}
         <button
+          type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
-          style={{
-            display: "none",
-            width: 40,
-            height: 40,
-            alignItems: "center",
-            justifyContent: "center",
-            marginLeft: "auto",
-            background: "none",
-            border: "none",
-            color: "var(--ink)",
-            cursor: "pointer",
-          }}
+          aria-expanded={mobileOpen}
           className="mobile-toggle"
         >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -201,34 +131,10 @@ export default function Navbar({ locale }: { locale: Locale }) {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            top: 52,
-            background: "var(--bg-elev)",
-            zIndex: 100,
-            padding: "24px var(--gutter)",
-            display: "flex",
-            flexDirection: "column",
-            gap: 4,
-          }}
-        >
+        <div className="mobile-panel">
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              style={{
-                fontSize: 16,
-                padding: "12px 0",
-                color: "var(--ink)",
-                borderBottom: "1px solid var(--line)",
-                textDecoration: "none",
-              }}
-            >
+            <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}>
               {link.label[locale]}
             </Link>
           ))}
@@ -236,46 +142,12 @@ export default function Navbar({ locale }: { locale: Locale }) {
             href="/contact"
             onClick={() => setMobileOpen(false)}
             className="btn btn-primary"
-            style={{ marginTop: 16, justifyContent: "center" }}
+            style={{ marginTop: 20, justifyContent: "center" }}
           >
-            {CTA[locale]} &rarr;
+            {CTA[locale]} →
           </Link>
         </div>
       )}
-
-      <style jsx global>{`
-        .lang-toggle {
-          display: inline-flex;
-          align-items: center;
-          padding: 2px;
-          gap: 2px;
-          border: 1px solid var(--line);
-          border-radius: var(--radius-sm);
-          background: var(--bg-elev);
-        }
-        .lang-opt {
-          font-family: var(--font-mono);
-          font-size: 11px;
-          letter-spacing: 0.04em;
-          padding: 4px 8px;
-          border: none;
-          border-radius: 4px;
-          background: transparent;
-          color: var(--ink-3);
-          cursor: pointer;
-          transition: color 0.15s, background 0.15s;
-        }
-        .lang-opt:hover { color: var(--ink); }
-        .lang-opt.active {
-          background: var(--ink);
-          color: var(--bg);
-        }
-        @media (max-width: 880px) {
-          .nav-links { display: none !important; }
-          .mobile-toggle { display: flex !important; }
-          .lang-toggle { margin-left: auto; }
-        }
-      `}</style>
     </nav>
   );
 }

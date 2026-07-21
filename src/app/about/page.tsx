@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getLocale } from "@/lib/i18n";
 
@@ -101,52 +102,62 @@ export default async function AboutPage() {
 
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <div className="hero-meta">
-            <span>{t.heroMeta[0]}</span>
-            <span className="dot" />
-            <span>{t.heroMeta[1]}</span>
-            <span className="dot" />
-            <span>{t.heroMeta[2]}</span>
+      <section className="hero-page">
+        <div className="hero-page-media">
+          <Image
+            src="/images/hero-about.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="hero-page-scrim" aria-hidden="true" />
+        <div className="hero-page-inner">
+          <div className="container">
+            <span className="eyebrow">{t.heroMeta[0]}</span>
+            <h1>{t.heroTitle}</h1>
+            <p>{t.heroBody}</p>
           </div>
-          <h1>{t.heroTitle}</h1>
-          <p>{t.heroBody}</p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <div className="two-col">
+          <div className="two-col" data-reveal>
             <div>
               <span className="eyebrow">{t.missionEyebrow}</span>
               <h2 className="h2" style={{ marginTop: 16 }}>
                 {t.missionTitle}
               </h2>
+              <p style={{ color: "var(--ink-2)", fontSize: 16, maxWidth: "48ch", marginTop: 16 }}>
+                {t.missionBody}
+              </p>
             </div>
-            <p
-              style={{
-                color: "var(--ink-2)",
-                fontSize: 16,
-                maxWidth: "60ch",
-              }}
-            >
-              {t.missionBody}
-            </p>
+            <div className="two-col-media">
+              <Image
+                src="/images/team-office.jpg"
+                alt=""
+                fill
+                sizes="(max-width: 880px) 100vw, 50vw"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
-          <div className="section-head">
-            <span className="eyebrow">{t.valuesEyebrow}</span>
+          <div className="section-head" data-reveal>
             <div>
+              <span className="eyebrow">{t.valuesEyebrow}</span>
               <h2 className="h2">{t.valuesTitle}</h2>
             </div>
           </div>
 
-          <div className="milestones">
+          <div className="milestones" data-reveal>
             {t.values.map((v) => (
               <div className="milestone" key={v.kicker}>
                 <div className="milestone-year">{v.kicker}</div>
@@ -160,13 +171,13 @@ export default async function AboutPage() {
 
       <section className="section">
         <div className="container">
-          <div className="cta-block">
+          <div className="cta-block" data-reveal>
             <h2>{t.ctaTitle}</h2>
             <div>
               <p>{t.ctaBody}</p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <Link href="/contact" className="btn btn-primary">
-                  {t.ctaPrimary} &rarr;
+                  {t.ctaPrimary} →
                 </Link>
                 <Link href="/careers" className="btn btn-ghost">
                   {t.ctaGhost}

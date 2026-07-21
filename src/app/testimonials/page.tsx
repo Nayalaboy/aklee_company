@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getLocale } from "@/lib/i18n";
 
@@ -46,15 +47,16 @@ export default async function TestimonialsPage() {
 
   return (
     <>
-      {/* Page hero */}
-      <section className="page-hero">
-        <div className="container">
-          <div className="hero-meta">
-            <span>{t.heroMeta[0]}</span>
-            <span className="dot" />
-            <span>{t.heroMeta[1]}</span>
+      <section className="hero-page" style={{ minHeight: "clamp(280px, 36vh, 400px)" }}>
+        <div className="hero-page-media">
+          <Image src="/images/hero-testimonials.jpg" alt="" fill priority sizes="100vw" style={{ objectFit: "cover" }} />
+        </div>
+        <div className="hero-page-scrim" aria-hidden="true" />
+        <div className="hero-page-inner">
+          <div className="container">
+            <span className="eyebrow">{t.heroMeta[0]}</span>
+            <h1>{t.heroTitle}</h1>
           </div>
-          <h1>{t.heroTitle}</h1>
         </div>
       </section>
 

@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { useClientLocale } from "@/lib/client-locale";
 
 type Category = "All" | "Laptops" | "Desktops & servers" | "Networking";
 
@@ -10,35 +12,35 @@ interface Product {
   name: string;
   specs: string;
   category: Category;
+  image: string;
 }
 
 const products: Product[] = [
-  // Laptops
-  { sku: "MGX-LP-001", name: 'MacBook Pro 16" M3 Max', specs: "36GB · 1TB SSD · 14-core GPU", category: "Laptops" },
-  { sku: "MGX-LP-002", name: 'MacBook Air 13" M3', specs: "8GB · 256GB SSD", category: "Laptops" },
-  { sku: "MGX-LP-003", name: "Dell Latitude 5540", specs: "16GB · 512GB SSD · i7", category: "Laptops" },
-  { sku: "MGX-LP-004", name: "ThinkPad X1 Carbon", specs: "16GB · 512GB SSD", category: "Laptops" },
-  { sku: "MGX-LP-005", name: "HP EliteBook 860 G10", specs: "32GB · 1TB SSD", category: "Laptops" },
-  // Desktops & servers
-  { sku: "MGX-SV-001", name: "Dell PowerEdge R750", specs: "Rack server · Xeon · 64GB", category: "Desktops & servers" },
-  { sku: "MGX-SV-002", name: "HP ProLiant DL380 Gen11", specs: "Rack server · Xeon · 128GB", category: "Desktops & servers" },
-  { sku: "MGX-DT-001", name: 'iMac 24" M3', specs: "8-core · 16GB · 512GB", category: "Desktops & servers" },
-  // Networking
-  { sku: "MGX-NW-001", name: "Cisco Catalyst 9200", specs: "24-port · PoE+ · Managed", category: "Networking" },
-  { sku: "MGX-NW-002", name: "UniFi U6-Pro AP", specs: "WiFi 6 · Enterprise", category: "Networking" },
-  { sku: "MGX-NW-003", name: "FortiGate 60F", specs: "Firewall · SD-WAN · VPN", category: "Networking" },
+  { sku: "MGX-LP-001", name: 'MacBook Pro 16" M3 Max', specs: "36GB · 1TB SSD · 14-core GPU", category: "Laptops", image: "/images/macbook-product.jpg" },
+  { sku: "MGX-LP-002", name: 'MacBook Air 13" M3', specs: "8GB · 256GB SSD", category: "Laptops", image: "/images/macbook-product.jpg" },
+  { sku: "MGX-LP-003", name: "Dell Latitude 5540", specs: "16GB · 512GB SSD · i7", category: "Laptops", image: "/images/hardware-workspace.jpg" },
+  { sku: "MGX-LP-004", name: "ThinkPad X1 Carbon", specs: "16GB · 512GB SSD", category: "Laptops", image: "/images/hardware-workspace.jpg" },
+  { sku: "MGX-LP-005", name: "HP EliteBook 860 G10", specs: "32GB · 1TB SSD", category: "Laptops", image: "/images/hardware-workspace.jpg" },
+  { sku: "MGX-SV-001", name: "Dell PowerEdge R750", specs: "Rack server · Xeon · 64GB", category: "Desktops & servers", image: "/images/hero-hardware.jpg" },
+  { sku: "MGX-SV-002", name: "HP ProLiant DL380 Gen11", specs: "Rack server · Xeon · 128GB", category: "Desktops & servers", image: "/images/hero-hardware.jpg" },
+  { sku: "MGX-DT-001", name: 'iMac 24" M3', specs: "8-core · 16GB · 512GB", category: "Desktops & servers", image: "/images/macbook-product.jpg" },
+  { sku: "MGX-NW-001", name: "Cisco Catalyst 9200", specs: "24-port · PoE+ · Managed", category: "Networking", image: "/images/hero-hardware.jpg" },
+  { sku: "MGX-NW-002", name: "UniFi U6-Pro AP", specs: "WiFi 6 · Enterprise", category: "Networking", image: "/images/hero-hardware.jpg" },
+  { sku: "MGX-NW-003", name: "FortiGate 60F", specs: "Firewall · SD-WAN · VPN", category: "Networking", image: "/images/hero-hardware.jpg" },
 ];
 
 const tabs: Category[] = ["All", "Laptops", "Desktops & servers", "Networking"];
 
 const copy = {
   en: {
-    heroMeta: ["MGX / HARDWARE", "ENTERPRISE PROCUREMENT"],
+    heroMeta: "MGX / HARDWARE",
     heroTitle: "Enterprise hardware, delivered.",
+    heroBody:
+      "Enterprise-grade laptops, servers, and networking gear sourced from leading manufacturers — ready for deployment.",
     catalogEyebrow: "Catalog",
     catalogTitle: "Product lineup",
     catalogLede:
-      "Enterprise-grade laptops, servers, and networking gear sourced from leading manufacturers -- ready for deployment.",
+      "Filter by category, then request a quote. Specs, logistics, and volume pricing are handled with your account manager.",
     tabLabels: {
       All: "All",
       Laptops: "Laptops",
@@ -70,12 +72,14 @@ const copy = {
     volumeCta: "Request bulk pricing",
   },
   fr: {
-    heroMeta: ["MGX / MATÉRIEL", "APPROVISIONNEMENT ENTREPRISE"],
+    heroMeta: "MGX / MATÉRIEL",
     heroTitle: "Du matériel professionnel, livré.",
+    heroBody:
+      "Ordinateurs portables, serveurs et équipements réseau de niveau professionnel, issus des principaux fabricants — prêts à être déployés.",
     catalogEyebrow: "Catalogue",
     catalogTitle: "Gamme de produits",
     catalogLede:
-      "Ordinateurs portables, serveurs et équipements réseau de niveau professionnel, issus des principaux fabricants, prêts à être déployés.",
+      "Filtrez par catégorie, puis demandez un devis. Spécifications, logistique et tarifs de volume sont gérés avec votre gestionnaire de compte.",
     tabLabels: {
       All: "Tous",
       Laptops: "Ordinateurs portables",
@@ -109,36 +113,38 @@ const copy = {
 } as const;
 
 export default function HardwarePage() {
-  const [locale, setLocale] = useState<"en" | "fr">("en");
+  const locale = useClientLocale();
   const [filter, setFilter] = useState<Category>("All");
 
-  useEffect(() => {
-    const m = document.cookie.match(/(?:^|; )lang=(fr|en)/);
-    setLocale(m?.[1] === "fr" ? "fr" : "en");
-  }, []);
-
   const t = copy[locale];
-
   const visible = filter === "All" ? products : products.filter((p) => p.category === filter);
 
   return (
     <>
-      {/* ---- Hero ---- */}
-      <section className="page-hero">
-        <div className="container">
-          <div className="hero-meta">
-            <span>{t.heroMeta[0]}</span>
-            <span className="dot" />
-            <span>{t.heroMeta[1]}</span>
+      <section className="hero-page">
+        <div className="hero-page-media">
+          <Image
+            src="/images/hero-hardware.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="hero-page-scrim" aria-hidden="true" />
+        <div className="hero-page-inner">
+          <div className="container">
+            <span className="eyebrow">{t.heroMeta}</span>
+            <h1>{t.heroTitle}</h1>
+            <p>{t.heroBody}</p>
           </div>
-          <h1>{t.heroTitle}</h1>
         </div>
       </section>
 
-      {/* ---- Catalog ---- */}
       <section className="section">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head" data-reveal>
             <div>
               <p className="eyebrow">{t.catalogEyebrow}</p>
               <h2 className="h2">{t.catalogTitle}</h2>
@@ -146,11 +152,11 @@ export default function HardwarePage() {
             <p className="lede">{t.catalogLede}</p>
           </div>
 
-          {/* Filter toolbar */}
-          <div className="hw-toolbar">
+          <div className="hw-toolbar" data-reveal>
             {tabs.map((tab) => (
               <button
                 key={tab}
+                type="button"
                 className={`hw-tab${filter === tab ? " active" : ""}`}
                 onClick={() => setFilter(tab)}
               >
@@ -159,18 +165,31 @@ export default function HardwarePage() {
             ))}
           </div>
 
-          {/* Product grid */}
-          <div className="hw-grid">
+          <div className="hw-grid" data-reveal>
             {visible.map((p) => (
               <div key={p.sku} className="hw-card">
-                <div className="hw-thumb">{p.sku}</div>
-                <h4>{p.name}</h4>
-                <p className="hw-specs">{p.specs}</p>
-                <div className="hw-foot">
-                  <span className="hw-price">{t.quote}</span>
-                  <Link href="/contact" className="btn-link">
-                    {t.request}&nbsp;&rarr;
-                  </Link>
+                <div className="hw-thumb">
+                  <Image
+                    src={p.image}
+                    alt=""
+                    width={480}
+                    height={300}
+                    sizes="(max-width: 580px) 100vw, (max-width: 880px) 50vw, 33vw"
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                </div>
+                <div className="hw-card-body">
+                  <span className="mono" style={{ color: "var(--ink-3)", fontSize: 11 }}>
+                    {p.sku}
+                  </span>
+                  <h4>{p.name}</h4>
+                  <p className="hw-specs">{p.specs}</p>
+                  <div className="hw-foot">
+                    <span className="hw-price">{t.quote}</span>
+                    <Link href="/contact" className="btn-link">
+                      {t.request} →
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
@@ -178,12 +197,10 @@ export default function HardwarePage() {
         </div>
       </section>
 
-      {/* ---- Custom configs + Volume pricing ---- */}
-      <section className="section" style={{ background: "var(--bg-sunk)" }}>
+      <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
-          <div className="two-col">
-            {/* Custom configurations */}
-            <div className="card">
+          <div className="two-col" data-reveal>
+            <div>
               <p className="eyebrow">{t.customEyebrow}</p>
               <h2 className="h2" style={{ fontSize: "clamp(22px,2.5vw,32px)" }}>
                 {t.customTitle}
@@ -194,15 +211,13 @@ export default function HardwarePage() {
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 8 }}>
                 {t.customItems.map((item) => (
                   <li key={item} style={{ fontSize: 13, color: "var(--ink-2)", display: "flex", gap: 8 }}>
-                    <span style={{ color: "var(--accent)", fontFamily: "var(--font-mono)" }}>&rarr;</span>
+                    <span style={{ color: "var(--accent)", fontFamily: "var(--font-mono)" }}>→</span>
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
-
-            {/* Volume pricing */}
-            <div className="card">
+            <div>
               <p className="eyebrow">{t.volumeEyebrow}</p>
               <h2 className="h2" style={{ fontSize: "clamp(22px,2.5vw,32px)" }}>
                 {t.volumeTitle}
@@ -213,14 +228,14 @@ export default function HardwarePage() {
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 8 }}>
                 {t.volumeItems.map((item) => (
                   <li key={item} style={{ fontSize: 13, color: "var(--ink-2)", display: "flex", gap: 8 }}>
-                    <span style={{ color: "var(--accent)", fontFamily: "var(--font-mono)" }}>&rarr;</span>
+                    <span style={{ color: "var(--accent)", fontFamily: "var(--font-mono)" }}>→</span>
                     {item}
                   </li>
                 ))}
               </ul>
               <div style={{ marginTop: 20 }}>
                 <Link href="/contact" className="btn btn-primary">
-                  {t.volumeCta}&nbsp;&rarr;
+                  {t.volumeCta} →
                 </Link>
               </div>
             </div>

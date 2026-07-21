@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getLocale } from "@/lib/i18n";
 
@@ -43,18 +44,21 @@ const copy = {
         title: "Cybersecurity",
         body: "Foundational security, offensive testing, and compliance pathways. Prepares learners for industry certifications and hands-on security roles.",
         tags: ["CompTIA Security+", "Pen testing", "SOC & compliance"],
+        href: "/trainings/cybersecurity",
       },
       {
         num: "02 / NETWORKING",
         title: "Networking & infrastructure",
         body: "From Cisco fundamentals to modern cloud and SD-WAN architectures. Built for engineers who run the networks behind real organizations.",
         tags: ["Cisco CCNA", "Cloud networking", "SD-WAN"],
+        href: "/trainings/networking",
       },
       {
         num: "03 / AI & SOFTWARE",
         title: "AI & software engineering",
         body: "Applied machine learning, LLM systems, and full-stack engineering. Focused on shipping production software, not toy notebooks.",
         tags: ["Applied ML", "LLM systems", "Full-stack"],
+        href: "/trainings/ai-ml",
       },
     ],
     ctaTitle: "Ready to start learning?",
@@ -98,18 +102,21 @@ const copy = {
         title: "Cybersécurité",
         body: "Sécurité fondamentale, tests offensifs et parcours de conformité. Prépare les apprenants aux certifications de l’industrie et aux postes opérationnels en sécurité.",
         tags: ["CompTIA Security+", "Tests d’intrusion", "SOC & conformité"],
+        href: "/trainings/cybersecurity",
       },
       {
         num: "02 / RÉSEAUX",
         title: "Réseaux & infrastructure",
         body: "Des fondamentaux Cisco aux architectures cloud et SD-WAN modernes. Conçu pour les ingénieurs qui exploitent les réseaux de véritables organisations.",
         tags: ["Cisco CCNA", "Réseaux cloud", "SD-WAN"],
+        href: "/trainings/networking",
       },
       {
         num: "03 / IA & LOGICIEL",
         title: "IA & ingénierie logicielle",
         body: "Apprentissage automatique appliqué, systèmes à base de LLM et ingénierie full-stack. Axé sur la mise en production de logiciels, et non sur des exercices théoriques.",
         tags: ["ML appliqué", "Systèmes LLM", "Full-stack"],
+        href: "/trainings/ai-ml",
       },
     ],
     ctaTitle: "Prêt à vous lancer ?",
@@ -125,21 +132,30 @@ export default async function TrainingsPage() {
 
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <div className="hero-meta">
-            <span>{t.heroMeta[0]}</span>
-            <span className="dot" />
-            <span>{t.heroMeta[1]}</span>
+      <section className="hero-page">
+        <div className="hero-page-media">
+          <Image
+            src="/images/hero-trainings.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="hero-page-scrim" aria-hidden="true" />
+        <div className="hero-page-inner">
+          <div className="container">
+            <span className="eyebrow">{t.heroMeta[0]}</span>
+            <h1>{t.heroTitle}</h1>
+            <p>{t.heroBody}</p>
           </div>
-          <h1>{t.heroTitle}</h1>
-          <p>{t.heroBody}</p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <div className="stats-strip" style={{ marginBottom: 64 }}>
+          <div className="stats-strip" style={{ marginBottom: 64 }} data-reveal>
             {t.highlights.map((h) => (
               <div key={h.label} className="stat-cell">
                 <div className="stat-label">{h.label}</div>
@@ -158,16 +174,27 @@ export default async function TrainingsPage() {
             ))}
           </div>
 
-          <div className="section-head">
-            <span className="eyebrow">{t.focusEyebrow}</span>
-            <div>
-              <h2 className="h2">{t.focusTitle}</h2>
+          <div className="split-band" data-reveal style={{ marginBottom: 64 }}>
+            <div className="split-band-media">
+              <Image
+                src="/images/training-classroom.jpg"
+                alt=""
+                fill
+                sizes="(max-width: 880px) 100vw, 50vw"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+            <div className="split-band-copy">
+              <span className="eyebrow">{t.focusEyebrow}</span>
+              <h2 className="h2" style={{ margin: 0 }}>
+                {t.focusTitle}
+              </h2>
             </div>
           </div>
 
-          <div className="pillars">
+          <div className="pillars" data-reveal>
             {t.pillars.map((p) => (
-              <div key={p.num} className="pillar">
+              <Link key={p.num} href={p.href} className="pillar">
                 <div className="pillar-num">{p.num}</div>
                 <h3>{p.title}</h3>
                 <p>{p.body}</p>
@@ -176,7 +203,7 @@ export default async function TrainingsPage() {
                     <span key={tag} className="pillar-tag">{tag}</span>
                   ))}
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -184,12 +211,12 @@ export default async function TrainingsPage() {
 
       <section className="section">
         <div className="container">
-          <div className="cta-block">
+          <div className="cta-block" data-reveal>
             <h2>{t.ctaTitle}</h2>
             <div>
               <p>{t.ctaBody}</p>
               <Link href="/contact" className="btn btn-primary">
-                {t.ctaButton} &rarr;
+                {t.ctaButton} →
               </Link>
             </div>
           </div>

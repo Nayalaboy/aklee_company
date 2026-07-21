@@ -2,49 +2,45 @@
 
 import { useChat } from "@ai-sdk/react";
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { useClientLocale } from "@/lib/client-locale";
 
 const copy = {
   en: {
-    welcome:
-      "Hi! I'm the Mirigraphix advisor. I can help you with our training programs, enterprise hardware, R&D beta access, or consulting services. What are you looking for today?",
-    sectionLabel: "AI Advisor",
-    titlePre: "Talk to Our ",
-    titleHighlight: "Advisor",
-    heroBody: "Get instant guidance on trainings, hardware, R&D, and more.",
+    sectionLabel: "MGX / ADVISOR",
+    title: "Talk to our advisor",
+    heroBody: "Get guidance on trainings, hardware, R&D access, and consulting.",
     advisor: "Advisor",
     errorPre: "Something went wrong. Please try again or email us at ",
-    inputPlaceholder: "Ask about trainings, hardware, R&D...",
+    inputPlaceholder: "Ask about trainings, hardware, R&D…",
     preferEmail: "Prefer email?",
     or: " or ",
     useForm: "use our contact form",
+    welcome:
+      "Hi! I'm the Mirigraphix advisor. I can help you with our training programs, enterprise hardware, R&D beta access, or consulting services. What are you looking for today?",
+    send: "Send",
   },
   fr: {
-    welcome:
-      "Bonjour ! Je suis le conseiller Mirigraphix. Je peux vous renseigner sur nos formations, notre matériel professionnel, l’accès bêta à la R&D ou nos services de conseil. Que recherchez-vous aujourd’hui ?",
-    sectionLabel: "Conseiller IA",
-    titlePre: "Parlez à notre ",
-    titleHighlight: "conseiller",
+    sectionLabel: "MGX / CONSEILLER",
+    title: "Parlez à notre conseiller",
     heroBody:
-      "Obtenez des conseils instantanés sur les formations, le matériel, la R&D et plus encore.",
+      "Obtenez des conseils sur les formations, le matériel, l’accès R&D et le conseil.",
     advisor: "Conseiller",
-    errorPre:
-      "Une erreur est survenue. Veuillez réessayer ou nous écrire à ",
-    inputPlaceholder: "Posez vos questions sur les formations, le matériel, la R&D...",
+    errorPre: "Une erreur est survenue. Veuillez réessayer ou nous écrire à ",
+    inputPlaceholder: "Posez vos questions sur les formations, le matériel, la R&D…",
     preferEmail: "Vous préférez l’e-mail ?",
     or: " ou ",
     useForm: "utilisez notre formulaire de contact",
+    welcome:
+      "Bonjour ! Je suis le conseiller Mirigraphix. Je peux vous renseigner sur nos formations, notre matériel professionnel, l’accès bêta à la R&D ou nos services de conseil. Que recherchez-vous aujourd’hui ?",
+    send: "Envoyer",
   },
 } as const;
 
 export default function ChatPage() {
-  const [locale, setLocale] = useState<"en" | "fr">("en");
-  useEffect(() => {
-    const m = document.cookie.match(/(?:^|; )lang=(fr|en)/);
-    setLocale(m?.[1] === "fr" ? "fr" : "en");
-  }, []);
+  const locale = useClientLocale();
   const t = copy[locale];
-
   const welcomeText: string = t.welcome;
 
   const { messages, sendMessage, status, error } = useChat({
@@ -78,125 +74,123 @@ export default function ChatPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative py-16 lg:py-20 overflow-hidden bg-gray-950">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-primary/12 rounded-full blur-[120px] animate-blob" />
-          <div className="absolute bottom-1/4 right-1/3 w-72 h-72 bg-emerald/8 rounded-full blur-[100px] animate-blob-delay" />
+      <section className="hero-page" style={{ minHeight: "clamp(280px, 36vh, 400px)" }}>
+        <div className="hero-page-media">
+          <Image
+            src="/images/hero-faq.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+          />
         </div>
-        <div className="absolute inset-0 grain" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="section-label mb-4 inline-flex">{t.sectionLabel}</span>
-          <h1 className="text-3xl lg:text-4xl font-bold tracking-tight text-white mb-3 mt-4">
-            {t.titlePre}
-            <span className="gradient-text">{t.titleHighlight}</span>
-          </h1>
-          <p className="text-gray-400 max-w-lg mx-auto leading-relaxed">
-            {t.heroBody}
-          </p>
+        <div className="hero-page-scrim" aria-hidden="true" />
+        <div className="hero-page-inner">
+          <div className="container">
+            <span className="eyebrow">{t.sectionLabel}</span>
+            <h1>{t.title}</h1>
+            <p>{t.heroBody}</p>
+          </div>
         </div>
       </section>
 
-      {/* Chat */}
-      <section className="py-10 pb-24">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bento-card !p-0 overflow-hidden flex flex-col" style={{ height: "min(65vh, 600px)" }}>
-            {/* Messages */}
-            <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-4">
+      <section className="section" style={{ paddingTop: 40 }}>
+        <div className="chat-shell">
+          <div className="chat-panel">
+            <div ref={scrollRef} className="chat-log">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
-                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                  className={`chat-bubble ${msg.role === "user" ? "user" : "assistant"}`}
                 >
-                  <div
-                    className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
-                      msg.role === "user"
-                        ? "bg-gradient-to-r from-primary to-primary-light text-white rounded-br-md"
-                        : "bg-gray-50 text-gray-700 border border-gray-100 rounded-bl-md"
-                    }`}
-                  >
-                    {msg.role === "assistant" && (
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <div className="w-5 h-5 rounded-md bg-gradient-to-br from-primary via-primary-light to-violet flex items-center justify-center">
-                          <span className="text-white text-[8px] font-bold">MG</span>
-                        </div>
-                        <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">{t.advisor}</span>
-                      </div>
-                    )}
-                    <p className="whitespace-pre-wrap">
-                      {msg.parts
-                        ?.filter((p): p is { type: "text"; text: string } => p.type === "text")
-                        .map((p) => p.text)
-                        .join("") || msg.content}
-                    </p>
-                  </div>
+                  {msg.role === "assistant" && (
+                    <div
+                      className="mono"
+                      style={{
+                        fontSize: 10,
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                        color: "var(--ink-3)",
+                        marginBottom: 6,
+                      }}
+                    >
+                      {t.advisor}
+                    </div>
+                  )}
+                  <p style={{ margin: 0, whiteSpace: "pre-wrap" }}>
+                    {msg.parts
+                      ?.filter((p): p is { type: "text"; text: string } => p.type === "text")
+                      .map((p) => p.text)
+                      .join("") || msg.content}
+                  </p>
                 </div>
               ))}
               {isLoading && messages[messages.length - 1]?.role === "user" && (
-                <div className="flex justify-start">
-                  <div className="bg-gray-50 border border-gray-100 rounded-2xl rounded-bl-md px-4 py-3">
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <div className="w-5 h-5 rounded-md bg-gradient-to-br from-primary via-primary-light to-violet flex items-center justify-center">
-                        <span className="text-white text-[8px] font-bold">MG</span>
-                      </div>
-                      <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">{t.advisor}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-pulse" />
-                      <span className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-pulse" style={{ animationDelay: "0.2s" }} />
-                      <span className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-pulse" style={{ animationDelay: "0.4s" }} />
-                    </div>
+                <div className="chat-bubble assistant">
+                  <div
+                    className="mono"
+                    style={{
+                      fontSize: 10,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                      color: "var(--ink-3)",
+                      marginBottom: 6,
+                    }}
+                  >
+                    {t.advisor}
                   </div>
+                  <span style={{ color: "var(--ink-3)" }}>…</span>
                 </div>
               )}
               {error && (
-                <div className="flex justify-start">
-                  <div className="bg-red-50 border border-red-100 rounded-2xl rounded-bl-md px-4 py-3 text-sm text-red-600">
-                    {t.errorPre}
-                    <a href="mailto:mirigraphixx@gmail.com" className="underline font-medium">
-                      mirigraphixx@gmail.com
-                    </a>
-                  </div>
+                <div
+                  className="chat-bubble assistant"
+                  style={{ borderColor: "color-mix(in oklch, var(--signal-red) 35%, var(--line))" }}
+                >
+                  {t.errorPre}
+                  <a href="mailto:mirigraphixx@gmail.com" style={{ textDecoration: "underline" }}>
+                    mirigraphixx@gmail.com
+                  </a>
                 </div>
               )}
             </div>
 
-            {/* Input */}
-            <div className="border-t border-gray-100 p-4 bg-white">
-              <form onSubmit={handleSubmit} className="flex gap-2">
-                <input
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  placeholder={t.inputPlaceholder}
-                  className="flex-1 px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all placeholder-gray-400"
-                  disabled={isLoading}
-                />
-                <button
-                  type="submit"
-                  disabled={isLoading || !input.trim()}
-                  className="px-5 py-3 bg-gradient-to-r from-primary to-primary-light text-white rounded-xl text-sm font-semibold hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none flex-shrink-0"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
-                </button>
-              </form>
-            </div>
+            <form className="chat-composer" onSubmit={handleSubmit}>
+              <input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder={t.inputPlaceholder}
+                disabled={isLoading}
+                aria-label={t.inputPlaceholder}
+              />
+              <button
+                type="submit"
+                className="btn btn-primary"
+                disabled={isLoading || !input.trim()}
+              >
+                {t.send}
+              </button>
+            </form>
           </div>
 
-          {/* Fallback */}
-          <div className="mt-6 text-center">
-            <p className="text-xs text-warm-gray-500">
-              {t.preferEmail}{" "}
-              <a href="mailto:mirigraphixx@gmail.com" className="text-primary hover:underline font-medium">
-                mirigraphixx@gmail.com
-              </a>
-              {t.or}
-              <Link href="/contact" className="text-primary hover:underline font-medium">
-                {t.useForm}
-              </Link>
-            </p>
-          </div>
+          <p
+            style={{
+              marginTop: 20,
+              textAlign: "center",
+              fontSize: 13,
+              color: "var(--ink-3)",
+            }}
+          >
+            {t.preferEmail}{" "}
+            <a href="mailto:mirigraphixx@gmail.com" style={{ color: "var(--accent)" }}>
+              mirigraphixx@gmail.com
+            </a>
+            {t.or}
+            <Link href="/contact" style={{ color: "var(--accent)" }}>
+              {t.useForm}
+            </Link>
+          </p>
         </div>
       </section>
     </>

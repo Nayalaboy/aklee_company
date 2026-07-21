@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getLocale } from "@/lib/i18n";
 
@@ -104,34 +105,33 @@ export default async function TeamPage() {
 
   return (
     <>
-      {/* Page hero */}
-      <section className="page-hero">
-        <div className="container">
-          <div className="hero-meta">
-            <span>{t.heroMeta[0]}</span>
-            <span className="dot" />
-            <span>{t.heroMeta[1]}</span>
+      <section className="hero-page">
+        <div className="hero-page-media">
+          <Image src="/images/hero-team.jpg" alt="" fill priority sizes="100vw" style={{ objectFit: "cover" }} />
+        </div>
+        <div className="hero-page-scrim" aria-hidden="true" />
+        <div className="hero-page-inner">
+          <div className="container">
+            <span className="eyebrow">{t.heroMeta[0]}</span>
+            <h1>{t.heroTitle}</h1>
+            <p>{t.lede}</p>
           </div>
-          <h1>{t.heroTitle}</h1>
         </div>
       </section>
 
-      {/* Functions */}
       <section className="section">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head" data-reveal>
             <h2 className="h2">{t.sectionTitle}</h2>
-            <p className="lede">{t.lede}</p>
+            <p className="lede">{t.growingNote}</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
-            {t.functions.map((f) => (
-              <div key={f.name} className="card">
-                <div className="hw-thumb" style={{ height: 100, marginBottom: 16 }}>
-                  {f.name.slice(0, 2).toUpperCase()}
-                </div>
-                <h3 className="h3">{f.name}</h3>
-                <p className="mono" style={{ color: "var(--ink-3)", margin: "6px 0 14px" }}>{f.body}</p>
-                <div className="pillar-tags">
+          <div className="path-list" data-reveal>
+            {t.functions.map((f, i) => (
+              <div key={f.name} className="path-row" style={{ cursor: "default" }}>
+                <span className="path-idx">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{f.name}</h3>
+                <p className="path-body">{f.body}</p>
+                <div className="pillar-tags" style={{ paddingTop: 4 }}>
                   {f.tags.map((e) => (
                     <span key={e} className="pillar-tag">{e}</span>
                   ))}
@@ -139,7 +139,6 @@ export default async function TeamPage() {
               </div>
             ))}
           </div>
-          <p className="lede" style={{ marginTop: "24px" }}>{t.growingNote}</p>
         </div>
       </section>
 

@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Image from "next/image";
+import { useClientLocale } from "@/lib/client-locale";
 
 const copy = {
   en: {
     metaContact: "MGX / CONTACT",
-    metaResponse: "< 48H RESPONSE",
     heroTitle: "Start a conversation.",
     heroBody:
       "Consulting engagements, hardware quotes, or cohort applications: we read every message.",
@@ -38,7 +39,6 @@ const copy = {
   },
   fr: {
     metaContact: "MGX / CONTACT",
-    metaResponse: "RÉPONSE < 48H",
     heroTitle: "Engageons la conversation.",
     heroBody:
       "Missions de conseil, devis de matériel ou candidatures aux promotions : nous lisons chaque message.",
@@ -73,11 +73,7 @@ const copy = {
 } as const;
 
 export default function ContactPage() {
-  const [locale, setLocale] = useState<"en" | "fr">("en");
-  useEffect(() => {
-    const m = document.cookie.match(/(?:^|; )lang=(fr|en)/);
-    setLocale(m?.[1] === "fr" ? "fr" : "en");
-  }, []);
+  const locale = useClientLocale();
   const t = copy[locale];
 
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -119,29 +115,39 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <div className="hero-meta">
-            <span>{t.metaContact}</span>
-            <span className="dot" />
-            <span>{t.metaResponse}</span>
+      <section className="hero-page">
+        <div className="hero-page-media">
+          <Image
+            src="/images/hero-contact.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="hero-page-scrim" aria-hidden="true" />
+        <div className="hero-page-inner">
+          <div className="container">
+            <span className="eyebrow">{t.metaContact}</span>
+            <h1>{t.heroTitle}</h1>
+            <p>{t.heroBody}</p>
           </div>
-          <h1>{t.heroTitle}</h1>
-          <p>{t.heroBody}</p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <div className="contact-grid">
+          <div className="contact-grid" data-reveal>
             <form className="form" onSubmit={handleSubmit}>
               <div className="field">
-                <label>{t.nameLabel}</label>
-                <input name="name" required placeholder={t.namePlaceholder} />
+                <label htmlFor="name">{t.nameLabel}</label>
+                <input id="name" name="name" required placeholder={t.namePlaceholder} />
               </div>
               <div className="field">
-                <label>{t.emailLabel}</label>
+                <label htmlFor="email">{t.emailLabel}</label>
                 <input
+                  id="email"
                   name="email"
                   required
                   type="email"
@@ -149,20 +155,21 @@ export default function ContactPage() {
                 />
               </div>
               <div className="field">
-                <label>{t.companyLabel}</label>
-                <input name="company" placeholder={t.companyPlaceholder} />
+                <label htmlFor="company">{t.companyLabel}</label>
+                <input id="company" name="company" placeholder={t.companyPlaceholder} />
               </div>
               <div className="field">
-                <label>{t.interestLabel}</label>
-                <select name="topic">
+                <label htmlFor="topic">{t.interestLabel}</label>
+                <select id="topic" name="topic">
                   {t.topics.map((topic) => (
                     <option key={topic}>{topic}</option>
                   ))}
                 </select>
               </div>
               <div className="field">
-                <label>{t.messageLabel}</label>
+                <label htmlFor="message">{t.messageLabel}</label>
                 <textarea
+                  id="message"
                   name="message"
                   required
                   placeholder={t.messagePlaceholder}
@@ -191,7 +198,7 @@ export default function ContactPage() {
                     {status === "error" && (
                       <p
                         style={{
-                          color: "var(--signal-red, #e53e3e)",
+                          color: "var(--signal-red)",
                           fontFamily: "var(--font-mono)",
                           fontSize: 13,
                           marginTop: 12,

@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { useClientLocale } from "@/lib/client-locale";
 
 const copy = {
   en: {
@@ -100,24 +102,21 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 }
 
 export default function FAQPage() {
-  const [locale, setLocale] = useState<"en" | "fr">("en");
-  useEffect(() => {
-    const m = document.cookie.match(/(?:^|; )lang=(fr|en)/);
-    setLocale(m?.[1] === "fr" ? "fr" : "en");
-  }, []);
+  const locale = useClientLocale();
   const t = copy[locale];
 
   return (
     <>
-      {/* Page hero */}
-      <section className="page-hero">
-        <div className="container">
-          <div className="hero-meta">
-            <span>{t.heroMeta[0]}</span>
-            <span className="dot" />
-            <span>{t.heroMeta[1]}</span>
+      <section className="hero-page" style={{ minHeight: "clamp(280px, 36vh, 400px)" }}>
+        <div className="hero-page-media">
+          <Image src="/images/hero-faq.jpg" alt="" fill priority sizes="100vw" style={{ objectFit: "cover" }} />
+        </div>
+        <div className="hero-page-scrim" aria-hidden="true" />
+        <div className="hero-page-inner">
+          <div className="container">
+            <span className="eyebrow">{t.heroMeta[0]}</span>
+            <h1>{t.heroTitle}</h1>
           </div>
-          <h1>{t.heroTitle}</h1>
         </div>
       </section>
 

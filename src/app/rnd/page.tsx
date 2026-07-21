@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getLocale } from "@/lib/i18n";
 
@@ -149,28 +150,35 @@ export default async function RnDPage() {
 
   return (
     <>
-      {/* Page hero */}
-      <section className="page-hero">
-        <div className="container">
-          <div className="hero-meta">
-            <span>{t.heroMeta[0]}</span>
-            <span className="dot" />
-            <span>{t.heroMeta[1]}</span>
+      <section className="hero-page">
+        <div className="hero-page-media">
+          <Image
+            src="/images/hero-rnd.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="hero-page-scrim" aria-hidden="true" />
+        <div className="hero-page-inner">
+          <div className="container">
+            <span className="eyebrow">{t.heroMeta[0]}</span>
+            <h1>{t.heroTitle}</h1>
+            <p>{t.projectsLede}</p>
           </div>
-          <h1>{t.heroTitle}</h1>
         </div>
       </section>
 
-      {/* Active projects */}
       <section className="section">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head" data-reveal>
             <h2 className="h2">{t.projectsTitle}</h2>
             <p className="lede">{t.projectsLede}</p>
           </div>
 
-          <div className="projects">
-            {/* Feature card: Cross-Border Payments */}
+          <div className="projects" data-reveal>
             <article className="project feature">
               <div className="project-body">
                 <div className="project-head">
@@ -191,67 +199,97 @@ export default async function RnDPage() {
                 </div>
               </div>
               <div className="project-visual">
-                <span className="mono" style={{ color: "var(--ink-3)" }}>
-                  {t.roadmap}
-                </span>
-                <div className="stage-track">
-                  {t.stages.map((s, i) => (
-                    <div
-                      key={s}
-                      className={`stage ${i <= 2 ? "done" : ""} ${i === 2 ? "current" : ""}`}
-                    >
-                      <span className="stage-dot" />
-                      <span className="stage-label">{s}</span>
-                    </div>
-                  ))}
+                <Image
+                  src="/images/rnd-money-transfer.png"
+                  alt=""
+                  fill
+                  sizes="(max-width: 960px) 100vw, 45vw"
+                  style={{ objectFit: "cover" }}
+                />
+                <div className="project-visual-overlay">
+                  <span className="mono" style={{ opacity: 0.8, display: "block", marginBottom: 8 }}>
+                    {t.roadmap}
+                  </span>
+                  <div className="stage-track on-media">
+                    {t.stages.map((s, i) => (
+                      <div
+                        key={s}
+                        className={`stage ${i <= 2 ? "done" : ""} ${i === 2 ? "current" : ""}`}
+                      >
+                        <span className="stage-dot" />
+                        <span className="stage-label">{s}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </article>
 
-            {/* AI Job Matching */}
             <article className="project">
-              <div className="project-head">
-                <span className="project-id">{p2.id}</span>
-                <span className={`status ${p2.statusKind}`}>
-                  <span className="status-dot" />
-                  {p2.status}
-                </span>
+              <div className="project-shot">
+                <Image
+                  src="/images/rnd-job-app.png"
+                  alt=""
+                  width={640}
+                  height={400}
+                  sizes="(max-width: 960px) 100vw, 33vw"
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
               </div>
-              <h3 className="project-name">{p2.name}</h3>
-              <p className="project-desc">{p2.body}</p>
-              <div className="project-meta">
-                <span>{p2.note}</span>
+              <div className="project-body-pad">
+                <div className="project-head">
+                  <span className="project-id">{p2.id}</span>
+                  <span className={`status ${p2.statusKind}`}>
+                    <span className="status-dot" />
+                    {p2.status}
+                  </span>
+                </div>
+                <h3 className="project-name">{p2.name}</h3>
+                <p className="project-desc">{p2.body}</p>
+                <div className="project-meta">
+                  <span>{p2.note}</span>
+                </div>
               </div>
             </article>
 
-            {/* Immigration Assist */}
             <article className="project">
-              <div className="project-head">
-                <span className="project-id">{p3.id}</span>
-                <span className={`status ${p3.statusKind}`}>
-                  <span className="status-dot" />
-                  {p3.status}
-                </span>
+              <div className="project-shot">
+                <Image
+                  src="/images/rnd-immigration.png"
+                  alt=""
+                  width={640}
+                  height={400}
+                  sizes="(max-width: 960px) 100vw, 33vw"
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
               </div>
-              <h3 className="project-name">{p3.name}</h3>
-              <p className="project-desc">{p3.body}</p>
-              <div className="project-meta">
-                <span>{p3.note}</span>
+              <div className="project-body-pad">
+                <div className="project-head">
+                  <span className="project-id">{p3.id}</span>
+                  <span className={`status ${p3.statusKind}`}>
+                    <span className="status-dot" />
+                    {p3.status}
+                  </span>
+                </div>
+                <h3 className="project-name">{p3.name}</h3>
+                <p className="project-desc">{p3.body}</p>
+                <div className="project-meta">
+                  <span>{p3.note}</span>
+                </div>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      {/* How we build */}
-      <section className="section">
+      <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
-          <div className="section-head">
+          <div className="section-head" data-reveal>
             <h2 className="h2">{t.buildTitle}</h2>
             <p className="lede">{t.buildLede}</p>
           </div>
 
-          <div className="approach-grid">
+          <div className="approach-grid" data-reveal>
             {t.approach.map((a) => (
               <div className="approach-cell" key={a.num}>
                 <span className="num">{a.num}</span>
@@ -263,18 +301,17 @@ export default async function RnDPage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="section">
         <div className="container">
-          <div className="cta-block">
+          <div className="cta-block" data-reveal>
             <h2>{t.ctaTitle}</h2>
             <div>
               <p>{t.ctaBody}</p>
-              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <Link href="/contact" className="btn btn-primary">
                   {t.ctaPrimary}
                 </Link>
-                <Link href="/rnd" className="btn btn-ghost">
+                <Link href="/contact" className="btn btn-ghost">
                   {t.ctaGhost}
                 </Link>
               </div>

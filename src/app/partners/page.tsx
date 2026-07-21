@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getLocale } from "@/lib/i18n";
 
@@ -84,37 +85,36 @@ export default async function PartnersPage() {
 
   return (
     <>
-      {/* Page hero */}
-      <section className="page-hero">
-        <div className="container">
-          <div className="hero-meta">
-            <span>{t.heroMeta[0]}</span>
-            <span className="dot" />
-            <span>{t.heroMeta[1]}</span>
+      <section className="hero-page">
+        <div className="hero-page-media">
+          <Image src="/images/hero-partners.jpg" alt="" fill priority sizes="100vw" style={{ objectFit: "cover" }} />
+        </div>
+        <div className="hero-page-scrim" aria-hidden="true" />
+        <div className="hero-page-inner">
+          <div className="container">
+            <span className="eyebrow">{t.heroMeta[0]}</span>
+            <h1>{t.heroTitle}</h1>
+            <p>{t.lede}</p>
           </div>
-          <h1>{t.heroTitle}</h1>
         </div>
       </section>
 
-      {/* Partnership areas */}
       <section className="section">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head" data-reveal>
             <h2 className="h2">{t.sectionTitle}</h2>
-            <p className="lede">{t.lede}</p>
+            <p className="lede">{t.certNote}</p>
           </div>
 
-          <div className="pillars">
-            {t.areas.map((a) => (
-              <div key={a.name} className="pillar">
-                <span className="pillar-num">{a.type}</span>
-                <h3 className="h3">{a.name}</h3>
+          <div className="approach-grid approach-grid-4" data-reveal>
+            {t.areas.map((a, i) => (
+              <div key={a.name} className="approach-cell">
+                <span className="num">{String(i + 1).padStart(2, "0")} · {a.type}</span>
+                <h4>{a.name}</h4>
                 <p>{a.desc}</p>
               </div>
             ))}
           </div>
-
-          <p className="lede" style={{ marginTop: "24px" }}>{t.certNote}</p>
         </div>
       </section>
 

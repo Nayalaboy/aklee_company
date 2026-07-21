@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getLocale } from "@/lib/i18n";
 
@@ -50,25 +51,27 @@ export default async function CareersPage() {
 
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <div className="hero-meta">
-            <span>{t.heroMeta[0]}</span>
-            <span className="dot" />
-            <span>{t.heroMeta[1]}</span>
+      <section className="hero-page">
+        <div className="hero-page-media">
+          <Image src="/images/hero-careers.jpg" alt="" fill priority sizes="100vw" style={{ objectFit: "cover" }} />
+        </div>
+        <div className="hero-page-scrim" aria-hidden="true" />
+        <div className="hero-page-inner">
+          <div className="container">
+            <span className="eyebrow">{t.heroMeta[0]}</span>
+            <h1>{t.heroTitle}</h1>
+            <p>{t.heroBody}</p>
           </div>
-          <h1>{t.heroTitle}</h1>
-          <p>{t.heroBody}</p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head" data-reveal>
             <h2 className="h2">{t.whyTitle}</h2>
             <p className="lede">{t.whyLede}</p>
           </div>
-          <div className="approach-grid">
+          <div className="approach-grid approach-grid-4" data-reveal>
             {t.benefits.map((b) => (
               <div key={b.num} className="approach-cell">
                 <span className="num">{b.num}</span>
