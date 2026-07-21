@@ -11,9 +11,8 @@ const copy = {
     resources: "Resources",
     links: {
       projects: "Projects",
-      payments: "Cross-Border Payments",
-      jobs: "AI Job Matching",
-      immigration: "Immigration",
+      beta: "Beta programme",
+      how: "How we build",
       consulting: "Consulting",
       hardware: "Hardware",
       training: "Training",
@@ -42,9 +41,8 @@ const copy = {
     resources: "Ressources",
     links: {
       projects: "Projets",
-      payments: "Paiements transfrontaliers",
-      jobs: "Mise en relation par IA",
-      immigration: "Immigration",
+      beta: "Programme bêta",
+      how: "Notre méthode",
       consulting: "Conseil",
       hardware: "Matériel",
       training: "Formations",
@@ -103,9 +101,8 @@ export default function Footer({ locale }: { locale: Locale }) {
             <h4>{t.research}</h4>
             <ul>
               <li><Link href="/rnd">{t.links.projects}</Link></li>
-              <li><Link href="/rnd#payments">{t.links.payments}</Link></li>
-              <li><Link href="/rnd#jobs">{t.links.jobs}</Link></li>
-              <li><Link href="/rnd#immigration">{t.links.immigration}</Link></li>
+              <li><Link href="/rnd">{t.links.how}</Link></li>
+              <li><Link href="/contact">{t.links.beta}</Link></li>
             </ul>
           </div>
           <div>

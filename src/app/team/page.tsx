@@ -16,7 +16,7 @@ const copy = {
       {
         name: "Engineering",
         body:
-          "Designs, builds, and operates our software products across fintech, AI, and immigration workflows.",
+          "Designs, builds, and operates the software products coming out of our R&D lab.",
         tags: ["Full-stack", "Security"],
       },
       {
@@ -65,7 +65,7 @@ const copy = {
       {
         name: "Ingénierie",
         body:
-          "Conçoit, développe et exploite nos produits logiciels dans la fintech, l’IA et les parcours d’immigration.",
+          "Conçoit, développe et exploite les produits logiciels issus de notre laboratoire de R&D.",
         tags: ["Full-stack", "Sécurité"],
       },
       {

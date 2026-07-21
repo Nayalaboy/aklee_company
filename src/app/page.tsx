@@ -11,7 +11,7 @@ const copy = {
     heroMeta: ["MGX-LLC / 2026", "New York, NY", "Technology company"],
     heroTitle: "We build what’s next",
     heroBody:
-      "Mirigraphix is a research-driven technology company. We build cross-border fintech, AI workforce tools, and immigration software, backed by consulting, enterprise hardware, and professional training programs.",
+      "Mirigraphix is a research-driven technology company. We build software for cross-border markets between the U.S. and Africa — currently in stealth — backed by consulting, enterprise hardware, and professional training programs.",
     seeRnd: "See R&D",
     contact: "Contact us",
     offerEyebrow: "What we do",
@@ -24,8 +24,8 @@ const copy = {
         badge: "The lab",
         title: "Product engineering",
         body:
-          "We design, build, and operate software products that tackle hard cross-border problems: payments, hiring, and immigration. This is the work everything else exists to fund.",
-        chips: ["Fintech", "AI / ML", "LegalTech"],
+          "We design, build, and operate software products that tackle hard cross-border problems between the U.S. and Africa. The products are in stealth until launch — this is the work everything else exists to fund.",
+        chips: ["In stealth", "3 projects", "U.S. ↔ Africa"],
         go: "Explore R&D",
       },
       consulting: {
@@ -48,39 +48,27 @@ const copy = {
     rndEyebrow: "R&D",
     rndTitle: "What we’re building",
     rndLede:
-      "Three products in various stages of development. Each one addresses a friction point in cross-border life.",
+      "Three products in various stages of development, each addressing a friction point in cross-border life. The details stay in the lab until launch.",
     stages: ["Design", "Pilot", "Beta", "Scale"],
+    ndaTag: "Details under NDA",
     products: [
       {
         id: "MGX/R-01",
         status: "Beta",
         statusKind: "status-beta",
-        name: "Cross-Border Payments",
-        body:
-          "Real-time settlement rails connecting U.S. and African corridors. Lower fees, faster delivery, full compliance.",
-        meta: [
-          ["Focus", "U.S. ↔ Africa corridors"],
-          ["Stage", "Private beta"],
-          ["Compliance", "KYC / AML by design"],
-        ],
+        note: "Private beta — access by application.",
         activeStage: 2,
       },
       {
         id: "MGX/R-02",
         status: "In Development",
         statusKind: "status-dev",
-        name: "AI Job Matching",
-        body:
-          "An ML-powered engine that matches diaspora talent to verified roles across borders.",
         note: "In active development.",
       },
       {
         id: "MGX/R-03",
         status: "Planned",
         statusKind: "status-soon",
-        name: "Immigration Assist",
-        body:
-          "Guided immigration workflows with document prep, status tracking, and attorney coordination.",
         note: "On our roadmap.",
       },
     ],
@@ -94,7 +82,7 @@ const copy = {
     heroMeta: ["MGX-LLC / 2026", "New York, NY", "Entreprise technologique"],
     heroTitle: "Nous construisons l’avenir",
     heroBody:
-      "Mirigraphix est une entreprise technologique axée sur la recherche. Nous développons des solutions fintech transfrontalières, des outils RH basés sur l’IA et des logiciels d’immigration, soutenus par du conseil, du matériel professionnel et des programmes de formation.",
+      "Mirigraphix est une entreprise technologique axée sur la recherche. Nous développons des logiciels pour les marchés transfrontaliers entre les États-Unis et l’Afrique — actuellement en mode confidentiel — soutenus par du conseil, du matériel professionnel et des programmes de formation.",
     seeRnd: "Voir la R&D",
     contact: "Nous contacter",
     offerEyebrow: "Ce que nous faisons",
@@ -107,8 +95,8 @@ const copy = {
         badge: "Le laboratoire",
         title: "Ingénierie produit",
         body:
-          "Nous concevons, développons et exploitons des produits logiciels qui s’attaquent à des problèmes transfrontaliers complexes : paiements, recrutement et immigration. C’est le travail que tout le reste sert à financer.",
-        chips: ["Fintech", "IA / ML", "LegalTech"],
+          "Nous concevons, développons et exploitons des produits logiciels qui s’attaquent à des problèmes transfrontaliers complexes entre les États-Unis et l’Afrique. Les produits restent confidentiels jusqu’au lancement — c’est le travail que tout le reste sert à financer.",
+        chips: ["Confidentiel", "3 projets", "É.-U. ↔ Afrique"],
         go: "Explorer la R&D",
       },
       consulting: {
@@ -131,39 +119,27 @@ const copy = {
     rndEyebrow: "R&D",
     rndTitle: "Ce que nous développons",
     rndLede:
-      "Trois produits à différents stades de développement. Chacun s’attaque à un point de friction de la vie transfrontalière.",
+      "Trois produits à différents stades de développement, chacun s’attaquant à un point de friction de la vie transfrontalière. Les détails restent au laboratoire jusqu’au lancement.",
     stages: ["Conception", "Pilote", "Bêta", "Déploiement"],
+    ndaTag: "Détails sous NDA",
     products: [
       {
         id: "MGX/R-01",
         status: "Bêta",
         statusKind: "status-beta",
-        name: "Paiements transfrontaliers",
-        body:
-          "Des rails de règlement en temps réel reliant les corridors entre les États-Unis et l’Afrique. Moins de frais, livraison plus rapide, conformité totale.",
-        meta: [
-          ["Couverture", "Corridors É.-U. ↔ Afrique"],
-          ["Stade", "Bêta privée"],
-          ["Conformité", "KYC / AML intégrés"],
-        ],
+        note: "Bêta privée — accès sur candidature.",
         activeStage: 2,
       },
       {
         id: "MGX/R-02",
         status: "En développement",
         statusKind: "status-dev",
-        name: "Mise en relation par IA",
-        body:
-          "Un moteur basé sur l’apprentissage automatique qui met en relation les talents de la diaspora avec des postes vérifiés au-delà des frontières.",
         note: "En développement actif.",
       },
       {
         id: "MGX/R-03",
         status: "Prévu",
         statusKind: "status-soon",
-        name: "Assistance à l’immigration",
-        body:
-          "Des parcours d’immigration guidés avec préparation des documents, suivi des dossiers et coordination avec les avocats.",
         note: "Sur notre feuille de route.",
       },
     ],
@@ -323,7 +299,7 @@ export default async function Home() {
           </div>
 
           <div className="projects">
-            {/* Feature card: Cross-Border Payments */}
+            {/* Feature card: most advanced project (redacted) */}
             <div className="project feature">
               <div className="project-body">
                 <div className="project-head">
@@ -333,14 +309,14 @@ export default async function Home() {
                     {p1.status}
                   </span>
                 </div>
-                <h3 className="project-name">{p1.name}</h3>
-                <p className="project-desc">{p1.body}</p>
+                <div className="redact-lines" aria-hidden="true">
+                  <span className="redact-line" />
+                  <span className="redact-line" />
+                  <span className="redact-line" />
+                </div>
                 <div className="project-meta">
-                  {p1.meta?.map(([k, v]) => (
-                    <span key={k}>
-                      {k}: <b>{v}</b>
-                    </span>
-                  ))}
+                  <span className="redact-tag">{t.ndaTag}</span>
+                  <span>{p1.note}</span>
                 </div>
               </div>
               <div className="project-visual">
@@ -363,37 +339,26 @@ export default async function Home() {
               </div>
             </div>
 
-            {/* AI Job Matching */}
-            <div className="project">
-              <div className="project-head">
-                <span className="project-id">{p2.id}</span>
-                <span className={`status ${p2.statusKind}`}>
-                  <span className="status-dot" />
-                  {p2.status}
-                </span>
+            {[p2, p3].map((p) => (
+              <div key={p.id} className="project half">
+                <div className="project-head">
+                  <span className="project-id">{p.id}</span>
+                  <span className={`status ${p.statusKind}`}>
+                    <span className="status-dot" />
+                    {p.status}
+                  </span>
+                </div>
+                <div className="redact-lines" aria-hidden="true">
+                  <span className="redact-line" />
+                  <span className="redact-line" />
+                  <span className="redact-line" />
+                </div>
+                <div className="project-meta">
+                  <span className="redact-tag">{t.ndaTag}</span>
+                  <span>{p.note}</span>
+                </div>
               </div>
-              <h3 className="project-name">{p2.name}</h3>
-              <p className="project-desc">{p2.body}</p>
-              <div className="project-meta">
-                <span>{p2.note}</span>
-              </div>
-            </div>
-
-            {/* Immigration Assist */}
-            <div className="project">
-              <div className="project-head">
-                <span className="project-id">{p3.id}</span>
-                <span className={`status ${p3.statusKind}`}>
-                  <span className="status-dot" />
-                  {p3.status}
-                </span>
-              </div>
-              <h3 className="project-name">{p3.name}</h3>
-              <p className="project-desc">{p3.body}</p>
-              <div className="project-meta">
-                <span>{p3.note}</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

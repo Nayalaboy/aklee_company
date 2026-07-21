@@ -37,8 +37,6 @@ export const metadata: Metadata = {
     "technology training",
     "cybersecurity",
     "enterprise hardware",
-    "fintech",
-    "cross-border payments",
     "consulting",
   ],
   openGraph: {

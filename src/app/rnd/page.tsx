@@ -5,49 +5,43 @@ export const metadata = { title: "Research & Development" };
 
 const copy = {
   en: {
-    heroMeta: ["MGX / RESEARCH", "3 ACTIVE PROJECTS"],
-    heroTitle: "Built, shipped, measured.",
+    heroMeta: ["MGX / RESEARCH", "3 PROJECTS IN STEALTH"],
+    heroTitle: "Built quietly, shipped deliberately.",
     heroBody:
-      "The R&D lab is the core of Mirigraphix: three products in flight, each tackling a friction point in cross-border life between the U.S. and Africa.",
+      "The R&D lab is the core of Mirigraphix. Three products are in flight for cross-border markets between the U.S. and Africa. What they are stays confidential until launch — beta participants get the full picture under NDA.",
     projectsTitle: "Active projects",
     projectsLede:
-      "Three applications in flight, each targeting an underserved corridor between the U.S. and the African continent.",
+      "We publish our codenames, stage, and cadence — not our findings. Each project is disclosed to beta participants and design partners under NDA.",
     roadmap: "Roadmap",
     stages: ["Design", "Pilot", "Beta", "Scale"],
-    p1: {
-      id: "MGX / R-01",
-      status: "Beta",
-      statusKind: "status-beta",
-      name: "Cross-Border Payments",
-      body:
-        "A faster, more affordable way to move money between the U.S. and Africa. Settlement in seconds, not hours, with transparent fees and real-time FX.",
-      meta: [
-        ["Focus", "U.S. ↔ Africa corridors"],
-        ["Stage", "Private beta"],
-        ["Compliance", "KYC / AML by design"],
-      ],
-    },
-    p2: {
-      id: "MGX / R-02",
-      status: "Dev",
-      statusKind: "status-dev",
-      name: "AI Job Matching",
-      body:
-        "Connecting talent with opportunities across borders using intelligent matching: résumé parsing, skill-gap analysis, and employer fit scoring.",
-      note: "In active development.",
-    },
-    p3: {
-      id: "MGX / R-03",
-      status: "Soon",
-      statusKind: "status-soon",
-      name: "Immigration Assist",
-      body:
-        "Simplifying complex immigration processes with AI-guided document prep, timeline tracking, and eligibility checks.",
-      note: "On our roadmap.",
-    },
+    ndaTag: "Details under NDA",
+    projects: [
+      {
+        id: "MGX / R-01",
+        status: "Beta",
+        statusKind: "status-beta",
+        stage: "Private beta — access by application",
+        activeStage: 2,
+      },
+      {
+        id: "MGX / R-02",
+        status: "In Development",
+        statusKind: "status-dev",
+        stage: "In active development",
+      },
+      {
+        id: "MGX / R-03",
+        status: "Planned",
+        statusKind: "status-soon",
+        stage: "On our roadmap",
+      },
+    ],
+    whyTitle: "Why stealth?",
+    whyBody:
+      "We work in markets where being first matters. Publishing feature lists and roadmaps before launch hands our research to competitors. So the public page stays deliberately quiet, and the people who need detail — beta users, design partners, investors — get it directly from us, under NDA.",
     buildTitle: "How we build",
     buildLede:
-      "Small teams, tight loops, and a bias toward publishing what we learn.",
+      "The process is public even when the products aren't: small teams, tight loops, measurable outcomes.",
     approach: [
       {
         num: "01 HYPOTHESIS",
@@ -62,62 +56,56 @@ const copy = {
           "We scope work to eight-week cycles. At the end of each block we ship, measure, and decide whether to continue or pivot.",
       },
       {
-        num: "03 PUBLISH",
-        title: "Notes open by default",
+        num: "03 DISCLOSURE",
+        title: "Process public, findings private",
         body:
-          "Research notes, design decisions, and post-mortems are published internally and, where possible, externally.",
+          "We share how we work openly. What we discover stays inside the lab — and with our NDA'd partners — until it ships.",
       },
     ],
-    ctaTitle: "Become a design partner or a beta user.",
+    ctaTitle: "Want to see what's behind the redactions?",
     ctaBody:
-      "We are looking for early adopters who want to shape the products we ship. Join the programme and get priority access.",
-    ctaPrimary: "Get in touch",
+      "Join the beta programme or become a design partner. We'll walk you through the products under NDA and you'll help shape what we ship.",
+    ctaPrimary: "Apply for beta access",
     ctaGhost: "Beta programme FAQ",
   },
   fr: {
-    heroMeta: ["MGX / RECHERCHE", "3 PROJETS ACTIFS"],
-    heroTitle: "Conçu, livré, mesuré.",
+    heroMeta: ["MGX / RECHERCHE", "3 PROJETS CONFIDENTIELS"],
+    heroTitle: "Conçu discrètement, livré délibérément.",
     heroBody:
-      "Le laboratoire de R&D est le cœur de Mirigraphix : trois produits en développement, chacun s’attaquant à un point de friction de la vie transfrontalière entre les États-Unis et l’Afrique.",
+      "Le laboratoire de R&D est le cœur de Mirigraphix. Trois produits sont en développement pour les marchés transfrontaliers entre les États-Unis et l’Afrique. Leur nature reste confidentielle jusqu’au lancement — les participants à la bêta ont accès à l’ensemble des détails sous accord de confidentialité.",
     projectsTitle: "Projets en cours",
     projectsLede:
-      "Trois applications en développement, chacune visant un corridor mal desservi entre les États-Unis et le continent africain.",
+      "Nous publions nos noms de code, notre stade d’avancement et notre cadence — pas nos découvertes. Chaque projet est présenté aux participants à la bêta et aux partenaires de conception sous accord de confidentialité.",
     roadmap: "Feuille de route",
     stages: ["Conception", "Pilote", "Bêta", "Déploiement"],
-    p1: {
-      id: "MGX / R-01",
-      status: "Bêta",
-      statusKind: "status-beta",
-      name: "Paiements transfrontaliers",
-      body:
-        "Un moyen plus rapide et plus abordable de transférer de l’argent entre les États-Unis et l’Afrique. Un règlement en quelques secondes, et non en heures, avec des frais transparents et un taux de change en temps réel.",
-      meta: [
-        ["Couverture", "Corridors É.-U. ↔ Afrique"],
-        ["Stade", "Bêta privée"],
-        ["Conformité", "KYC / AML intégrés"],
-      ],
-    },
-    p2: {
-      id: "MGX / R-02",
-      status: "Dév",
-      statusKind: "status-dev",
-      name: "Mise en relation par IA",
-      body:
-        "Relier les talents aux opportunités au-delà des frontières grâce à une mise en relation intelligente : analyse des CV, évaluation des écarts de compétences et score d’adéquation avec l’employeur.",
-      note: "En développement actif.",
-    },
-    p3: {
-      id: "MGX / R-03",
-      status: "Bientôt",
-      statusKind: "status-soon",
-      name: "Assistance à l’immigration",
-      body:
-        "Simplifier des démarches d’immigration complexes grâce à une préparation des documents assistée par IA, un suivi des échéances et des vérifications d’éligibilité.",
-      note: "Sur notre feuille de route.",
-    },
+    ndaTag: "Détails sous NDA",
+    projects: [
+      {
+        id: "MGX / R-01",
+        status: "Bêta",
+        statusKind: "status-beta",
+        stage: "Bêta privée — accès sur candidature",
+        activeStage: 2,
+      },
+      {
+        id: "MGX / R-02",
+        status: "En développement",
+        statusKind: "status-dev",
+        stage: "En développement actif",
+      },
+      {
+        id: "MGX / R-03",
+        status: "Prévu",
+        statusKind: "status-soon",
+        stage: "Sur notre feuille de route",
+      },
+    ],
+    whyTitle: "Pourquoi la discrétion ?",
+    whyBody:
+      "Nous travaillons sur des marchés où être premier compte. Publier des listes de fonctionnalités et des feuilles de route avant le lancement reviendrait à offrir notre recherche à nos concurrents. La page publique reste donc volontairement discrète, et celles et ceux qui ont besoin de détails — utilisateurs bêta, partenaires de conception, investisseurs — les obtiennent directement auprès de nous, sous accord de confidentialité.",
     buildTitle: "Notre méthode",
     buildLede:
-      "De petites équipes, des cycles courts et la volonté de partager ce que nous apprenons.",
+      "Le processus est public même quand les produits ne le sont pas : petites équipes, cycles courts, résultats mesurables.",
     approach: [
       {
         num: "01 HYPOTHÈSE",
@@ -132,16 +120,16 @@ const copy = {
           "Nous découpons le travail en cycles de huit semaines. À la fin de chaque bloc, nous livrons, mesurons, puis décidons de poursuivre ou de réorienter.",
       },
       {
-        num: "03 PARTAGE",
-        title: "Des notes ouvertes par défaut",
+        num: "03 DIVULGATION",
+        title: "Processus public, découvertes privées",
         body:
-          "Les notes de recherche, les décisions de conception et les retours d’expérience sont publiés en interne et, lorsque c’est possible, en externe.",
+          "Nous partageons ouvertement notre façon de travailler. Ce que nous découvrons reste au sein du laboratoire — et chez nos partenaires sous NDA — jusqu’au lancement.",
       },
     ],
-    ctaTitle: "Devenez partenaire de conception ou utilisateur bêta.",
+    ctaTitle: "Envie de voir ce qui se cache derrière les caviardages ?",
     ctaBody:
-      "Nous recherchons des utilisateurs précoces qui souhaitent façonner les produits que nous développons. Rejoignez le programme et bénéficiez d’un accès prioritaire.",
-    ctaPrimary: "Nous contacter",
+      "Rejoignez le programme bêta ou devenez partenaire de conception. Nous vous présenterons les produits sous accord de confidentialité et vous contribuerez à façonner ce que nous livrons.",
+    ctaPrimary: "Candidater à la bêta",
     ctaGhost: "FAQ du programme bêta",
   },
 } as const;
@@ -149,7 +137,7 @@ const copy = {
 export default async function RnDPage() {
   const locale = await getLocale();
   const t = copy[locale];
-  const { p1, p2, p3 } = t;
+  const [p1, p2, p3] = t.projects;
 
   return (
     <>
@@ -166,7 +154,7 @@ export default async function RnDPage() {
         </div>
       </section>
 
-      {/* Active projects */}
+      {/* Active projects (redacted) */}
       <section className="section">
         <div className="container">
           <div className="section-head">
@@ -175,8 +163,8 @@ export default async function RnDPage() {
           </div>
 
           <div className="projects">
-            {/* Feature card: Cross-Border Payments */}
-            <article id="payments" className="project feature">
+            {/* Feature card: most advanced project */}
+            <article id="r-01" className="project feature">
               <div className="project-body">
                 <div className="project-head">
                   <span className="project-id">{p1.id}</span>
@@ -185,14 +173,14 @@ export default async function RnDPage() {
                     {p1.status}
                   </span>
                 </div>
-                <h3 className="project-name">{p1.name}</h3>
-                <p className="project-desc">{p1.body}</p>
+                <div className="redact-lines" aria-hidden="true">
+                  <span className="redact-line" />
+                  <span className="redact-line" />
+                  <span className="redact-line" />
+                </div>
                 <div className="project-meta">
-                  {p1.meta.map(([k, v]) => (
-                    <span key={k}>
-                      {k}: <b>{v}</b>
-                    </span>
-                  ))}
+                  <span className="redact-tag">{t.ndaTag}</span>
+                  <span>{p1.stage}</span>
                 </div>
               </div>
               <div className="project-visual">
@@ -203,7 +191,9 @@ export default async function RnDPage() {
                   {t.stages.map((s, i) => (
                     <div
                       key={s}
-                      className={`stage ${i <= 2 ? "done" : ""} ${i === 2 ? "current" : ""}`}
+                      className={`stage ${i <= (p1.activeStage ?? 0) ? "done" : ""} ${
+                        i === p1.activeStage ? "current" : ""
+                      }`}
                     >
                       <span className="stage-dot" />
                       <span className="stage-label">{s}</span>
@@ -213,37 +203,34 @@ export default async function RnDPage() {
               </div>
             </article>
 
-            {/* AI Job Matching */}
-            <article id="jobs" className="project">
-              <div className="project-head">
-                <span className="project-id">{p2.id}</span>
-                <span className={`status ${p2.statusKind}`}>
-                  <span className="status-dot" />
-                  {p2.status}
-                </span>
-              </div>
-              <h3 className="project-name">{p2.name}</h3>
-              <p className="project-desc">{p2.body}</p>
-              <div className="project-meta">
-                <span>{p2.note}</span>
-              </div>
-            </article>
+            {[p2, p3].map((p, i) => (
+              <article key={p.id} id={`r-0${i + 2}`} className="project half">
+                <div className="project-head">
+                  <span className="project-id">{p.id}</span>
+                  <span className={`status ${p.statusKind}`}>
+                    <span className="status-dot" />
+                    {p.status}
+                  </span>
+                </div>
+                <div className="redact-lines" aria-hidden="true">
+                  <span className="redact-line" />
+                  <span className="redact-line" />
+                  <span className="redact-line" />
+                </div>
+                <div className="project-meta">
+                  <span className="redact-tag">{t.ndaTag}</span>
+                  <span>{p.stage}</span>
+                </div>
+              </article>
+            ))}
+          </div>
 
-            {/* Immigration Assist */}
-            <article id="immigration" className="project">
-              <div className="project-head">
-                <span className="project-id">{p3.id}</span>
-                <span className={`status ${p3.statusKind}`}>
-                  <span className="status-dot" />
-                  {p3.status}
-                </span>
-              </div>
-              <h3 className="project-name">{p3.name}</h3>
-              <p className="project-desc">{p3.body}</p>
-              <div className="project-meta">
-                <span>{p3.note}</span>
-              </div>
-            </article>
+          {/* Why stealth */}
+          <div className="card" style={{ marginTop: 20, padding: 28 }}>
+            <span className="redact-tag" style={{ marginBottom: 10 }}>{t.whyTitle}</span>
+            <p style={{ color: "var(--ink-2)", fontSize: "14.5px", margin: "10px 0 0", maxWidth: "78ch" }}>
+              {t.whyBody}
+            </p>
           </div>
         </div>
       </section>
