@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import type { Locale } from "@/lib/i18n";
+import { setLocaleCookie } from "@/lib/useLocale";
 
 const navLinks = [
   { href: "/rnd", label: { en: "Research", fr: "Recherche" } },
@@ -23,7 +24,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
 
   const setLang = (lang: Locale) => {
     if (lang === locale) return;
-    document.cookie = `lang=${lang}; path=/; max-age=31536000; samesite=lax`;
+    setLocaleCookie(lang);
     router.refresh();
   };
 

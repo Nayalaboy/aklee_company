@@ -7,6 +7,8 @@ const copy = {
   en: {
     heroMeta: ["MGX / COMPANY", "TEAM"],
     heroTitle: "The people behind the products.",
+    heroBody:
+      "A small, research-driven team spanning engineering, hardware, training, research, and operations across the U.S. and Africa.",
     sectionTitle: "How we’re organized",
     lede:
       "We’re a small, research-driven team organized around the work itself. Here are the functions that build and support what we ship.",
@@ -42,8 +44,9 @@ const copy = {
         tags: ["Operations", "Partnerships"],
       },
     ],
-    growingNote:
-      "Our team is small and growing. If you’d like to help build any of these functions, we’d love to hear from you.",
+    joinTitle: "You?",
+    joinBody: "We’re small and growing. Help us build one of these functions.",
+    joinCta: "See careers",
     ctaTitle: "Interested in working with us?",
     ctaBody:
       "We’re always happy to hear from talented people. See our open roles or simply introduce yourself.",
@@ -53,6 +56,8 @@ const copy = {
   fr: {
     heroMeta: ["MGX / ENTREPRISE", "ÉQUIPE"],
     heroTitle: "Les personnes derrière les produits.",
+    heroBody:
+      "Une petite équipe axée sur la recherche, couvrant l’ingénierie, le matériel, la formation, la recherche et les opérations, entre les États-Unis et l’Afrique.",
     sectionTitle: "Notre organisation",
     lede:
       "Nous sommes une petite équipe axée sur la recherche, organisée autour du travail lui-même. Voici les fonctions qui construisent et soutiennent ce que nous livrons.",
@@ -88,8 +93,9 @@ const copy = {
         tags: ["Opérations", "Partenariats"],
       },
     ],
-    growingNote:
-      "Notre équipe est petite et en pleine croissance. Si vous souhaitez contribuer à l’une de ces fonctions, n’hésitez pas à nous écrire.",
+    joinTitle: "Vous ?",
+    joinBody: "Nous sommes une petite équipe en pleine croissance. Aidez-nous à bâtir l’une de ces fonctions.",
+    joinCta: "Voir les carrières",
     ctaTitle: "Envie de travailler avec nous ?",
     ctaBody:
       "Nous sommes toujours ravis d’échanger avec des personnes talentueuses. Découvrez nos postes ouverts ou présentez-vous simplement.",
@@ -113,6 +119,7 @@ export default async function TeamPage() {
             <span>{t.heroMeta[1]}</span>
           </div>
           <h1>{t.heroTitle}</h1>
+          <p>{t.heroBody}</p>
         </div>
       </section>
 
@@ -123,14 +130,14 @@ export default async function TeamPage() {
             <h2 className="h2">{t.sectionTitle}</h2>
             <p className="lede">{t.lede}</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
+          <div className="team-grid">
             {t.functions.map((f) => (
               <div key={f.name} className="card">
-                <div className="hw-thumb" style={{ height: 100, marginBottom: 16 }}>
+                <div className="team-badge" aria-hidden="true">
                   {f.name.slice(0, 2).toUpperCase()}
                 </div>
                 <h3 className="h3">{f.name}</h3>
-                <p className="mono" style={{ color: "var(--ink-3)", margin: "6px 0 14px" }}>{f.body}</p>
+                <p style={{ color: "var(--ink-2)", fontSize: 14, margin: "8px 0 16px" }}>{f.body}</p>
                 <div className="pillar-tags">
                   {f.tags.map((e) => (
                     <span key={e} className="pillar-tag">{e}</span>
@@ -138,8 +145,26 @@ export default async function TeamPage() {
                 </div>
               </div>
             ))}
+
+            {/* Join card fills the grid and routes to careers */}
+            <Link
+              href="/careers"
+              className="card"
+              style={{
+                borderStyle: "dashed",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              <div className="team-badge" aria-hidden="true">+</div>
+              <h3 className="h3">{t.joinTitle}</h3>
+              <p style={{ color: "var(--ink-2)", fontSize: 14, margin: "8px 0 16px" }}>{t.joinBody}</p>
+              <span className="btn-link">
+                {t.joinCta} <span aria-hidden="true">&rarr;</span>
+              </span>
+            </Link>
           </div>
-          <p className="lede" style={{ marginTop: "24px" }}>{t.growingNote}</p>
         </div>
       </section>
 

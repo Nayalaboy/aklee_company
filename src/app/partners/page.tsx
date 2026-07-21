@@ -7,6 +7,8 @@ const copy = {
   en: {
     heroMeta: ["MGX / PARTNERS", "ECOSYSTEM"],
     heroTitle: "Partnerships we’re building.",
+    heroBody:
+      "Education, technology, impact, and enterprise — the four kinds of relationships we’re deliberately growing as a young company.",
     sectionTitle: "Open to partnership",
     lede:
       "As a young company, we’re building our ecosystem deliberately. These are the kinds of partnerships we’re looking to grow.",
@@ -43,6 +45,8 @@ const copy = {
   fr: {
     heroMeta: ["MGX / PARTENAIRES", "ÉCOSYSTÈME"],
     heroTitle: "Les partenariats que nous construisons.",
+    heroBody:
+      "Éducation, technologie, impact et entreprise — les quatre types de relations que nous développons avec soin en tant que jeune entreprise.",
     sectionTitle: "Ouverts au partenariat",
     lede:
       "En tant que jeune entreprise, nous construisons notre écosystème avec soin. Voici les types de partenariats que nous souhaitons développer.",
@@ -93,6 +97,7 @@ export default async function PartnersPage() {
             <span>{t.heroMeta[1]}</span>
           </div>
           <h1>{t.heroTitle}</h1>
+          <p>{t.heroBody}</p>
         </div>
       </section>
 
@@ -104,7 +109,7 @@ export default async function PartnersPage() {
             <p className="lede">{t.lede}</p>
           </div>
 
-          <div className="pillars">
+          <div className="pillars pillars-2">
             {t.areas.map((a) => (
               <div key={a.name} className="pillar">
                 <span className="pillar-num">{a.type}</span>

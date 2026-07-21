@@ -1,138 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getLocale, type Locale } from "@/lib/i18n";
-
-type Module = { name: string; topics: string[] };
-type CourseContent = {
-  title: string;
-  description: string;
-  duration: string;
-  level: string;
-  modules: Module[];
-};
-type Course = Record<Locale, CourseContent>;
-
-const courseData: Record<string, Course> = {
-  cybersecurity: {
-    en: {
-      title: "Cybersecurity",
-      description:
-        "Master the art of defending systems and networks. From threat detection to ethical hacking and compliance frameworks.",
-      duration: "12 weeks",
-      level: "Beginner to Advanced",
-      modules: [
-        { name: "Foundations of Cybersecurity", topics: ["CIA Triad", "Threat Landscape", "Security Frameworks"] },
-        { name: "Ethical Hacking", topics: ["Reconnaissance", "Vulnerability Scanning", "Exploitation", "Reporting"] },
-        { name: "Network Security", topics: ["Firewalls & IDS", "VPNs", "Wireless Security"] },
-        { name: "Compliance & Risk", topics: ["NIST", "ISO 27001", "GDPR", "HIPAA"] },
-        { name: "Incident Response", topics: ["Detection", "Containment", "Recovery", "Post-Mortem"] },
-      ],
-    },
-    fr: {
-      title: "Cybersécurité",
-      description:
-        "Maîtrisez l’art de défendre les systèmes et les réseaux. De la détection des menaces au piratage éthique et aux cadres de conformité.",
-      duration: "12 semaines",
-      level: "Du débutant au niveau avancé",
-      modules: [
-        { name: "Fondamentaux de la cybersécurité", topics: ["Triade CIA", "Paysage des menaces", "Cadres de sécurité"] },
-        { name: "Piratage éthique", topics: ["Reconnaissance", "Analyse des vulnérabilités", "Exploitation", "Rapport"] },
-        { name: "Sécurité des réseaux", topics: ["Pare-feu & IDS", "VPN", "Sécurité sans fil"] },
-        { name: "Conformité & risque", topics: ["NIST", "ISO 27001", "RGPD", "HIPAA"] },
-        { name: "Réponse aux incidents", topics: ["Détection", "Confinement", "Restauration", "Analyse post-incident"] },
-      ],
-    },
-  },
-  "ai-ml": {
-    en: {
-      title: "AI & Machine Learning",
-      description:
-        "Build intelligent systems from the ground up. Covers ML algorithms, deep learning, NLP, computer vision, and AI ethics.",
-      duration: "14 weeks",
-      level: "Intermediate",
-      modules: [
-        { name: "Python for Data Science", topics: ["NumPy", "Pandas", "Matplotlib", "Scikit-learn"] },
-        { name: "Machine Learning", topics: ["Supervised Learning", "Unsupervised Learning", "Model Evaluation"] },
-        { name: "Deep Learning", topics: ["Neural Networks", "CNNs", "RNNs", "Transformers"] },
-        { name: "NLP & Computer Vision", topics: ["Text Classification", "Object Detection", "Generative Models"] },
-        { name: "AI Ethics & Deployment", topics: ["Bias & Fairness", "Model Monitoring", "MLOps"] },
-      ],
-    },
-    fr: {
-      title: "IA & apprentissage automatique",
-      description:
-        "Construisez des systèmes intelligents de A à Z. Couvre les algorithmes de ML, l’apprentissage profond, le TAL, la vision par ordinateur et l’éthique de l’IA.",
-      duration: "14 semaines",
-      level: "Intermédiaire",
-      modules: [
-        { name: "Python pour la science des données", topics: ["NumPy", "Pandas", "Matplotlib", "Scikit-learn"] },
-        { name: "Apprentissage automatique", topics: ["Apprentissage supervisé", "Apprentissage non supervisé", "Évaluation des modèles"] },
-        { name: "Apprentissage profond", topics: ["Réseaux de neurones", "CNN", "RNN", "Transformers"] },
-        { name: "TAL & vision par ordinateur", topics: ["Classification de texte", "Détection d’objets", "Modèles génératifs"] },
-        { name: "Éthique de l’IA & déploiement", topics: ["Biais & équité", "Surveillance des modèles", "MLOps"] },
-      ],
-    },
-  },
-  networking: {
-    en: {
-      title: "Networking & Data Centers",
-      description:
-        "Design, deploy, and manage enterprise networks and data center infrastructure.",
-      duration: "10 weeks",
-      level: "Beginner to Intermediate",
-      modules: [
-        { name: "Network Fundamentals", topics: ["OSI Model", "TCP/IP", "Subnetting", "DNS/DHCP"] },
-        { name: "Routing & Switching", topics: ["VLANs", "OSPF", "BGP", "STP"] },
-        { name: "Cloud Infrastructure", topics: ["AWS VPC", "Azure Networking", "Hybrid Cloud"] },
-        { name: "Data Center Operations", topics: ["Virtualization", "Storage", "Cooling & Power", "Monitoring"] },
-      ],
-    },
-    fr: {
-      title: "Réseaux & centres de données",
-      description:
-        "Concevez, déployez et gérez des réseaux d’entreprise et l’infrastructure des centres de données.",
-      duration: "10 semaines",
-      level: "Du débutant au niveau intermédiaire",
-      modules: [
-        { name: "Fondamentaux des réseaux", topics: ["Modèle OSI", "TCP/IP", "Sous-réseaux", "DNS/DHCP"] },
-        { name: "Routage & commutation", topics: ["VLAN", "OSPF", "BGP", "STP"] },
-        { name: "Infrastructure cloud", topics: ["AWS VPC", "Réseaux Azure", "Cloud hybride"] },
-        { name: "Exploitation des centres de données", topics: ["Virtualisation", "Stockage", "Refroidissement & alimentation", "Supervision"] },
-      ],
-    },
-  },
-  fullstack: {
-    en: {
-      title: "Full-Stack Development",
-      description:
-        "Become a complete developer. Master frontend, backend, databases, and modern DevOps practices.",
-      duration: "16 weeks",
-      level: "Beginner to Advanced",
-      modules: [
-        { name: "Frontend Development", topics: ["HTML/CSS", "JavaScript/TypeScript", "React", "Next.js"] },
-        { name: "Backend Development", topics: ["Node.js", "Python/Django", "REST APIs", "GraphQL"] },
-        { name: "Databases", topics: ["PostgreSQL", "MongoDB", "Redis", "ORM/ODM"] },
-        { name: "DevOps & Deployment", topics: ["Docker", "CI/CD", "AWS/Vercel", "Monitoring"] },
-        { name: "Capstone Project", topics: ["Full-Stack App", "Code Review", "Deployment", "Presentation"] },
-      ],
-    },
-    fr: {
-      title: "Développement full-stack",
-      description:
-        "Devenez un développeur complet. Maîtrisez le frontend, le backend, les bases de données et les pratiques DevOps modernes.",
-      duration: "16 semaines",
-      level: "Du débutant au niveau avancé",
-      modules: [
-        { name: "Développement frontend", topics: ["HTML/CSS", "JavaScript/TypeScript", "React", "Next.js"] },
-        { name: "Développement backend", topics: ["Node.js", "Python/Django", "API REST", "GraphQL"] },
-        { name: "Bases de données", topics: ["PostgreSQL", "MongoDB", "Redis", "ORM/ODM"] },
-        { name: "DevOps & déploiement", topics: ["Docker", "CI/CD", "AWS/Vercel", "Supervision"] },
-        { name: "Projet de fin de parcours", topics: ["Application full-stack", "Revue de code", "Déploiement", "Présentation"] },
-      ],
-    },
-  },
-};
+import { getLocale } from "@/lib/i18n";
+import { courseData } from "../courses";
 
 const pageCopy = {
   en: {
@@ -144,6 +14,7 @@ const pageCopy = {
     ctaTitle: "Ready to enroll?",
     ctaBody: "Talk to an advisor to find the next available cohort and get started.",
     ctaButton: "Talk to an advisor",
+    ctaGhost: "Browse other courses",
   },
   fr: {
     back: "← Toutes les formations",
@@ -155,6 +26,7 @@ const pageCopy = {
     ctaBody:
       "Échangez avec un conseiller pour connaître la prochaine promotion disponible et démarrer.",
     ctaButton: "Parler à un conseiller",
+    ctaGhost: "Voir les autres cours",
   },
 } as const;
 
@@ -236,9 +108,14 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
             <h2>{t.ctaTitle}</h2>
             <div>
               <p>{t.ctaBody}</p>
-              <Link href="/contact" className="btn btn-primary">
-                {t.ctaButton} &rarr;
-              </Link>
+              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                <Link href="/contact" className="btn btn-primary">
+                  {t.ctaButton} &rarr;
+                </Link>
+                <Link href="/trainings" className="btn btn-ghost">
+                  {t.ctaGhost}
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -68,11 +68,11 @@ export default async function CareersPage() {
             <h2 className="h2">{t.whyTitle}</h2>
             <p className="lede">{t.whyLede}</p>
           </div>
-          <div className="approach-grid">
+          <div className="pillars pillars-2">
             {t.benefits.map((b) => (
-              <div key={b.num} className="approach-cell">
-                <span className="num">{b.num}</span>
-                <h4>{b.title}</h4>
+              <div key={b.num} className="pillar">
+                <div className="pillar-num">{b.num}</div>
+                <h3>{b.title}</h3>
                 <p>{b.desc}</p>
               </div>
             ))}

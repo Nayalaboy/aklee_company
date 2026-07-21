@@ -1,12 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useId, useState } from "react";
 import Link from "next/link";
+import { useLocale } from "@/lib/useLocale";
 
 const copy = {
   en: {
     heroMeta: ["MGX / FAQ", "SUPPORT"],
     heroTitle: "Common questions.",
+    heroBody:
+      "Quick answers on training, hardware, and the R&D beta programme. Can't find yours? Write to us — we read every message.",
     ctaTitle: "Still have questions?",
     ctaBody: "Our team is here to help. Reach out and we will get back to you.",
     ctaPrimary: "Contact us",
@@ -46,6 +49,8 @@ const copy = {
   fr: {
     heroMeta: ["MGX / FAQ", "ASSISTANCE"],
     heroTitle: "Questions fréquentes.",
+    heroBody:
+      "Des réponses rapides sur les formations, le matériel et le programme bêta de R&D. Vous ne trouvez pas la vôtre ? Écrivez-nous — nous lisons chaque message.",
     ctaTitle: "Vous avez encore des questions ?",
     ctaBody: "Notre équipe est là pour vous aider. Contactez-nous et nous vous répondrons.",
     ctaPrimary: "Nous contacter",
@@ -86,25 +91,30 @@ const copy = {
 
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
+  const panelId = useId();
   return (
-    <div className="svc-row" style={{ cursor: "pointer" }} onClick={() => setOpen(!open)}>
-      <div className="num" style={{ fontSize: "14px", lineHeight: 1 }}>
-        {open ? "−" : "+"}
-      </div>
-      <div style={{ flex: 1 }}>
-        <h3>{q}</h3>
-        {open && <p style={{ marginTop: "8px" }}>{a}</p>}
+    <div className="faq-item">
+      <button
+        type="button"
+        className="faq-q"
+        aria-expanded={open}
+        aria-controls={panelId}
+        onClick={() => setOpen(!open)}
+      >
+        <span className="faq-toggle" aria-hidden="true">
+          {open ? "−" : "+"}
+        </span>
+        <span className="faq-q-text">{q}</span>
+      </button>
+      <div id={panelId} className="faq-a" hidden={!open}>
+        <p>{a}</p>
       </div>
     </div>
   );
 }
 
 export default function FAQPage() {
-  const [locale, setLocale] = useState<"en" | "fr">("en");
-  useEffect(() => {
-    const m = document.cookie.match(/(?:^|; )lang=(fr|en)/);
-    setLocale(m?.[1] === "fr" ? "fr" : "en");
-  }, []);
+  const locale = useLocale();
   const t = copy[locale];
 
   return (
@@ -118,14 +128,15 @@ export default function FAQPage() {
             <span>{t.heroMeta[1]}</span>
           </div>
           <h1>{t.heroTitle}</h1>
+          <p>{t.heroBody}</p>
         </div>
       </section>
 
       {/* FAQ sections */}
       {t.faqs.map((section) => (
-        <section key={section.category} className="section">
+        <section key={section.category} className="section" style={{ paddingBlock: "clamp(36px, 4.5vw, 64px)" }}>
           <div className="container">
-            <div className="section-head">
+            <div className="section-head" style={{ marginBottom: 24 }}>
               <h2 className="h2">{section.category}</h2>
             </div>
             <div className="svc-list">

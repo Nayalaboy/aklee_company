@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useLocale } from "@/lib/useLocale";
 
 const copy = {
   en: {
@@ -52,11 +53,7 @@ const copy = {
 } as const;
 
 export default function JournalPage() {
-  const [locale, setLocale] = useState<"en" | "fr">("en");
-  useEffect(() => {
-    const m = document.cookie.match(/(?:^|; )lang=(fr|en)/);
-    setLocale(m?.[1] === "fr" ? "fr" : "en");
-  }, []);
+  const locale = useLocale();
   const t = copy[locale];
 
   const [email, setEmail] = useState("");
@@ -168,20 +165,13 @@ export default function JournalPage() {
               >
                 <input
                   type="email"
+                  className="input"
+                  aria-label={t.emailPlaceholder}
                   placeholder={t.emailPlaceholder}
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  style={{
-                    flex: "1 1 220px",
-                    padding: "11px 14px",
-                    fontSize: 14,
-                    color: "var(--ink)",
-                    background: "var(--bg)",
-                    border: "1px solid var(--line)",
-                    borderRadius: "var(--radius-sm)",
-                    fontFamily: "inherit",
-                  }}
+                  style={{ flex: "1 1 220px" }}
                 />
                 <button
                   type="submit"
@@ -192,6 +182,7 @@ export default function JournalPage() {
                 </button>
                 {status === "done" && (
                   <span
+                    role="status"
                     style={{
                       flexBasis: "100%",
                       fontSize: 13,
@@ -205,6 +196,7 @@ export default function JournalPage() {
                 )}
                 {status === "error" && (
                   <span
+                    role="alert"
                     style={{
                       flexBasis: "100%",
                       fontSize: 13,

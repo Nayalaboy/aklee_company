@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
+import { useLocale } from "@/lib/useLocale";
 
 type Category = "All" | "Laptops" | "Desktops & servers" | "Networking";
 
@@ -35,10 +36,12 @@ const copy = {
   en: {
     heroMeta: ["MGX / HARDWARE", "ENTERPRISE PROCUREMENT"],
     heroTitle: "Enterprise hardware, delivered.",
+    heroBody:
+      "Laptops, servers, and networking gear for teams in the U.S. and Africa — sourced, configured, and shipped with deployment support.",
     catalogEyebrow: "Catalog",
     catalogTitle: "Product lineup",
     catalogLede:
-      "Enterprise-grade laptops, servers, and networking gear sourced from leading manufacturers -- ready for deployment.",
+      "Enterprise-grade laptops, servers, and networking gear sourced from leading manufacturers — ready for deployment.",
     tabLabels: {
       All: "All",
       Laptops: "Laptops",
@@ -72,6 +75,8 @@ const copy = {
   fr: {
     heroMeta: ["MGX / MATÉRIEL", "APPROVISIONNEMENT ENTREPRISE"],
     heroTitle: "Du matériel professionnel, livré.",
+    heroBody:
+      "Ordinateurs portables, serveurs et équipements réseau pour les équipes aux États-Unis et en Afrique — sélectionnés, configurés et livrés avec un accompagnement au déploiement.",
     catalogEyebrow: "Catalogue",
     catalogTitle: "Gamme de produits",
     catalogLede:
@@ -109,13 +114,8 @@ const copy = {
 } as const;
 
 export default function HardwarePage() {
-  const [locale, setLocale] = useState<"en" | "fr">("en");
+  const locale = useLocale();
   const [filter, setFilter] = useState<Category>("All");
-
-  useEffect(() => {
-    const m = document.cookie.match(/(?:^|; )lang=(fr|en)/);
-    setLocale(m?.[1] === "fr" ? "fr" : "en");
-  }, []);
 
   const t = copy[locale];
 
@@ -132,6 +132,7 @@ export default function HardwarePage() {
             <span>{t.heroMeta[1]}</span>
           </div>
           <h1>{t.heroTitle}</h1>
+          <p>{t.heroBody}</p>
         </div>
       </section>
 

@@ -7,6 +7,8 @@ const copy = {
   en: {
     heroMeta: ["MGX / SERVICES", "CONSULTING"],
     heroTitle: "Engineering teams for hire, not decks.",
+    heroBody:
+      "Cybersecurity, AI strategy, network design, custom software, and turnkey IT — scoped, staffed, and delivered against measurable outcomes.",
     servicesTitle: "Services",
     servicesLede:
       "We embed with your team to ship, not to send slide decks. Every engagement is scoped, staffed, and delivered against measurable outcomes.",
@@ -95,6 +97,8 @@ const copy = {
   fr: {
     heroMeta: ["MGX / SERVICES", "CONSEIL"],
     heroTitle: "Des équipes d’ingénierie à votre service, pas des présentations.",
+    heroBody:
+      "Cybersécurité, stratégie IA, conception de réseaux, logiciels sur mesure et infrastructure clé en main — cadrés, dotés en personnel et livrés selon des résultats mesurables.",
     servicesTitle: "Services",
     servicesLede:
       "Nous nous intégrons à votre équipe pour livrer, pas pour vous envoyer des diapositives. Chaque mission est cadrée, dotée des bonnes compétences et livrée selon des résultats mesurables.",
@@ -202,6 +206,7 @@ export default async function ServicesPage() {
             <span>{t.heroMeta[1]}</span>
           </div>
           <h1>{t.heroTitle}</h1>
+          <p>{t.heroBody}</p>
         </div>
       </section>
 

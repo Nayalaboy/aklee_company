@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useLocale } from "@/lib/useLocale";
 
 const copy = {
   en: {
@@ -20,6 +21,7 @@ const copy = {
       "Consulting engagement",
       "Hardware quote",
       "Training cohort",
+      "Beta programme",
       "Press / investor",
     ],
     messageLabel: "Message",
@@ -53,6 +55,7 @@ const copy = {
       "Mission de conseil",
       "Devis de matériel",
       "Promotion de formation",
+      "Programme bêta",
       "Presse / investisseur",
     ],
     messageLabel: "Message",
@@ -73,11 +76,7 @@ const copy = {
 } as const;
 
 export default function ContactPage() {
-  const [locale, setLocale] = useState<"en" | "fr">("en");
-  useEffect(() => {
-    const m = document.cookie.match(/(?:^|; )lang=(fr|en)/);
-    setLocale(m?.[1] === "fr" ? "fr" : "en");
-  }, []);
+  const locale = useLocale();
   const t = copy[locale];
 
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -89,11 +88,14 @@ export default function ContactPage() {
     setErrorMsg("");
 
     const form = e.currentTarget;
+    const company = (form.elements.namedItem("company") as HTMLInputElement).value.trim();
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
     const data = {
       name: (form.elements.namedItem("name") as HTMLInputElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       topic: (form.elements.namedItem("topic") as HTMLSelectElement).value,
-      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      // The Contact model has no company column, so keep it with the message.
+      message: company ? `[${company}] ${message}` : message,
     };
 
     try {
@@ -136,33 +138,36 @@ export default function ContactPage() {
           <div className="contact-grid">
             <form className="form" onSubmit={handleSubmit}>
               <div className="field">
-                <label>{t.nameLabel}</label>
-                <input name="name" required placeholder={t.namePlaceholder} />
+                <label htmlFor="contact-name">{t.nameLabel}</label>
+                <input id="contact-name" name="name" required placeholder={t.namePlaceholder} autoComplete="name" />
               </div>
               <div className="field">
-                <label>{t.emailLabel}</label>
+                <label htmlFor="contact-email">{t.emailLabel}</label>
                 <input
+                  id="contact-email"
                   name="email"
                   required
                   type="email"
                   placeholder={t.emailPlaceholder}
+                  autoComplete="email"
                 />
               </div>
               <div className="field">
-                <label>{t.companyLabel}</label>
-                <input name="company" placeholder={t.companyPlaceholder} />
+                <label htmlFor="contact-company">{t.companyLabel}</label>
+                <input id="contact-company" name="company" placeholder={t.companyPlaceholder} autoComplete="organization" />
               </div>
               <div className="field">
-                <label>{t.interestLabel}</label>
-                <select name="topic">
+                <label htmlFor="contact-topic">{t.interestLabel}</label>
+                <select id="contact-topic" name="topic">
                   {t.topics.map((topic) => (
                     <option key={topic}>{topic}</option>
                   ))}
                 </select>
               </div>
               <div className="field">
-                <label>{t.messageLabel}</label>
+                <label htmlFor="contact-message">{t.messageLabel}</label>
                 <textarea
+                  id="contact-message"
                   name="message"
                   required
                   placeholder={t.messagePlaceholder}
@@ -171,6 +176,7 @@ export default function ContactPage() {
               <div>
                 {status === "sent" ? (
                   <p
+                    role="status"
                     style={{
                       color: "var(--signal-green)",
                       fontFamily: "var(--font-mono)",
@@ -190,6 +196,7 @@ export default function ContactPage() {
                     </button>
                     {status === "error" && (
                       <p
+                        role="alert"
                         style={{
                           color: "var(--signal-red, #e53e3e)",
                           fontFamily: "var(--font-mono)",

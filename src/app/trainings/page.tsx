@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getLocale } from "@/lib/i18n";
+import { courseData } from "./courses";
 
 export const metadata: Metadata = {
   title: "Professional Training",
@@ -57,6 +58,14 @@ const copy = {
         tags: ["Applied ML", "LLM systems", "Full-stack"],
       },
     ],
+    catalogEyebrow: "Course catalog",
+    catalogTitle: "Pick your track",
+    catalogLede:
+      "Four structured programs, each with a full module-by-module curriculum. Open a course to see exactly what you'll learn.",
+    duration: "Duration",
+    level: "Level",
+    modules: "modules",
+    viewCurriculum: "View curriculum",
     ctaTitle: "Ready to start learning?",
     ctaBody:
       "Talk to an advisor about which track is right for you, or apply directly to an upcoming cohort.",
@@ -112,6 +121,14 @@ const copy = {
         tags: ["ML appliqué", "Systèmes LLM", "Full-stack"],
       },
     ],
+    catalogEyebrow: "Catalogue des cours",
+    catalogTitle: "Choisissez votre parcours",
+    catalogLede:
+      "Quatre programmes structurés, chacun avec un programme détaillé module par module. Ouvrez un cours pour voir exactement ce que vous apprendrez.",
+    duration: "Durée",
+    level: "Niveau",
+    modules: "modules",
+    viewCurriculum: "Voir le programme",
     ctaTitle: "Prêt à vous lancer ?",
     ctaBody:
       "Échangez avec un conseiller pour déterminer le parcours qui vous convient, ou postulez directement à une prochaine promotion.",
@@ -153,7 +170,7 @@ export default async function TrainingsPage() {
                 >
                   {h.value}
                 </div>
-                <div className="stat-trend">{h.trend}</div>
+                <div className="stat-note">{h.trend}</div>
               </div>
             ))}
           </div>
@@ -182,7 +199,49 @@ export default async function TrainingsPage() {
         </div>
       </section>
 
-      <section className="section">
+      {/* Course catalog */}
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div className="section-head">
+            <div>
+              <span className="eyebrow">{t.catalogEyebrow}</span>
+              <h2 className="h2">{t.catalogTitle}</h2>
+            </div>
+            <p className="lede">{t.catalogLede}</p>
+          </div>
+
+          <div className="projects">
+            {Object.entries(courseData).map(([slug, course], i) => {
+              const c = course[locale];
+              return (
+                <Link key={slug} href={`/trainings/${slug}`} className="project half">
+                  <div className="project-head">
+                    <span className="project-id">MGX/T-{String(i + 1).padStart(2, "0")}</span>
+                    <span className="mono" style={{ color: "var(--ink-3)" }}>
+                      {c.modules.length} {t.modules}
+                    </span>
+                  </div>
+                  <h3 className="project-name" style={{ fontSize: 22 }}>{c.title}</h3>
+                  <p className="project-desc">{c.description}</p>
+                  <div className="project-meta">
+                    <span>
+                      {t.duration}: <b>{c.duration}</b>
+                    </span>
+                    <span>
+                      {t.level}: <b>{c.level}</b>
+                    </span>
+                  </div>
+                  <span className="btn-link">
+                    {t.viewCurriculum} <span aria-hidden="true">&rarr;</span>
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
           <div className="cta-block">
             <h2>{t.ctaTitle}</h2>

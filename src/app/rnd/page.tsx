@@ -7,6 +7,8 @@ const copy = {
   en: {
     heroMeta: ["MGX / RESEARCH", "3 ACTIVE PROJECTS"],
     heroTitle: "Built, shipped, measured.",
+    heroBody:
+      "The R&D lab is the core of Mirigraphix: three products in flight, each tackling a friction point in cross-border life between the U.S. and Africa.",
     projectsTitle: "Active projects",
     projectsLede:
       "Three applications in flight, each targeting an underserved corridor between the U.S. and the African continent.",
@@ -70,11 +72,13 @@ const copy = {
     ctaBody:
       "We are looking for early adopters who want to shape the products we ship. Join the programme and get priority access.",
     ctaPrimary: "Get in touch",
-    ctaGhost: "View all projects",
+    ctaGhost: "Beta programme FAQ",
   },
   fr: {
     heroMeta: ["MGX / RECHERCHE", "3 PROJETS ACTIFS"],
     heroTitle: "Conçu, livré, mesuré.",
+    heroBody:
+      "Le laboratoire de R&D est le cœur de Mirigraphix : trois produits en développement, chacun s’attaquant à un point de friction de la vie transfrontalière entre les États-Unis et l’Afrique.",
     projectsTitle: "Projets en cours",
     projectsLede:
       "Trois applications en développement, chacune visant un corridor mal desservi entre les États-Unis et le continent africain.",
@@ -138,7 +142,7 @@ const copy = {
     ctaBody:
       "Nous recherchons des utilisateurs précoces qui souhaitent façonner les produits que nous développons. Rejoignez le programme et bénéficiez d’un accès prioritaire.",
     ctaPrimary: "Nous contacter",
-    ctaGhost: "Voir tous les projets",
+    ctaGhost: "FAQ du programme bêta",
   },
 } as const;
 
@@ -158,6 +162,7 @@ export default async function RnDPage() {
             <span>{t.heroMeta[1]}</span>
           </div>
           <h1>{t.heroTitle}</h1>
+          <p>{t.heroBody}</p>
         </div>
       </section>
 
@@ -171,7 +176,7 @@ export default async function RnDPage() {
 
           <div className="projects">
             {/* Feature card: Cross-Border Payments */}
-            <article className="project feature">
+            <article id="payments" className="project feature">
               <div className="project-body">
                 <div className="project-head">
                   <span className="project-id">{p1.id}</span>
@@ -209,7 +214,7 @@ export default async function RnDPage() {
             </article>
 
             {/* AI Job Matching */}
-            <article className="project">
+            <article id="jobs" className="project">
               <div className="project-head">
                 <span className="project-id">{p2.id}</span>
                 <span className={`status ${p2.statusKind}`}>
@@ -225,7 +230,7 @@ export default async function RnDPage() {
             </article>
 
             {/* Immigration Assist */}
-            <article className="project">
+            <article id="immigration" className="project">
               <div className="project-head">
                 <span className="project-id">{p3.id}</span>
                 <span className={`status ${p3.statusKind}`}>
@@ -274,7 +279,7 @@ export default async function RnDPage() {
                 <Link href="/contact" className="btn btn-primary">
                   {t.ctaPrimary}
                 </Link>
-                <Link href="/rnd" className="btn btn-ghost">
+                <Link href="/faq" className="btn btn-ghost">
                   {t.ctaGhost}
                 </Link>
               </div>

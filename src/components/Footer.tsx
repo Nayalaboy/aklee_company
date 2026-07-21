@@ -24,6 +24,7 @@ const copy = {
       partners: "Partners",
       events: "Events",
       faq: "FAQ",
+      advisor: "AI Advisor",
       contact: "Contact",
     },
     privacy: "Privacy Policy",
@@ -54,6 +55,7 @@ const copy = {
       partners: "Partenaires",
       events: "Événements",
       faq: "FAQ",
+      advisor: "Conseiller IA",
       contact: "Contact",
     },
     privacy: "Politique de confidentialité",
@@ -101,9 +103,9 @@ export default function Footer({ locale }: { locale: Locale }) {
             <h4>{t.research}</h4>
             <ul>
               <li><Link href="/rnd">{t.links.projects}</Link></li>
-              <li><Link href="/rnd">{t.links.payments}</Link></li>
-              <li><Link href="/rnd">{t.links.jobs}</Link></li>
-              <li><Link href="/rnd">{t.links.immigration}</Link></li>
+              <li><Link href="/rnd#payments">{t.links.payments}</Link></li>
+              <li><Link href="/rnd#jobs">{t.links.jobs}</Link></li>
+              <li><Link href="/rnd#immigration">{t.links.immigration}</Link></li>
             </ul>
           </div>
           <div>
@@ -129,6 +131,7 @@ export default function Footer({ locale }: { locale: Locale }) {
             <ul>
               <li><Link href="/events">{t.links.events}</Link></li>
               <li><Link href="/faq">{t.links.faq}</Link></li>
+              <li><Link href="/chat">{t.links.advisor}</Link></li>
               <li><Link href="/contact">{t.links.contact}</Link></li>
             </ul>
           </div>
