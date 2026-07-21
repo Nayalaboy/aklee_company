@@ -25,7 +25,7 @@ const copy = {
         title: "Product engineering",
         body:
           "We design, build, and operate software products that tackle hard cross-border problems between the U.S. and Africa. The products are in stealth until launch — this is the work everything else exists to fund.",
-        chips: ["In stealth", "3 projects", "U.S. ↔ Africa"],
+        chips: ["Fintech", "Workforce AI", "LegalTech"],
         go: "Explore R&D",
       },
       consulting: {
@@ -54,6 +54,7 @@ const copy = {
     products: [
       {
         id: "MGX/R-01",
+        domain: "Fintech",
         status: "Beta",
         statusKind: "status-beta",
         note: "Private beta — access by application.",
@@ -61,12 +62,14 @@ const copy = {
       },
       {
         id: "MGX/R-02",
+        domain: "Workforce AI",
         status: "In Development",
         statusKind: "status-dev",
         note: "In active development.",
       },
       {
         id: "MGX/R-03",
+        domain: "LegalTech",
         status: "Planned",
         statusKind: "status-soon",
         note: "On our roadmap.",
@@ -96,7 +99,7 @@ const copy = {
         title: "Ingénierie produit",
         body:
           "Nous concevons, développons et exploitons des produits logiciels qui s’attaquent à des problèmes transfrontaliers complexes entre les États-Unis et l’Afrique. Les produits restent confidentiels jusqu’au lancement — c’est le travail que tout le reste sert à financer.",
-        chips: ["Confidentiel", "3 projets", "É.-U. ↔ Afrique"],
+        chips: ["Fintech", "IA & emploi", "LegalTech"],
         go: "Explorer la R&D",
       },
       consulting: {
@@ -125,6 +128,7 @@ const copy = {
     products: [
       {
         id: "MGX/R-01",
+        domain: "Fintech",
         status: "Bêta",
         statusKind: "status-beta",
         note: "Bêta privée — accès sur candidature.",
@@ -132,12 +136,14 @@ const copy = {
       },
       {
         id: "MGX/R-02",
+        domain: "IA & emploi",
         status: "En développement",
         statusKind: "status-dev",
         note: "En développement actif.",
       },
       {
         id: "MGX/R-03",
+        domain: "LegalTech",
         status: "Prévu",
         statusKind: "status-soon",
         note: "Sur notre feuille de route.",
@@ -309,6 +315,7 @@ export default async function Home() {
                     {p1.status}
                   </span>
                 </div>
+                <h3 className="project-name">{p1.domain}</h3>
                 <div className="redact-lines" aria-hidden="true">
                   <span className="redact-line" />
                   <span className="redact-line" />
@@ -348,6 +355,7 @@ export default async function Home() {
                     {p.status}
                   </span>
                 </div>
+                <h3 className="project-name" style={{ fontSize: 22 }}>{p.domain}</h3>
                 <div className="redact-lines" aria-hidden="true">
                   <span className="redact-line" />
                   <span className="redact-line" />

@@ -34,8 +34,8 @@ const copy = {
         category: "R&D",
         questions: [
           { q: "How can I join the beta programme?", a: "Visit our Contact page and select ‘Beta programme’ as the topic. We will add you to the waitlist and notify you when a spot opens. Beta participants receive full product details under NDA." },
-          { q: "What are you building, exactly?", a: "Our R&D products are in stealth until launch. Publicly, all we share is that we build software for cross-border markets between the U.S. and Africa. Beta participants and design partners get the full picture under NDA." },
-          { q: "Why don’t you publish more about your R&D?", a: "We work in markets where being first matters, so we keep product details confidential until launch. We openly share our process — codenames, stage, and cadence — but not our findings." },
+          { q: "What are you building, exactly?", a: "Our R&D products are in stealth until launch. Publicly, we share only the domains — fintech, workforce AI, and legal tech — for cross-border markets between the U.S. and Africa. Beta participants and design partners get the full picture under NDA." },
+          { q: "Why don’t you publish more about your R&D?", a: "We work in markets where being first matters, so we keep product details confidential until launch. We openly share our process — domains, codenames, stage, and cadence — but not our findings." },
         ],
       },
       {
@@ -76,8 +76,8 @@ const copy = {
         category: "R&D",
         questions: [
           { q: "Comment puis-je rejoindre le programme bêta ?", a: "Rendez-vous sur notre page Contact et sélectionnez « Programme bêta » comme sujet. Nous vous ajouterons à la liste d’attente et vous préviendrons dès qu’une place se libère. Les participants à la bêta reçoivent tous les détails des produits sous accord de confidentialité." },
-          { q: "Que développez-vous, exactement ?", a: "Nos produits de R&D restent confidentiels jusqu’au lancement. Publiquement, nous indiquons seulement que nous développons des logiciels pour les marchés transfrontaliers entre les États-Unis et l’Afrique. Les participants à la bêta et les partenaires de conception ont accès à l’ensemble des détails sous accord de confidentialité." },
-          { q: "Pourquoi ne publiez-vous pas plus d’informations sur votre R&D ?", a: "Nous travaillons sur des marchés où être premier compte, nous gardons donc les détails des produits confidentiels jusqu’au lancement. Nous partageons ouvertement notre processus — noms de code, stade d’avancement et cadence — mais pas nos découvertes." },
+          { q: "Que développez-vous, exactement ?", a: "Nos produits de R&D restent confidentiels jusqu’au lancement. Publiquement, nous partageons uniquement les domaines — fintech, IA & emploi et legaltech — pour les marchés transfrontaliers entre les États-Unis et l’Afrique. Les participants à la bêta et les partenaires de conception ont accès à l’ensemble des détails sous accord de confidentialité." },
+          { q: "Pourquoi ne publiez-vous pas plus d’informations sur votre R&D ?", a: "Nous travaillons sur des marchés où être premier compte, nous gardons donc les détails des produits confidentiels jusqu’au lancement. Nous partageons ouvertement notre processus — domaines, noms de code, stade d’avancement et cadence — mais pas nos découvertes." },
         ],
       },
       {

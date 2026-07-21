@@ -11,13 +11,14 @@ const copy = {
       "The R&D lab is the core of Mirigraphix. Three products are in flight for cross-border markets between the U.S. and Africa. What they are stays confidential until launch — beta participants get the full picture under NDA.",
     projectsTitle: "Active projects",
     projectsLede:
-      "We publish our codenames, stage, and cadence — not our findings. Each project is disclosed to beta participants and design partners under NDA.",
+      "We publish the domain, codename, stage, and cadence of each project — not our findings. The specifics are disclosed to beta participants and design partners under NDA.",
     roadmap: "Roadmap",
     stages: ["Design", "Pilot", "Beta", "Scale"],
     ndaTag: "Details under NDA",
     projects: [
       {
         id: "MGX / R-01",
+        domain: "Fintech",
         status: "Beta",
         statusKind: "status-beta",
         stage: "Private beta — access by application",
@@ -25,12 +26,14 @@ const copy = {
       },
       {
         id: "MGX / R-02",
+        domain: "Workforce AI",
         status: "In Development",
         statusKind: "status-dev",
         stage: "In active development",
       },
       {
         id: "MGX / R-03",
+        domain: "LegalTech",
         status: "Planned",
         statusKind: "status-soon",
         stage: "On our roadmap",
@@ -75,13 +78,14 @@ const copy = {
       "Le laboratoire de R&D est le cœur de Mirigraphix. Trois produits sont en développement pour les marchés transfrontaliers entre les États-Unis et l’Afrique. Leur nature reste confidentielle jusqu’au lancement — les participants à la bêta ont accès à l’ensemble des détails sous accord de confidentialité.",
     projectsTitle: "Projets en cours",
     projectsLede:
-      "Nous publions nos noms de code, notre stade d’avancement et notre cadence — pas nos découvertes. Chaque projet est présenté aux participants à la bêta et aux partenaires de conception sous accord de confidentialité.",
+      "Nous publions le domaine, le nom de code, le stade d’avancement et la cadence de chaque projet — pas nos découvertes. Les détails sont présentés aux participants à la bêta et aux partenaires de conception sous accord de confidentialité.",
     roadmap: "Feuille de route",
     stages: ["Conception", "Pilote", "Bêta", "Déploiement"],
     ndaTag: "Détails sous NDA",
     projects: [
       {
         id: "MGX / R-01",
+        domain: "Fintech",
         status: "Bêta",
         statusKind: "status-beta",
         stage: "Bêta privée — accès sur candidature",
@@ -89,12 +93,14 @@ const copy = {
       },
       {
         id: "MGX / R-02",
+        domain: "IA & emploi",
         status: "En développement",
         statusKind: "status-dev",
         stage: "En développement actif",
       },
       {
         id: "MGX / R-03",
+        domain: "LegalTech",
         status: "Prévu",
         statusKind: "status-soon",
         stage: "Sur notre feuille de route",
@@ -173,6 +179,7 @@ export default async function RnDPage() {
                     {p1.status}
                   </span>
                 </div>
+                <h3 className="project-name">{p1.domain}</h3>
                 <div className="redact-lines" aria-hidden="true">
                   <span className="redact-line" />
                   <span className="redact-line" />
@@ -212,6 +219,7 @@ export default async function RnDPage() {
                     {p.status}
                   </span>
                 </div>
+                <h3 className="project-name" style={{ fontSize: 22 }}>{p.domain}</h3>
                 <div className="redact-lines" aria-hidden="true">
                   <span className="redact-line" />
                   <span className="redact-line" />
