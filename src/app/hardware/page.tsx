@@ -37,11 +37,11 @@ const copy = {
     heroMeta: ["MGX / HARDWARE", "ENTERPRISE PROCUREMENT"],
     heroTitle: "Enterprise hardware, delivered.",
     heroBody:
-      "Laptops, servers, and networking gear for teams in the U.S. and Africa — sourced, configured, and shipped with deployment support.",
+      "Laptops, servers, and networking gear for teams in the U.S. and Africa, sourced, configured, and shipped with deployment support.",
     catalogEyebrow: "Catalog",
     catalogTitle: "Product lineup",
     catalogLede:
-      "Enterprise-grade laptops, servers, and networking gear sourced from leading manufacturers — ready for deployment.",
+      "Enterprise-grade laptops, servers, and networking gear sourced from leading manufacturers, ready for deployment.",
     tabLabels: {
       All: "All",
       Laptops: "Laptops",
@@ -76,7 +76,7 @@ const copy = {
     heroMeta: ["MGX / MATÉRIEL", "APPROVISIONNEMENT ENTREPRISE"],
     heroTitle: "Du matériel professionnel, livré.",
     heroBody:
-      "Ordinateurs portables, serveurs et équipements réseau pour les équipes aux États-Unis et en Afrique — sélectionnés, configurés et livrés avec un accompagnement au déploiement.",
+      "Ordinateurs portables, serveurs et équipements réseau pour les équipes aux États-Unis et en Afrique, sélectionnés, configurés et livrés avec un accompagnement au déploiement.",
     catalogEyebrow: "Catalogue",
     catalogTitle: "Gamme de produits",
     catalogLede:

@@ -8,7 +8,7 @@ const copy = {
     heroMeta: ["MGX / SERVICES", "CONSULTING"],
     heroTitle: "Engineering teams for hire, not decks.",
     heroBody:
-      "Cybersecurity, AI strategy, network design, custom software, and turnkey IT — scoped, staffed, and delivered against measurable outcomes.",
+      "Cybersecurity, AI strategy, network design, custom software, and turnkey IT, scoped, staffed, and delivered against measurable outcomes.",
     servicesTitle: "Services",
     servicesLede:
       "We embed with your team to ship, not to send slide decks. Every engagement is scoped, staffed, and delivered against measurable outcomes.",
@@ -98,7 +98,7 @@ const copy = {
     heroMeta: ["MGX / SERVICES", "CONSEIL"],
     heroTitle: "Des équipes d’ingénierie à votre service, pas des présentations.",
     heroBody:
-      "Cybersécurité, stratégie IA, conception de réseaux, logiciels sur mesure et infrastructure clé en main — cadrés, dotés en personnel et livrés selon des résultats mesurables.",
+      "Cybersécurité, stratégie IA, conception de réseaux, logiciels sur mesure et infrastructure clé en main, cadrés, dotés en personnel et livrés selon des résultats mesurables.",
     servicesTitle: "Services",
     servicesLede:
       "Nous nous intégrons à votre équipe pour livrer, pas pour vous envoyer des diapositives. Chaque mission est cadrée, dotée des bonnes compétences et livrée selon des résultats mesurables.",

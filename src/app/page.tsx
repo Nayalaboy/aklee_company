@@ -11,7 +11,7 @@ const copy = {
     heroMeta: ["MGX-LLC / 2026", "New York, NY", "Technology company"],
     heroTitle: "We build what’s next",
     heroBody:
-      "Mirigraphix is a research-driven technology company. We build software for cross-border markets between the U.S. and Africa — currently in stealth — backed by consulting, enterprise hardware, and professional training programs.",
+      "Mirigraphix is a research-driven technology company. We build software for cross-border markets between the U.S. and Africa, currently in stealth, backed by consulting, enterprise hardware, and professional training programs.",
     seeRnd: "See R&D",
     contact: "Contact us",
     offerEyebrow: "What we do",
@@ -24,7 +24,7 @@ const copy = {
         badge: "The lab",
         title: "Product engineering",
         body:
-          "We design, build, and operate software products that tackle hard cross-border problems between the U.S. and Africa. The products are in stealth until launch — this is the work everything else exists to fund.",
+          "We design, build, and operate software products that tackle hard cross-border problems between the U.S. and Africa. The products are in stealth until launch. This is the work everything else exists to fund.",
         chips: ["Fintech", "Workforce AI", "LegalTech"],
         go: "Explore R&D",
       },
@@ -57,7 +57,7 @@ const copy = {
         domain: "Fintech",
         status: "Beta",
         statusKind: "status-beta",
-        note: "Private beta — access by application.",
+        note: "Private beta, access by application.",
         activeStage: 2,
       },
       {
@@ -85,7 +85,7 @@ const copy = {
     heroMeta: ["MGX-LLC / 2026", "New York, NY", "Entreprise technologique"],
     heroTitle: "Nous construisons l’avenir",
     heroBody:
-      "Mirigraphix est une entreprise technologique axée sur la recherche. Nous développons des logiciels pour les marchés transfrontaliers entre les États-Unis et l’Afrique — actuellement en mode confidentiel — soutenus par du conseil, du matériel professionnel et des programmes de formation.",
+      "Mirigraphix est une entreprise technologique axée sur la recherche. Nous développons des logiciels pour les marchés transfrontaliers entre les États-Unis et l’Afrique, actuellement en mode confidentiel, soutenus par du conseil, du matériel professionnel et des programmes de formation.",
     seeRnd: "Voir la R&D",
     contact: "Nous contacter",
     offerEyebrow: "Ce que nous faisons",
@@ -98,7 +98,7 @@ const copy = {
         badge: "Le laboratoire",
         title: "Ingénierie produit",
         body:
-          "Nous concevons, développons et exploitons des produits logiciels qui s’attaquent à des problèmes transfrontaliers complexes entre les États-Unis et l’Afrique. Les produits restent confidentiels jusqu’au lancement — c’est le travail que tout le reste sert à financer.",
+          "Nous concevons, développons et exploitons des produits logiciels qui s’attaquent à des problèmes transfrontaliers complexes entre les États-Unis et l’Afrique. Les produits restent confidentiels jusqu’au lancement. C’est le travail que tout le reste sert à financer.",
         chips: ["Fintech", "IA & emploi", "LegalTech"],
         go: "Explorer la R&D",
       },
@@ -131,7 +131,7 @@ const copy = {
         domain: "Fintech",
         status: "Bêta",
         statusKind: "status-beta",
-        note: "Bêta privée — accès sur candidature.",
+        note: "Bêta privée, accès sur candidature.",
         activeStage: 2,
       },
       {

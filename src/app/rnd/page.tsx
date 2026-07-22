@@ -8,10 +8,10 @@ const copy = {
     heroMeta: ["MGX / RESEARCH", "3 PROJECTS IN STEALTH"],
     heroTitle: "Built quietly, shipped deliberately.",
     heroBody:
-      "The R&D lab is the core of Mirigraphix. Three products are in flight for cross-border markets between the U.S. and Africa. What they are stays confidential until launch — beta participants get the full picture under NDA.",
+      "The R&D lab is the core of Mirigraphix. Three products are in flight for cross-border markets between the U.S. and Africa. What they are stays confidential until launch. Beta participants get the full picture under NDA.",
     projectsTitle: "Active projects",
     projectsLede:
-      "We publish the domain, codename, stage, and cadence of each project — not our findings. The specifics are disclosed to beta participants and design partners under NDA.",
+      "We publish the domain, codename, stage, and cadence of each project, not our findings. The specifics are disclosed to beta participants and design partners under NDA.",
     roadmap: "Roadmap",
     stages: ["Design", "Pilot", "Beta", "Scale"],
     ndaTag: "Details under NDA",
@@ -21,7 +21,7 @@ const copy = {
         domain: "Fintech",
         status: "Beta",
         statusKind: "status-beta",
-        stage: "Private beta — access by application",
+        stage: "Private beta, access by application",
         activeStage: 2,
       },
       {
@@ -41,7 +41,7 @@ const copy = {
     ],
     whyTitle: "Why stealth?",
     whyBody:
-      "We work in markets where being first matters. Publishing feature lists and roadmaps before launch hands our research to competitors. So the public page stays deliberately quiet, and the people who need detail — beta users, design partners, investors — get it directly from us, under NDA.",
+      "We work in markets where being first matters. Publishing feature lists and roadmaps before launch hands our research to competitors. So the public page stays deliberately quiet, and the people who need detail (beta users, design partners, investors) get it directly from us, under NDA.",
     buildTitle: "How we build",
     buildLede:
       "The process is public even when the products aren't: small teams, tight loops, measurable outcomes.",
@@ -62,7 +62,7 @@ const copy = {
         num: "03 DISCLOSURE",
         title: "Process public, findings private",
         body:
-          "We share how we work openly. What we discover stays inside the lab — and with our NDA'd partners — until it ships.",
+          "We share how we work openly. What we discover stays inside the lab, and with our NDA'd partners, until it ships.",
       },
     ],
     ctaTitle: "Want to see what's behind the redactions?",
@@ -75,10 +75,10 @@ const copy = {
     heroMeta: ["MGX / RECHERCHE", "3 PROJETS CONFIDENTIELS"],
     heroTitle: "Conçu discrètement, livré délibérément.",
     heroBody:
-      "Le laboratoire de R&D est le cœur de Mirigraphix. Trois produits sont en développement pour les marchés transfrontaliers entre les États-Unis et l’Afrique. Leur nature reste confidentielle jusqu’au lancement — les participants à la bêta ont accès à l’ensemble des détails sous accord de confidentialité.",
+      "Le laboratoire de R&D est le cœur de Mirigraphix. Trois produits sont en développement pour les marchés transfrontaliers entre les États-Unis et l’Afrique. Leur nature reste confidentielle jusqu’au lancement. Les participants à la bêta ont accès à l’ensemble des détails sous accord de confidentialité.",
     projectsTitle: "Projets en cours",
     projectsLede:
-      "Nous publions le domaine, le nom de code, le stade d’avancement et la cadence de chaque projet — pas nos découvertes. Les détails sont présentés aux participants à la bêta et aux partenaires de conception sous accord de confidentialité.",
+      "Nous publions le domaine, le nom de code, le stade d’avancement et la cadence de chaque projet, pas nos découvertes. Les détails sont présentés aux participants à la bêta et aux partenaires de conception sous accord de confidentialité.",
     roadmap: "Feuille de route",
     stages: ["Conception", "Pilote", "Bêta", "Déploiement"],
     ndaTag: "Détails sous NDA",
@@ -88,7 +88,7 @@ const copy = {
         domain: "Fintech",
         status: "Bêta",
         statusKind: "status-beta",
-        stage: "Bêta privée — accès sur candidature",
+        stage: "Bêta privée, accès sur candidature",
         activeStage: 2,
       },
       {
@@ -108,7 +108,7 @@ const copy = {
     ],
     whyTitle: "Pourquoi la discrétion ?",
     whyBody:
-      "Nous travaillons sur des marchés où être premier compte. Publier des listes de fonctionnalités et des feuilles de route avant le lancement reviendrait à offrir notre recherche à nos concurrents. La page publique reste donc volontairement discrète, et celles et ceux qui ont besoin de détails — utilisateurs bêta, partenaires de conception, investisseurs — les obtiennent directement auprès de nous, sous accord de confidentialité.",
+      "Nous travaillons sur des marchés où être premier compte. Publier des listes de fonctionnalités et des feuilles de route avant le lancement reviendrait à offrir notre recherche à nos concurrents. La page publique reste donc volontairement discrète, et celles et ceux qui ont besoin de détails (utilisateurs bêta, partenaires de conception, investisseurs) les obtiennent directement auprès de nous, sous accord de confidentialité.",
     buildTitle: "Notre méthode",
     buildLede:
       "Le processus est public même quand les produits ne le sont pas : petites équipes, cycles courts, résultats mesurables.",
@@ -129,7 +129,7 @@ const copy = {
         num: "03 DIVULGATION",
         title: "Processus public, découvertes privées",
         body:
-          "Nous partageons ouvertement notre façon de travailler. Ce que nous découvrons reste au sein du laboratoire — et chez nos partenaires sous NDA — jusqu’au lancement.",
+          "Nous partageons ouvertement notre façon de travailler. Ce que nous découvrons reste au sein du laboratoire, et chez nos partenaires sous NDA, jusqu’au lancement.",
       },
     ],
     ctaTitle: "Envie de voir ce qui se cache derrière les caviardages ?",

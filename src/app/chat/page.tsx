@@ -10,7 +10,7 @@ const copy = {
     heroMeta: ["MGX / ADVISOR", "AI-POWERED"],
     heroTitle: "Ask us anything.",
     heroBody:
-      "Instant guidance on training programs, enterprise hardware, R&D beta access, and consulting — answered by our AI advisor.",
+      "Instant guidance on training programs, enterprise hardware, R&D beta access, and consulting, answered by our AI advisor.",
     welcome:
       "Hi! I'm the Mirigraphix advisor. I can help you with our training programs, enterprise hardware, R&D beta access, or consulting services. What are you looking for today?",
     advisor: "Advisor",
@@ -26,7 +26,7 @@ const copy = {
     heroMeta: ["MGX / CONSEILLER", "PROPULSÉ PAR L'IA"],
     heroTitle: "Posez-nous vos questions.",
     heroBody:
-      "Des conseils instantanés sur les formations, le matériel professionnel, l'accès bêta à la R&D et le conseil — par notre conseiller IA.",
+      "Des conseils instantanés sur les formations, le matériel professionnel, l'accès bêta à la R&D et le conseil, par notre conseiller IA.",
     welcome:
       "Bonjour ! Je suis le conseiller Mirigraphix. Je peux vous renseigner sur nos formations, notre matériel professionnel, l'accès bêta à la R&D ou nos services de conseil. Que recherchez-vous aujourd'hui ?",
     advisor: "Conseiller",

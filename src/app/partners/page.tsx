@@ -8,7 +8,7 @@ const copy = {
     heroMeta: ["MGX / PARTNERS", "ECOSYSTEM"],
     heroTitle: "Partnerships we’re building.",
     heroBody:
-      "Education, technology, impact, and enterprise — the four kinds of relationships we’re deliberately growing as a young company.",
+      "Education, technology, impact, and enterprise: the four kinds of relationships we’re deliberately growing as a young company.",
     sectionTitle: "Open to partnership",
     lede:
       "As a young company, we’re building our ecosystem deliberately. These are the kinds of partnerships we’re looking to grow.",
@@ -46,7 +46,7 @@ const copy = {
     heroMeta: ["MGX / PARTENAIRES", "ÉCOSYSTÈME"],
     heroTitle: "Les partenariats que nous construisons.",
     heroBody:
-      "Éducation, technologie, impact et entreprise — les quatre types de relations que nous développons avec soin en tant que jeune entreprise.",
+      "Éducation, technologie, impact et entreprise : les quatre types de relations que nous développons avec soin en tant que jeune entreprise.",
     sectionTitle: "Ouverts au partenariat",
     lede:
       "En tant que jeune entreprise, nous construisons notre écosystème avec soin. Voici les types de partenariats que nous souhaitons développer.",
